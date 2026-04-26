@@ -1,7 +1,5 @@
 # heureux-shop (monorepo)
 
-以 `cursor-heureux-demo` 為原形整理成 monorepo。
-
 ## 專案結構
 
 - `apps/frontend`: Next.js 前端
@@ -15,4 +13,3 @@ npm install
 npm run dev:frontend
 npm run dev:backend
 ```
-
