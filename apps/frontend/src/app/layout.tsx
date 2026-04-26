@@ -1,0 +1,46 @@
+import type { Metadata } from "next";
+import { Barlow_Condensed, Space_Grotesk } from "next/font/google";
+import "./globals.css";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+});
+
+const barlowCondensed = Barlow_Condensed({
+  variable: "--font-barlow-condensed",
+  subsets: ["latin"],
+  weight: ["600", "700", "800", "900"],
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  title: "HEUREUX | Radical Aesthetic",
+  description: "Pure form over redundant function. The essentials reimagined.",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <html lang="zh-TW" className="dark">
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=optional"
+          rel="stylesheet"
+        />
+      </head>
+      <body
+        className={`${spaceGrotesk.variable} ${barlowCondensed.variable} antialiased min-h-screen flex flex-col bg-[var(--background-dark)] text-slate-100 overflow-x-hidden`}
+      >
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
+    </html>
+  );
+}

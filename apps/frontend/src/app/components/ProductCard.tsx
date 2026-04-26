@@ -1,0 +1,64 @@
+import Image from "next/image";
+import Link from "next/link";
+import AddToCartButton from "./AddToCartButton";
+
+export interface Product {
+  id: number;
+  name: string;
+  price: number;
+  image_url?: string | null;
+  description?: string | null;
+  category?: string | null;
+  is_new?: boolean;
+}
+
+interface ProductCardProps {
+  product: Product;
+  showAddToCart?: boolean;
+  userId?: number | null;
+}
+
+export default function ProductCard({ product: p, showAddToCart = true, userId = null }: ProductCardProps) {
+  return (
+    <li className="group cursor-pointer">
+      <div className="relative aspect-[3/4] overflow-hidden rounded-xl bg-slate-900 mb-6 transition-all duration-500 group-hover:shadow-[0_0_40px_rgba(255,87,34,0.1)]">
+        <Link href={`/products/${p.id}`} className="block absolute inset-0">
+          {p.image_url ? (
+            <Image
+              src={p.image_url}
+
+
+              alt={p.name}
+              width={400}
+              height={533}
+              unoptimized
+              className="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center text-sm text-slate-500">No Image</div>
+          )}
+        </Link>
+        <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300 pointer-events-none" />
+        {showAddToCart && (
+          <div className="absolute bottom-6 left-6 right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto">
+            <AddToCartButton
+              productId={p.id}
+              variant="button"
+              userId={userId}
+              className="w-full bg-primary text-white py-4 font-display text-xl uppercase tracking-wider rounded-lg shadow-xl"
+            >
+              Add to Bag
+            </AddToCartButton>
+          </div>
+        )}
+      </div>
+      <Link href={`/products/${p.id}`} className="flex justify-between items-start">
+        <div>
+          <h3 className="font-display text-2xl uppercase tracking-wide group-hover:text-primary transition-colors">{p.name}</h3>
+          <p className="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-[0.2em] font-bold">{p.category ?? "Limited Edition"}</p>
+        </div>
+        <span className="font-display text-2xl text-primary">NT$ {p.price}</span>
+      </Link>
+    </li>
+  );
+}

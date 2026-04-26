@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #ff5722;
+  --background-light: #f7f8f5;
+  --background-dark: #0a0a0a;
+  --surface-dark: #121212;
+  --foreground: #f1f5f9;
+  --border-dark: rgba(255, 87, 34, 0.2);
+  --text-secondary: #9ca3af;
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-background: var(--background-dark);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-display: var(--font-barlow-condensed), sans-serif;
+  --font-mono: ui-monospace, monospace;
+}
+
+body {
+  background: var(--background-dark);
+  color: var(--foreground);
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+
+/* Technical-feel scrollbar (matches vision reference) */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+}
+
+.font-display,
+.heading-font,
+h1,
+h2,
+h3 {
+  font-family: var(--font-barlow-condensed), sans-serif;
+  text-transform: uppercase;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+
+.faulty-terminal-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
