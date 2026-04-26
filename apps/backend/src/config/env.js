@@ -16,11 +16,11 @@ const {
 
 export const env = {
   nodeEnv: NODE_ENV || "development",
-  port: PORT || "",
+  port: Number(PORT) || 3001,
 
   db: {
     host: DB_HOST,
-    port: DB_PORT,
+    port: Number(DB_PORT) || 3306,
     user: DB_USER,
     password: DB_PASS,
     database: DB_NAME,
