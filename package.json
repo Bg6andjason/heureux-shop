@@ -1,0 +1,18 @@
+{
+  "name": "heureux-shop",
+  "private": true,
+  "version": "0.0.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w @heureux/frontend",
+    "dev:frontend": "npm run dev -w @heureux/frontend",
+    "dev:backend": "npm run dev -w @heureux/backend",
+    "build": "npm run build -w @heureux/frontend",
+    "start:frontend": "npm run start -w @heureux/frontend",
+    "start:backend": "npm run start -w @heureux/backend",
+    "lint": "npm run lint -w @heureux/frontend"
+  }
+}
