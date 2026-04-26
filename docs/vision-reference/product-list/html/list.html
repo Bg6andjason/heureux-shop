@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.cdnfonts.com/css/din-condensed" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#FF5722",
+                        "background-light": "#f7f8f5",
+                        "background-dark": "#000000",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "heading": ["DIN Condensed", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>HEUREUX | All Products</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-primary/20 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-6 lg:px-20 py-4">
+<div class="max-w-7xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-12">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-primary rounded-full flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xl font-bold">blur_on</span>
+</div>
+<h2 class="text-3xl font-heading font-black tracking-wide uppercase">Heureux</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest" href="#">Shop</a>
+<a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest" href="#">Collections</a>
+<a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest" href="#">About</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center bg-primary/5 dark:bg-primary/10 rounded-lg px-3 py-1.5 border border-primary/20">
+<span class="material-symbols-outlined text-primary text-xl">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-32 lg:w-48 placeholder:text-slate-500" placeholder="Search products..." type="text"/>
+</div>
+<button class="p-2 hover:bg-primary/10 rounded-lg transition-colors relative">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="absolute top-1 right-1 size-2 bg-primary rounded-full"></span>
+</button>
+<button class="p-2 hover:bg-primary/10 rounded-lg transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto w-full px-6 lg:px-20 py-12">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 mb-8 text-xs font-medium uppercase tracking-widest opacity-60">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-[10px]">chevron_right</span>
+<span class="text-primary">All Products</span>
+</nav>
+<!-- Page Header -->
+<div class="mb-12">
+<h1 class="text-7xl md:text-9xl font-heading font-black mb-4 tracking-normal uppercase leading-none">
+                    All <span class="text-primary">Products</span>
+</h1>
+<p class="text-slate-600 dark:text-slate-400 max-w-xl text-lg font-light">
+                    A curated assembly of monochromatic precision. Designed for those who appreciate the subtle intersection of form and function.
+                </p>
+</div>
+<!-- Filters & Sort -->
+<div class="flex flex-col md:flex-row gap-4 mb-12 items-start md:items-center justify-between">
+<div class="flex flex-wrap gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm font-medium hover:border-primary/50 transition-all uppercase tracking-wider">
+                        Category <span class="material-symbols-outlined text-sm">keyboard_arrow_down</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm font-medium hover:border-primary/50 transition-all uppercase tracking-wider">
+                        Price <span class="material-symbols-outlined text-sm">keyboard_arrow_down</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm font-medium hover:border-primary/50 transition-all uppercase tracking-wider">
+                        Material <span class="material-symbols-outlined text-sm">keyboard_arrow_down</span>
+</button>
+</div>
+<div class="flex items-center gap-4 text-xs font-bold uppercase tracking-widest">
+<span class="opacity-50">Sort by:</span>
+<button class="flex items-center gap-1 hover:text-primary transition-colors">
+                        Newest <span class="material-symbols-outlined text-sm">swap_vert</span>
+</button>
+</div>
+</div>
+<!-- Product Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
+<!-- Product 1 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden rounded-xl bg-slate-900 mb-6 transition-all duration-500 group-hover:shadow-[0_0_40px_rgba(255,87,34,0.1)]">
+<img alt="" class="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" data-alt="Minimalist white ceramic watch on light background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB5rJAIaEPlD_DYPGYyQQInKfjeUnbnhSVxKkJK8yhwz-2t8A_JRt6FW05k3eidRa8ua1uVgP6Nhq4OQxcKEHzv5MAVFRWGlG-R2Eu5VQ54Bf7oGXoC7FRvWBz8nNCO6gErsj-ujL39Xzp4_gfDoBPPhSoV2F217JAX30OYwqQ3HIchJmNEgUGdT3TC31Y7CNgIMGzSiVAM9y6MhY65RlSwDfwCKKAnAKUxUTTyRLaQCuQynpeWfP18aXc_kyE63zei7tvWgQhJGBI"/>
+<div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300"></div>
+<button class="absolute bottom-6 left-6 right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 bg-primary text-white py-4 font-heading text-xl uppercase tracking-wider rounded-lg shadow-xl">
+                            Add to Bag
+                        </button>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-heading text-2xl uppercase tracking-wide group-hover:text-primary transition-colors">Chrono White</h3>
+<p class="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-[0.2em] font-bold">Limited Edition</p>
+</div>
+<span class="font-heading text-2xl text-primary">$249</span>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden rounded-xl bg-slate-900 mb-6 transition-all duration-500 group-hover:shadow-[0_0_40px_rgba(255,87,34,0.1)]">
+<img alt="" class="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" data-alt="Modern red sleek sneakers in monochromatic studio light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0EYm9EYd2UHz1HqlBx7VH8PKHj1UkXQIGh8C0dCdF0JLhSD2QUgOc9ks-VYhnzy-60SC5IyKMIF1o8C61awxsHFLBhfa5vqATLYdUzS-Wz3VpQQEiXFdNZjvIXgHKyDU-0kup9n1RTzfuvgnZjzgUuk7aHYZFBs3FqSZ46QG2vtEkeY6EnCVBhZtZ8BceL6GnjudSl-O73-rfgg03wD-0A5EWpvC8lQ-pkzTyfoEiGnZJfRoFgw9jE7hneS-SFtf6xOcv0XUImmlM"/>
+<div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300"></div>
+<button class="absolute bottom-6 left-6 right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 bg-primary text-white py-4 font-heading text-xl uppercase tracking-wider rounded-lg shadow-xl">
+                            Add to Bag
+                        </button>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-heading text-2xl uppercase tracking-wide group-hover:text-primary transition-colors">Aero Runner</h3>
+<p class="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-[0.2em] font-bold">Footwear</p>
+</div>
+<span class="font-heading text-2xl text-primary">$120</span>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden rounded-xl bg-slate-900 mb-6 transition-all duration-500 group-hover:shadow-[0_0_40px_rgba(255,87,34,0.1)]">
+<img alt="" class="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" data-alt="Professional over-ear headphones in minimalist gray setup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5ZNkJ6iqVCZaAEIxfGddoxnSLcmeUyWUixyoEWQ5qJdb2ba3t_1ikCmGw2DTeEgfBuUyy2r3TiUR1WY_mHzH9LOsi8FrXQfaQK-vOTnfX9lz2prWRc8VE5ztGm-euTJLgIwNL3j7pxo5tFN5xMbivyUq2ifZwbQLkjPnbRR-edCtQktYJjO0AQnlAQ6SjwmwJp1QvPMAg2vcIYxAVQKapUMqYGM456_dWTvqOJSs1DJegxzmXv9AJIpGmhEcrEfVmQRK0OIVlD1mb"/>
+<div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300"></div>
+<button class="absolute bottom-6 left-6 right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 bg-primary text-white py-4 font-heading text-xl uppercase tracking-wider rounded-lg shadow-xl">
+                            Add to Bag
+                        </button>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-heading text-2xl uppercase tracking-wide group-hover:text-primary transition-colors">Studio Pods</h3>
+<p class="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-[0.2em] font-bold">Audio</p>
+</div>
+<span class="font-heading text-2xl text-primary">$399</span>
+</div>
+</div>
+<!-- Product 4 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden rounded-xl bg-slate-900 mb-6 transition-all duration-500 group-hover:shadow-[0_0_40px_rgba(255,87,34,0.1)]">
+<img alt="" class="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" data-alt="Retro minimalist camera on plain background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW9lkvRGzMWP_SAxrlkqT--9kvCQC8dgH2uOceRvweCMxQjX9SmPZSkhBjqahOd6m-cTXQC7WAVHXx-az2FpEvDp7lGfteGhRZGF44fVu3P7_dRCfkhlTLQOmTUkDChrmyj9r4-7IlgiuP9fmNTnd1i1Z5HqpIasfTIJ5A29ilWzClOU7JM1aypteGiEMkkd1eoWzkwSTVB3Pf8XTIsOdfGZwImGiy-8kI1n9vPJw5CVmkWmnzkd2FIUl1ZvmZFMLnfqv3H3ayenkQ"/>
+<div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300"></div>
+<button class="absolute bottom-6 left-6 right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 bg-primary text-white py-4 font-heading text-xl uppercase tracking-wider rounded-lg shadow-xl">
+                            Add to Bag
+                        </button>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-heading text-2xl uppercase tracking-wide group-hover:text-primary transition-colors">Optic M1</h3>
+<p class="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-[0.2em] font-bold">Tech</p>
+</div>
+<span class="font-heading text-2xl text-primary">$850</span>
+</div>
+</div>
+<!-- Product 5 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden rounded-xl bg-slate-900 mb-6 transition-all duration-500 group-hover:shadow-[0_0_40px_rgba(255,87,34,0.1)]">
+<img alt="" class="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" data-alt="Sleek modern backpack in monochromatic setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpzkksSfJpNLVQ0YVKSim0qrL_JHHdsvE9C3Rt01fChLNUkW6MUn5wQCMFG1WY8hZiuE0ZhEDTyaQDOmGx2jOtkmwUxuoEg-VoBg1LCN4HnjGkXXQSomxyxHO5_pvddoSJvjLJmWgQtUADaJxQoGNvgkpz9EWTChe0BIHQAfC2_fENjd1jz5F1Yz8Erx734IWkk8yuM_jT2EOS0koD3EYryPbsdPk3-RyT0H_ujCahZC1jrwVWm4XsU0VbMr3BtlmzZpiEEAdCCK6D"/>
+<div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300"></div>
+<button class="absolute bottom-6 left-6 right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 bg-primary text-white py-4 font-heading text-xl uppercase tracking-wider rounded-lg shadow-xl">
+                            Add to Bag
+                        </button>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-heading text-2xl uppercase tracking-wide group-hover:text-primary transition-colors">Nomad Pack</h3>
+<p class="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-[0.2em] font-bold">Lifestyle</p>
+</div>
+<span class="font-heading text-2xl text-primary">$185</span>
+</div>
+</div>
+<!-- Product 6 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden rounded-xl bg-slate-900 mb-6 transition-all duration-500 group-hover:shadow-[0_0_40px_rgba(255,87,34,0.1)]">
+<img alt="" class="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" data-alt="Monochromatic black sunglasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-qva5kDmfeWXvYg62YtGrmqZ4t309ChGmLULc78NEzN1sKbZp8uI1s6TZkdO8ssdizxoSrUpRJv4fJDyBDIvkex-8vwFvJKA7C7jjdLIkyrHqSTFWHwXdGol6u_pfTDwh-chVYYHHo0_8tKmFo8HokSXanr6avqI8xx1XFjGpq1SVC6wDTSpMCmKSkLYr0WWjuJeP62_yZFPiB3DU541RPSTG6eJhy1R7n3sBCi_vypZTm9dLcKjmCWCLFmg0bOn69SqEiMzkeOYz"/>
+<div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300"></div>
+<button class="absolute bottom-6 left-6 right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 bg-primary text-white py-4 font-heading text-xl uppercase tracking-wider rounded-lg shadow-xl">
+                            Add to Bag
+                        </button>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-heading text-2xl uppercase tracking-wide group-hover:text-primary transition-colors">Void Shades</h3>
+<p class="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-[0.2em] font-bold">Accessories</p>
+</div>
+<span class="font-heading text-2xl text-primary">$150</span>
+</div>
+</div>
+<!-- Product 7 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden rounded-xl bg-slate-900 mb-6 transition-all duration-500 group-hover:shadow-[0_0_40px_rgba(255,87,34,0.1)]">
+<img alt="" class="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" data-alt="Minimalist tote bag in black and white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEMjBZSjje9VMacVmtemEbjzqLAkSygLnA-4yW02nDHmA95OdmTtmUUxxFOl57Pf3QvPUTLN88NvZkrRoXPKiFs6m2UKaQcvtkgCghHZJ1RiknJ85qKU1OW6Btwl4g6wZnRuUeJE7bKq0416WwAjZe-TXKPYF6SKcA1uplKwRzAQ3ooKepWfA43lZ9BSV1MirDj49sSdLY05UiMz2HL31RP8GIMPQSFxulHrpw9v8zjsvpnTi5NWXspguCsQRNQ67p35-QJN6h9xU2"/>
+<div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300"></div>
+<button class="absolute bottom-6 left-6 right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 bg-primary text-white py-4 font-heading text-xl uppercase tracking-wider rounded-lg shadow-xl">
+                            Add to Bag
+                        </button>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-heading text-2xl uppercase tracking-wide group-hover:text-primary transition-colors">Canvas Tote</h3>
+<p class="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-[0.2em] font-bold">Limited Edition</p>
+</div>
+<span class="font-heading text-2xl text-primary">$45</span>
+</div>
+</div>
+<!-- Product 8 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden rounded-xl bg-slate-900 mb-6 transition-all duration-500 group-hover:shadow-[0_0_40px_rgba(255,87,34,0.1)]">
+<img alt="" class="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" data-alt="Modern professional headphones in dark lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyQIu49PvPi8O1-SMcYD9P6Qo-1ZtGysO7BNU1ueWugnqdS4F3qOS9l4Y_o0jsKQSPDApluKIupRsz8ErP8_3biHz391E2ePFKB5AU3_yVhviecu5MQQVIgNFbqs8WiVpEDD0BZdQ9X7DjWEiXKUweVjCgHK4ZJ-iJ8wEvh906WJ0oDQUCMjBvv9R0KqJA86J60NaxbXHXrdqk9cN27ALEqfm3c1XVxILVl0OuPd8NSnCtzzr6cCN7YrzKjf2RIaueygFG88gYGC7-"/>
+<div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300"></div>
+<button class="absolute bottom-6 left-6 right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 bg-primary text-white py-4 font-heading text-xl uppercase tracking-wider rounded-lg shadow-xl">
+                            Add to Bag
+                        </button>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-heading text-2xl uppercase tracking-wide group-hover:text-primary transition-colors">Pro Master</h3>
+<p class="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-[0.2em] font-bold">Audio</p>
+</div>
+<span class="font-heading text-2xl text-primary">$550</span>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-24 flex flex-col items-center gap-6">
+<button class="px-12 py-5 bg-transparent border-2 border-primary text-primary font-heading text-2xl uppercase tracking-widest rounded-lg hover:bg-primary hover:text-white transition-all duration-300">
+                    Load More
+                </button>
+<div class="flex gap-4">
+<span class="size-2 rounded-full bg-primary"></span>
+<span class="size-2 rounded-full bg-primary/20"></span>
+<span class="size-2 rounded-full bg-primary/20"></span>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="mt-20 border-t border-primary/20 py-20 px-6 lg:px-20 bg-primary/5">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="col-span-1 md:col-span-2">
+<div class="flex items-center gap-3 mb-8">
+<div class="size-8 bg-primary rounded-full flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xl font-bold">blur_on</span>
+</div>
+<h2 class="text-3xl font-heading font-black tracking-wide uppercase">Heureux</h2>
+</div>
+<p class="text-slate-500 text-base max-w-sm leading-relaxed">
+                        Redefining the aesthetic of modern retail through monochromatic excellence and curated selection.
+                    </p>
+</div>
+<div>
+<h4 class="text-xs font-bold uppercase tracking-[0.2em] mb-8 text-primary">Explore</h4>
+<ul class="space-y-4 text-sm font-medium">
+<li><a class="hover:text-primary transition-colors" href="#">New Arrivals</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Best Sellers</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Gift Cards</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-xs font-bold uppercase tracking-[0.2em] mb-8 text-primary">Legal</h4>
+<ul class="space-y-4 text-sm font-medium">
+<li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Shipping Info</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-20 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold uppercase tracking-[0.3em] opacity-40">
+<p>© 2024 HEUREUX CLOTHING &amp; ACCS. ALL RIGHTS RESERVED.</p>
+<div class="flex gap-10">
+<a class="hover:text-primary transition-colors" href="#">Instagram</a>
+<a class="hover:text-primary transition-colors" href="#">Twitter</a>
+<a class="hover:text-primary transition-colors" href="#">Facebook</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

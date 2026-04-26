@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.cdnfonts.com/css/din-condensed" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#FF5722",
+                        "background-light": "#ffffff",
+                        "background-dark": "#000000",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "accent": ["'DIN Condensed'", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .font-din {
+            font-family: 'DIN Condensed', sans-serif;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<!-- Logo -->
+<div class="flex items-center gap-2">
+<div class="text-primary">
+<span class="material-symbols-outlined text-3xl">deployed_code</span>
+</div>
+<h1 class="text-xl font-bold tracking-tighter text-slate-900 dark:text-slate-100">HEUREUX</h1>
+</div>
+<!-- Desktop Nav -->
+<nav class="hidden md:flex space-x-8">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">NEW ARRIVALS</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">SHOP</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">COLLECTIONS</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">ABOUT</a>
+</nav>
+<!-- Icons -->
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full relative">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+<!-- Breadcrumbs -->
+<nav class="flex mb-8 text-xs font-medium uppercase tracking-widest text-slate-500 dark:text-slate-400">
+<a class="hover:text-primary" href="#">Home</a>
+<span class="mx-2">/</span>
+<a class="hover:text-primary" href="#">Apparel</a>
+<span class="mx-2">/</span>
+<span class="text-slate-900 dark:text-slate-100">Heureux Core Tee</span>
+</nav>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Left: Image Gallery -->
+<div class="lg:col-span-7 flex flex-col gap-4">
+<div class="grid grid-cols-2 gap-4">
+<div class="aspect-[3/4] rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+<img class="w-full h-full object-cover" data-alt="Front view of Heureux core tee on model" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFE8S6cx68Qff4BsAqy1T9fNNUFKHBiq4KMlBFpB4n5-nrvZt8OS9_gEamIYUJlpz8tkhVY3KJdqtfe9P2BGkBHPeOV7n8p1w3fg3-xebyo0Bf4jwJM1_ZwT1k84A7GNV9otlDk88CwMQ-tTb7jyD9QnKJSwr0sqwEOaQXBEYvTw6r6nKydjykGPl572neG5jm1nayr8scyDt2VboTPKIcjreeo8r4_5e3shmSikDKbBbTAOKN44QlRfiujXrsd4uctps6-lxXXdzp"/>
+</div>
+<div class="aspect-[3/4] rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+<img class="w-full h-full object-cover" data-alt="Detail shot of cotton fabric texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuVWj_tMMfuV9LwqNVVQhwX54NXvLxJUr4XENrMpd6rPjVMakonewOVXkLj6OLkzwTSSkmFHV6y4Qei187jG4ZW617bd7vmvLCk35ELh2IL0Qifp4K0UjFtpg7GBsNLGl9uGguUgS17FtdwQXjpUtuDMWfKdhzlybt-WEaqgZ4lF6dX-y2NuEJIuHC7_-8-gx8GFpshNe0BWmQHXPHp4TljHB3fggKlJiTjei3IbKlPmVpGF1Eeln8TAsyJlu3g8HzYh3UrirnQbD-k"/>
+</div>
+<div class="aspect-[3/4] rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+<img class="w-full h-full object-cover" data-alt="Back view of Heureux core tee" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQqTCfM7C0KULgTyadVROxYkB3hQzHx6_KfYJGFi4USKxqaXGWRTKkQAPkr1KkvX6pPCilYDByLPQQOitYStMBR8d882V4xKaGWaJr2CHH1n3LymV9bVX4ykoYSQ_D0Qbh1eWWnOTpvvmEVDFLWKnmat-Yc2xKHp-sjhZxF2Xa82WB0QxIUArVwbqvtFwxL4ob3oIX77tKGU5IvWxETCOJh07Izaz_wQcHxiTJUBm8iFdtuL-Wt01jX8d8jeTGMhbKUGABNDca8Zzh"/>
+</div>
+<div class="aspect-[3/4] rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+<img class="w-full h-full object-cover" data-alt="Lifestyle shot of person wearing the tee" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqo99yKorPeyB-6L_p39VlBUan6XxwY_G9_Mwq1SFSHdsoi_dcKMlhEdCXRsxGZ2B2zvZ2mh0YNsbkNZaaBtPurtwhxXEUSKDofmCfB0JjQm44jkwFHzFhTthBmmvJexBSBTx1UX-C85Ue0i3MsnXZ1hbGQha5QlKyCw2E8NahtCUppDLZ_gtGwBe9XPi2qo8yLoJRlvSe_BWT6VEJFZ1-kzLF3jRh0dwqU3v2BRKG-wxI79QY5A7KyzJSeuTi3Xa7RWNMVJBEuxWb"/>
+</div>
+</div>
+</div>
+<!-- Right: Product Details -->
+<div class="lg:col-span-5 flex flex-col space-y-8 lg:sticky lg:top-28 h-fit">
+<div>
+<span class="text-primary font-bold tracking-widest text-sm uppercase">Collection 01</span>
+<h2 class="text-6xl font-din mt-2 leading-[0.9] tracking-normal">HEUREUX CORE TEE</h2>
+<p class="text-2xl font-light mt-4 text-slate-700 dark:text-slate-300">$65.00</p>
+</div>
+<!-- Color Selection -->
+<div>
+<p class="text-sm font-bold uppercase tracking-widest mb-4">Color: Phantom Black</p>
+<div class="flex gap-3">
+<button class="w-10 h-10 rounded-full border-2 border-primary bg-slate-900 ring-2 ring-offset-2 ring-transparent dark:ring-offset-background-dark"></button>
+<button class="w-10 h-10 rounded-full border-2 border-transparent bg-white ring-2 ring-offset-2 ring-transparent dark:ring-offset-background-dark shadow-inner"></button>
+<button class="w-10 h-10 rounded-full border-2 border-transparent bg-slate-400 ring-2 ring-offset-2 ring-transparent dark:ring-offset-background-dark"></button>
+</div>
+</div>
+<!-- Size Selection -->
+<div>
+<div class="flex justify-between items-center mb-4">
+<p class="text-sm font-bold uppercase tracking-widest">Select Size</p>
+<button class="text-xs underline text-slate-500 dark:text-slate-400 hover:text-primary">Size Guide</button>
+</div>
+<div class="grid grid-cols-5 gap-2">
+<button class="py-3 border border-slate-300 dark:border-slate-800 hover:border-primary text-sm font-medium transition-colors rounded">XS</button>
+<button class="py-3 border border-slate-300 dark:border-slate-800 hover:border-primary text-sm font-medium transition-colors rounded">S</button>
+<button class="py-3 border-2 border-primary bg-primary/10 text-sm font-bold transition-colors rounded">M</button>
+<button class="py-3 border border-slate-300 dark:border-slate-800 hover:border-primary text-sm font-medium transition-colors rounded">L</button>
+<button class="py-3 border border-slate-300 dark:border-slate-800 hover:border-primary text-sm font-medium transition-colors rounded">XL</button>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-col gap-4">
+<button class="w-full bg-primary hover:bg-[#E64A19] text-white py-5 rounded font-din text-2xl tracking-wide transition-all shadow-lg shadow-primary/20">
+                        Add to Bag
+                    </button>
+<button class="w-full border border-slate-300 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900 py-4 rounded font-medium text-sm uppercase tracking-widest transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-xl">favorite</span>
+                        Add to Wishlist
+                    </button>
+</div>
+<!-- Structured Description -->
+<div class="pt-8 border-t border-slate-200 dark:border-slate-800 space-y-6">
+<details class="group" open="">
+<summary class="flex justify-between items-center font-bold text-sm uppercase tracking-widest cursor-pointer list-none">
+                            Description
+                            <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-4 text-slate-600 dark:text-slate-400 text-sm leading-relaxed space-y-3">
+<p>The HEUREUX Core Tee is a testament to minimalist design and maximum quality. Crafted from 240GSM heavy-weight cotton jersey, it offers a structured yet breathable fit that evolves with every wear.</p>
+<ul class="list-disc pl-5 space-y-1">
+<li>100% Premium Organic Cotton</li>
+<li>Boxy, oversized silhouette</li>
+<li>Ribbed crewneck collar</li>
+<li>Signature HEUREUX logo embroidery</li>
+</ul>
+</div>
+</details>
+<details class="group">
+<summary class="flex justify-between items-center font-bold text-sm uppercase tracking-widest cursor-pointer list-none">
+                            Shipping &amp; Returns
+                            <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-4 text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+<p>Free standard shipping on orders over $150. Returns accepted within 30 days of purchase in original condition with tags attached.</p>
+</div>
+</details>
+<details class="group">
+<summary class="flex justify-between items-center font-bold text-sm uppercase tracking-widest cursor-pointer list-none">
+                            Sustainability
+                            <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-4 text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+<p>Produced in fair-trade certified facilities using GOTS certified organic cotton. Our packaging is 100% biodegradable.</p>
+</div>
+</details>
+</div>
+</div>
+</div>
+<!-- Recommended Section -->
+<section class="mt-24">
+<h3 class="text-4xl font-din tracking-normal mb-8">You May Also Like</h3>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Rec 1 -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 mb-4 relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Modern blue denim jacket" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6gynrIS4A_ohac7zlmCaJLBBQTFIf6j7tFV7-pdpTKC05In4n2KY7ELwMcA2OBZBa1QOtKI_hNCJ7ZD-DE7jt6sCSmmrWsbfQ1DRogM79qBYUw8N32n7XXwI5U5Yz90GSHQku3LIgEJHhJahzqDtzvL0gv7zBm89aroazwrBHXr4NDV1a54NMvpRn5hL-BrRyeQUq_vNw0xGGyb2XuDeHo5ym43nBru3iPPcms2-NjS-qRX7Bsbam-PaHhMVXwo1Yz5gGbZfFndJC"/>
+<button class="absolute bottom-4 right-4 bg-white dark:bg-black p-2 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity border border-slate-200 dark:border-slate-800">
+<span class="material-symbols-outlined text-primary">add</span>
+</button>
+</div>
+<h4 class="font-bold text-sm uppercase">Denim Utility Jacket</h4>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-1">$145.00</p>
+</div>
+<!-- Rec 2 -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 mb-4 relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Minimalist black leather pants" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiFxw-BM7fsbxp_iZlcgp45Hg5FtgXVXp2LKgN3HgufyPTF9y9iGWd_f_AURoNCPj-ziAR91L6mLcLjSy8lzWW2A5ihmJv8cMm57ZI_yU1YGdCGoSZiRDfB46Oo6Rg0C9Ydj9e8QxD-6ivQ2bIpn_i0lppcI8I209I4Fm97bSukkHfFPASm16K_iRoo7IBE8A3LlxC_c61AKXZaj0-ajvCcKYHLKqecJoSagAzE2OO_2Qm3AAsiJaLmNaKQUCDnVLm8fD4AIe3GJJk"/>
+<button class="absolute bottom-4 right-4 bg-white dark:bg-black p-2 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity border border-slate-200 dark:border-slate-800">
+<span class="material-symbols-outlined text-primary">add</span>
+</button>
+</div>
+<h4 class="font-bold text-sm uppercase">Vault Trouser</h4>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-1">$110.00</p>
+</div>
+<!-- Rec 3 -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 mb-4 relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Beige organic cotton hoodie" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3xVUxVyyGmxPt06oUv10F4V_Yp-t7gEhsgKYbq6eKTTZf7OnIaVclp2ieOvc93a6eGlEEB_dtwJiGkLUgNiqA114gydbO5Rb_JBWGPcg8cTjRSey9k4zfD39ksh1-7FJJxeXO100zuwI_cPNuCG01H8EtWFu-_g4zpUxCYp5JeuxtL5QcZLyFeUf7yW_8NZ9SftWaowggl2c_ZnEp55-O0mUcGdpgLweow9ycE2adhI4GMuBVX5O1Q8P7ZOoAhx-aAGYlKrSnZqhQ"/>
+<button class="absolute bottom-4 right-4 bg-white dark:bg-black p-2 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity border border-slate-200 dark:border-slate-800">
+<span class="material-symbols-outlined text-primary">add</span>
+</button>
+</div>
+<h4 class="font-bold text-sm uppercase">Essential Hoodie</h4>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-1">$95.00</p>
+</div>
+<!-- Rec 4 -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 mb-4 relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="White premium cotton t-shirt" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBr5cAIM8FDVAuwuDGhQBYIx7suT6rb14xF8LpfeAK87T9k6r1KX2GSna1BkP_OCbvkxb4MHN2tWoloGPxXqw5VW1b1IPm-Werx5rPacg3MYgGqQit0z3GAliV-QlSWOLCSIFz6fZtdo8YYs8rP4q96oDCjcUQrluaqwU83Ggmmrnwp83WmUTzxMHdOZJUJU_i0w8m9IBpMpNYaTExefoMhECJ2ZZHm-lVhgykPEt13V12qrh-I5IDYtwxLKlYP3aHfit-atW87vIkK"/>
+<button class="absolute bottom-4 right-4 bg-white dark:bg-black p-2 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity border border-slate-200 dark:border-slate-800">
+<span class="material-symbols-outlined text-primary">add</span>
+</button>
+</div>
+<h4 class="font-bold text-sm uppercase">Classic Box Tee</h4>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-1">$55.00</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-50 dark:bg-black mt-24 py-12 border-t border-slate-200 dark:border-slate-900">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="col-span-1 md:col-span-2">
+<h2 class="text-2xl font-bold tracking-tighter mb-6">HEUREUX</h2>
+<p class="text-slate-500 dark:text-slate-400 max-w-sm mb-6">Designed for the conscious individual. Redefining modern staples through premium materials and ethical manufacturing.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 flex items-center justify-center rounded bg-slate-200 dark:bg-slate-900 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">language</span>
+</a>
+<a class="w-10 h-10 flex items-center justify-center rounded bg-slate-200 dark:bg-slate-900 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">share</span>
+</a>
+</div>
+</div>
+<div>
+<h5 class="font-bold uppercase tracking-widest text-sm mb-6">Shop</h5>
+<ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-primary transition-colors" href="#">Men's Collection</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Women's Collection</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Accessories</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Gift Cards</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold uppercase tracking-widest text-sm mb-6">Support</h5>
+<ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-primary transition-colors" href="#">Shipping Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Return &amp; Exchange</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contact Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">FAQ</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-slate-200 dark:border-slate-900 flex justify-between items-center text-xs text-slate-400">
+<p>© 2024 HEUREUX STUDIOS. ALL RIGHTS RESERVED.</p>
+<div class="flex gap-6">
+<a href="#">Privacy Policy</a>
+<a href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+</body></html>

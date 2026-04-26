@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HEUREUX | Luxury Minimalism</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-white text-slate-900 font-display">
+<!-- Navigation -->
+<header class="sticky top-0 z-50 w-full border-b border-slate-100 bg-white/80 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-12">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-900 text-3xl">adjust</span>
+<h1 class="text-xl font-extrabold tracking-widest text-slate-900 uppercase">HEUREUX</h1>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-slate-900 transition-colors" href="#">Product List</a>
+<a class="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-slate-900 transition-colors" href="#">Cart</a>
+<a class="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-slate-900 transition-colors" href="#">Orders</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="bg-slate-50 border-none rounded-full py-2 pl-10 pr-4 text-xs w-48 focus:ring-1 focus:ring-slate-200" placeholder="Search Collection" type="text"/>
+</div>
+<button class="bg-slate-900 text-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-slate-800 transition-all">
+                    Login
+                </button>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative h-[90vh] w-full overflow-hidden">
+<div class="absolute inset-0 bg-slate-900">
+<img class="w-full h-full object-cover opacity-60 grayscale" data-alt="Cinematic grayscale fashion model posing elegantly" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjHxTIFqk9REBDhTZDxafF001OULsKPUUgPIQSTdSmD_Xu233Aednqwidri6jgLc7yF3VcRQukfYafa3iozMXhz4S3xV_U2n2xkUYVKhENklfVLR14UAsC3Q0FLA--R_Y0ajfGwTq81BQgCBZo3b6tPtVFZhBVhb4ZyL0YZZK92wzq3z7XJBDsYRPPjkTP0Xk3F3dfawjuliBj78tcp5XmLxMBU3wD0xXlbsN0JTTsx_XO1-R1NF0sn89jMAT-vhoCi2JX0tSAUWE"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40"></div>
+<div class="relative h-full flex flex-col items-center justify-center text-center px-6">
+<h2 class="font-serif italic text-white text-2xl md:text-3xl mb-4 opacity-90">L'essence de la forme</h2>
+<h1 class="text-white text-7xl md:text-9xl font-serif tracking-tighter mb-12">HEUREUX</h1>
+<button class="group flex items-center gap-4 bg-white text-slate-900 px-10 py-5 rounded-full text-xs font-bold uppercase tracking-[0.3em] hover:bg-slate-100 transition-all">
+                    Shop the Collection
+                    <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Featured Collection -->
+<section class="max-w-7xl mx-auto px-6 py-32">
+<div class="flex justify-between items-end mb-16">
+<div>
+<span class="text-xs font-bold tracking-[0.4em] uppercase text-slate-400">Curated</span>
+<h3 class="text-4xl font-serif mt-2">Featured Collections</h3>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] overflow-hidden bg-slate-100 mb-6">
+<img class="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" data-alt="Minimalist luxury apparel on a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlE4vuZz7MQWu8gX-ZMysFYNYVjzkLFpOE7S0a8Mhi0Z1bnnHRGmSLlkGGbudaaDD8ZckyoIP7nca0uhgy3nH8nHoPjhIM3_Uh6WFWAHhHxZXaZ5ds4TF8_as3L0AMRfhgoEligtgrDrqJHg1d0tljkQwQT33VgE7Q7hfHdZtqtVkVoxpZ43FyhKjWBF3-M4tWR2rZ27shSoumf5PSoRl-TEmw0uZCQgUuwIterXrn4aQYELxR-ubs8bssu9ExRG2OZyXi0olfcTo"/>
+</div>
+<div class="flex justify-between items-center">
+<h4 class="text-sm font-bold uppercase tracking-widest">Apparel</h4>
+<a class="text-[10px] font-bold uppercase tracking-widest border-b border-slate-900 pb-1" href="#">View All</a>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] overflow-hidden bg-slate-100 mb-6">
+<img class="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" data-alt="Luxury leather accessory in grayscale studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGa49DR8er9oTYoG29pyGQlGzJv4_JlfNB3R6g3HmJbqdj-rpDWWfk_v8zGf8IgK4UzbppEvzXx_nDCtUYJJ7CLtGFdhxO8LxAmeHU3vVZ6kCyBshdGNHhwrlReg_i3f8SJZXXewb-1-STEKE1HtPgYe6J4PdueFODVFbkkf6ts68saPaxtAtDj_2aO1XwHI2t9UGi3WldTVtOHaXzOhtNW1D_cZIYRRQiM1U98s3BQSy7bLC5ThXlJLdB-Tm4cMTy1VXx01GDvtg"/>
+</div>
+<div class="flex justify-between items-center">
+<h4 class="text-sm font-bold uppercase tracking-widest">Accessories</h4>
+<a class="text-[10px] font-bold uppercase tracking-widest border-b border-slate-900 pb-1" href="#">View All</a>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] overflow-hidden bg-slate-100 mb-6">
+<img class="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" data-alt="High-end designer footwear in monochrome palette" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8TKWKKjcAbLlcRt55CkNNzn3U4O-5o5k3k69lc6iJGUafc-smjhxOFQqEkHGGXjU3y1Pi8qyPdXQbVi0Kyz59xxV1uNZgX3cVcNPoD28sinFC-1aE3R3Wq8t6G68aylm2DhGIWOxq2D5ya7puluClQBC9R6gYmlA6LwZYebQH9zTygc6IuYF4mdwSjEMacoQ4fHMFloQgwtF4JL1u67NRVF8mQL0oYnDWtQnZ9j13rEOSamKNrCn2Id5z1pvPJig7DH986MHAWt0"/>
+</div>
+<div class="flex justify-between items-center">
+<h4 class="text-sm font-bold uppercase tracking-widest">Footwear</h4>
+<a class="text-[10px] font-bold uppercase tracking-widest border-b border-slate-900 pb-1" href="#">View All</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Brand Story -->
+<section class="bg-slate-50 py-40">
+<div class="max-w-4xl mx-auto px-6 text-center">
+<span class="material-symbols-outlined text-slate-300 text-5xl mb-12">all_inclusive</span>
+<h3 class="text-3xl md:text-5xl font-serif italic leading-relaxed text-slate-800">
+                    "Crafted for the discerning. Defined by silence. Inspired by the eternal. We believe true luxury is not heard, but felt in the quiet perfection of form."
+                </h3>
+<div class="mt-12 h-px w-24 bg-slate-300 mx-auto"></div>
+<p class="mt-8 text-xs font-bold uppercase tracking-[0.5em] text-slate-400">The Heureux Philosophy</p>
+</div>
+</section>
+<!-- Latest Arrivals -->
+<section class="py-32 overflow-hidden">
+<div class="max-w-7xl mx-auto px-6 mb-16 flex justify-between items-center">
+<h3 class="text-3xl font-serif">Latest Arrivals</h3>
+<div class="flex gap-4">
+<button class="size-10 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-900 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-sm">west</span>
+</button>
+<button class="size-10 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-900 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-sm">east</span>
+</button>
+</div>
+</div>
+<div class="flex gap-8 overflow-x-auto no-scrollbar px-6 lg:px-[calc((100vw-1280px)/2+24px)]">
+<!-- Product 1 -->
+<div class="min-w-[320px] group cursor-pointer">
+<div class="aspect-square bg-slate-50 overflow-hidden mb-4 relative">
+<img class="w-full h-full object-cover grayscale group-hover:scale-105 transition-all duration-500" data-alt="Minimalist black wool coat on model" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIuDitcKBaOQ6SOKUvrZ91ri6iYtekOnqsRGTs7ZAvQ1qTF48WT_QD2TQHNBYZNOT_AIcjhzDJvRUsAUxFmBaQew5kyq49YF-FrGKeCw5wC4L_CWPjbI9ht-4TTl7DVpemXV4QXN6VBUPqNlO7keGRXUXtOfAsEqV4p9SWJp4IP4dyyOLV4r_I6iDmgBfA1MlQoC06zdsre8qhepo2KKnPUIRRDfanDG1A4isiX7cev3vvf35_-sE1koFd7TFDUbf_PW3NyukBRTY"/>
+<button class="absolute bottom-4 right-4 bg-white/90 backdrop-blur size-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1">Outerwear</p>
+<h5 class="text-sm font-medium">Noire Wool Overcoat</h5>
+<p class="text-sm mt-2 font-serif">$1,250</p>
+</div>
+<!-- Product 2 -->
+<div class="min-w-[320px] group cursor-pointer">
+<div class="aspect-square bg-slate-50 overflow-hidden mb-4 relative">
+<img class="w-full h-full object-cover grayscale group-hover:scale-105 transition-all duration-500" data-alt="Luxury white silk blouse detail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqrEqTScyin03Cze7NV2zOZJp_xgj62ivsOKbXKapGzOIqpjIA5VRdOYFKUzJmQS5wHqRPlEylOwdh2-jhj4q0WUjpk389asUbnv7U38W1JMNwfvyzfoRXUDHm3QfNK0LDcoSzOwZLjWgxl7UnzM1UmIXPnVyKbZDt9zRlZQuvL7VbNor2EDLL4Tu_22dhDweOrbojc-xE1VTLZ-gOE9ZMU_IoqKp64b-SohOfRKtj3FtRmdfLeMvdtFnb9x0HADkl3keINmwRwds"/>
+<button class="absolute bottom-4 right-4 bg-white/90 backdrop-blur size-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1">Tops</p>
+<h5 class="text-sm font-medium">Silk Essential Blouse</h5>
+<p class="text-sm mt-2 font-serif">$480</p>
+</div>
+<!-- Product 3 -->
+<div class="min-w-[320px] group cursor-pointer">
+<div class="aspect-square bg-slate-50 overflow-hidden mb-4 relative">
+<img class="w-full h-full object-cover grayscale group-hover:scale-105 transition-all duration-500" data-alt="Minimalist premium leather sneakers" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgFqAXn6anrCgq5gQmtVqBuphzLutkozxJ2e_YspMAeoLxzFYPciDP8B5kxdOv00wcY2FwpQ1xQDQuRdipP0U9wRoBUp_pQNT9PIdzbyGLBl38BoA6flVqpQB3K1ALNkv24hLUzPUjqKmFgGG9D7bik2_tvDYECmiYMnivYmDOonm5ITZH-8EipMYgiW6HXJ0Q_pVtns7dJK7Ltga7swYZD30wm2auFF3xYQhK_6PAwZCrD5otu2UZ7ksn3nunVzmRQqwNXI4J9gE"/>
+<button class="absolute bottom-4 right-4 bg-white/90 backdrop-blur size-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1">Footwear</p>
+<h5 class="text-sm font-medium">Linear Court Sneaker</h5>
+<p class="text-sm mt-2 font-serif">$620</p>
+</div>
+<!-- Product 4 -->
+<div class="min-w-[320px] group cursor-pointer">
+<div class="aspect-square bg-slate-50 overflow-hidden mb-4 relative">
+<img class="w-full h-full object-cover grayscale group-hover:scale-105 transition-all duration-500" data-alt="Modern designer eyewear in silver frame" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDb-kMctDY3pN_q1275jVP03yEIzgzC4ftrfojReWPdgLhRoehEzubMm4nCHjn27tlmgm6ehM3YnVtlptMWqeJXS5fnyKk8gYqroswfbdEd8gTO1MQG31BOXpckk8EavgpEo_Rpwo_TsEW88SAEikbMKYvymjJiANdVYNQE_0doYkY2z3HOEqiRjNNoXnud8u6CLshC220SqrPbwAQXkUmikV93sEC3YyKbJDTI5_mlAYsOeFH5zJNUHGRZGXO84u83xKoeBtsyoqI"/>
+<button class="absolute bottom-4 right-4 bg-white/90 backdrop-blur size-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1">Eyewear</p>
+<h5 class="text-sm font-medium">Horizon Titanium Frames</h5>
+<p class="text-sm mt-2 font-serif">$420</p>
+</div>
+</div>
+</section>
+<!-- Newsletter Signup -->
+<section class="border-t border-slate-100 py-32 bg-white">
+<div class="max-w-xl mx-auto px-6 text-center">
+<h3 class="text-2xl font-serif mb-4">Join the inner circle</h3>
+<p class="text-slate-500 text-sm mb-12">Receive early access to collections and exclusive aesthetic insights.</p>
+<form class="flex flex-col md:flex-row gap-4">
+<input class="flex-1 bg-transparent border border-slate-200 rounded-none px-6 py-4 text-sm focus:ring-1 focus:ring-slate-900 focus:border-slate-900 outline-none" placeholder="Email Address" type="email"/>
+<button class="bg-slate-900 text-white px-10 py-4 text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-slate-800 transition-all">
+                        Subscribe
+                    </button>
+</form>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-white border-t border-slate-100 py-20 px-6">
+<div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12">
+<div class="col-span-2">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-slate-900 text-2xl">adjust</span>
+<h2 class="text-lg font-extrabold tracking-widest text-slate-900 uppercase">HEUREUX</h2>
+</div>
+<p class="text-slate-400 text-xs leading-relaxed max-w-xs uppercase tracking-tighter">
+                    Elevated essentials for the modern minimalist. Designed in Paris, crafted globally.
+                </p>
+</div>
+<div>
+<h6 class="text-[10px] font-bold uppercase tracking-widest text-slate-900 mb-6">Explore</h6>
+<ul class="space-y-4">
+<li><a class="text-xs text-slate-500 hover:text-slate-900 transition-colors uppercase" href="#">Collection</a></li>
+<li><a class="text-xs text-slate-500 hover:text-slate-900 transition-colors uppercase" href="#">Archive</a></li>
+<li><a class="text-xs text-slate-500 hover:text-slate-900 transition-colors uppercase" href="#">Philosophy</a></li>
+</ul>
+</div>
+<div>
+<h6 class="text-[10px] font-bold uppercase tracking-widest text-slate-900 mb-6">Support</h6>
+<ul class="space-y-4">
+<li><a class="text-xs text-slate-500 hover:text-slate-900 transition-colors uppercase" href="#">Shipping</a></li>
+<li><a class="text-xs text-slate-500 hover:text-slate-900 transition-colors uppercase" href="#">Returns</a></li>
+<li><a class="text-xs text-slate-500 hover:text-slate-900 transition-colors uppercase" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h6 class="text-[10px] font-bold uppercase tracking-widest text-slate-900 mb-6">Social</h6>
+<ul class="space-y-4">
+<li><a class="text-xs text-slate-500 hover:text-slate-900 transition-colors uppercase" href="#">Instagram</a></li>
+<li><a class="text-xs text-slate-500 hover:text-slate-900 transition-colors uppercase" href="#">Pinterest</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-slate-50 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-[10px] text-slate-400 uppercase tracking-widest">© 2024 HEUREUX. All Rights Reserved.</p>
+<div class="flex gap-8">
+<a class="text-[10px] text-slate-400 uppercase tracking-widest hover:text-slate-900" href="#">Privacy Policy</a>
+<a class="text-[10px] text-slate-400 uppercase tracking-widest hover:text-slate-900" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+</body></html>

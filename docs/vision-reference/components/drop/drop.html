@@ -1,0 +1,198 @@
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;700;900&amp;family=Barlow+Condensed:wght@700;900&amp;family=Space+Grotesk:wght@500;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      /* Custom scrollbar for technical feel */
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #1e100c;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #ff5722;
+      }
+    </style>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary": "#00344c",
+              "surface-container-high": "#372621",
+              "on-primary-fixed": "#3b0900",
+              "surface-tint": "#ffb5a0",
+              primary: "#ffb5a0",
+              "on-primary-fixed-variant": "#862200",
+              "on-secondary": "#2f3131",
+              "secondary-container": "#454747",
+              "surface-variant": "#43302b",
+              "on-surface": "#fadcd4",
+              "on-surface-variant": "#e4beb4",
+              surface: "#1e100c",
+              "on-tertiary-fixed-variant": "#004c6d",
+              "on-error-container": "#ffdad6",
+              "error-container": "#93000a",
+              "surface-container": "#2c1c17",
+              "tertiary-container": "#019ad8",
+              "on-secondary-container": "#b4b5b5",
+              error: "#ffb4ab",
+              secondary: "#c6c6c7",
+              "outline-variant": "#5b4039",
+              "primary-fixed": "#ffdbd1",
+              "surface-container-highest": "#43302b",
+              "on-tertiary-container": "#002d43",
+              "primary-container": "#ff5722",
+              "surface-container-low": "#271813",
+              "on-background": "#fadcd4",
+              "tertiary-fixed": "#c8e6ff",
+              "tertiary-fixed-dim": "#86cfff",
+              "inverse-on-surface": "#3e2c27",
+              "inverse-primary": "#b02f00",
+              "on-error": "#690005",
+              "secondary-fixed": "#e2e2e2",
+              background: "#1e100c",
+              "surface-dim": "#1e100c",
+              "on-primary": "#5f1500",
+              "inverse-surface": "#fadcd4",
+              "on-secondary-fixed-variant": "#454747",
+              "on-secondary-fixed": "#1a1c1c",
+              outline: "#ab8980",
+              "surface-container-lowest": "#180b07",
+              tertiary: "#86cfff",
+              "on-primary-container": "#541200",
+              "surface-bright": "#483530",
+              "on-tertiary-fixed": "#001e2e",
+              "primary-fixed-dim": "#ffb5a0",
+              "secondary-fixed-dim": "#c6c6c7",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              "technical-margin": "2.5rem",
+              "section-padding": "10rem",
+              "container-max": "1280px",
+              gutter: "1px",
+            },
+            fontFamily: {
+              "heading-md": ["Barlow Condensed"],
+              "hero-mega": ["Barlow Condensed"],
+              "technical-label": ["Space Grotesk"],
+              "display-lg": ["Barlow Condensed"],
+              "body-base": ["Space Grotesk"],
+            },
+            fontSize: {
+              "heading-md": [
+                "1.5rem",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "0.05em",
+                  fontWeight: "900",
+                },
+              ],
+              "hero-mega": [
+                "13rem",
+                {
+                  lineHeight: "0.85",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "900",
+                },
+              ],
+              "technical-label": [
+                "10px",
+                { lineHeight: "1", letterSpacing: "0.4em", fontWeight: "700" },
+              ],
+              "display-lg": ["6rem", { lineHeight: "0.9", fontWeight: "900" }],
+              "body-base": [
+                "14px",
+                { lineHeight: "2", letterSpacing: "0.05em", fontWeight: "500" },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body>
+    <div class="relative w-full">
+      <!-- Trigger -->
+      <button
+        class="w-full flex items-center justify-between px-6 py-5 bg-transparent border-2 border-primary-container"
+      >
+        <span class="font-heading-md text-primary-container uppercase"
+          >SHOP_BY_CATEGORY</span
+        >
+        <span
+          class="material-symbols-outlined text-primary-container rotate-180"
+          data-icon="expand_more"
+          >expand_more</span
+        >
+      </button>
+      <!-- Menu -->
+      <div
+        class="w-full bg-black border-x-2 border-b-2 border-primary-container z-10 mt-[-2px]"
+      >
+        <div
+          class="flex items-center justify-between px-6 py-4 border-b border-white/10 hover:bg-white/5 cursor-pointer group transition-colors"
+        >
+          <span
+            class="font-heading-md text-white group-hover:translate-x-2 transition-transform"
+            >NEW ARRIVALS</span
+          >
+        </div>
+        <div
+          class="flex items-center justify-between px-6 py-4 border-b border-white/10 hover:bg-white/5 cursor-pointer group transition-colors"
+        >
+          <span
+            class="font-heading-md text-white group-hover:translate-x-2 transition-transform"
+            >COLLECTIONS</span
+          >
+        </div>
+        <div
+          class="flex items-center justify-between px-6 py-4 border-b border-white/10 hover:bg-white/5 cursor-pointer group transition-colors"
+        >
+          <span
+            class="font-heading-md text-white group-hover:translate-x-2 transition-transform"
+            >ARCHIVE</span
+          >
+        </div>
+        <div
+          class="flex items-center justify-between px-6 py-4 hover:bg-white/5 cursor-pointer group transition-colors"
+        >
+          <span
+            class="font-heading-md text-white group-hover:translate-x-2 transition-transform"
+            >SALE</span
+          >
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

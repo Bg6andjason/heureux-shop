@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Your Cart - HEUREUX</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.cdnfonts.com/css/din-condensed" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#FF5722",
+                        "background-light": "#FFFFFF",
+                        "background-dark": "#000000",
+                        "surface-dark": "#121212",
+                        "grey-custom": "#262626"
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "heading": ["DIN Condensed", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .font-heading { font-family: 'DIN Condensed', sans-serif; text-transform: uppercase; font-weight: 700; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white min-h-screen">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between border-b border-white/10 px-6 md:px-20 py-6 sticky top-0 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md z-50">
+<div class="flex items-center gap-4">
+<div class="text-primary">
+<span class="material-symbols-outlined text-3xl">filter_vintage</span>
+</div>
+<h2 class="text-2xl font-heading tracking-wider">HEUREUX</h2>
+</div>
+<div class="flex items-center gap-12">
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Shop</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Collections</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Journal</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center rounded-full size-10 hover:bg-white/10 transition-colors text-slate-400">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="relative flex items-center justify-center rounded-full size-10 bg-primary text-white font-bold">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+<span class="absolute -top-1 -right-1 bg-white text-black text-[10px] rounded-full size-4 flex items-center justify-center font-bold">2</span>
+</button>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto w-full px-6 md:px-20 py-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+<!-- Left Column: Cart Items -->
+<div class="lg:col-span-8 flex flex-col gap-8">
+<div class="flex items-baseline justify-between border-b border-white/10 pb-6">
+<h1 class="text-6xl font-heading tracking-normal">Your Cart</h1>
+<p class="text-slate-500 font-medium">2 Items Selected</p>
+</div>
+<div class="flex flex-col gap-10">
+<!-- Item 1 -->
+<div class="flex flex-col sm:flex-row gap-6 items-start sm:items-center py-4 group">
+<div class="bg-grey-custom rounded-xl overflow-hidden aspect-square w-32 shrink-0 border border-white/5">
+<img alt="Premium Silk Blouse" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" data-alt="Close up of high quality white silk fabric" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSKyzgf4U2ct6LdK0SQXF-hctsbeSZ19KyJv4F48v2YJjhoM3wv3PujYGE4HlhP68_9qOsOy9JnmyKrX8wb9lEdsYq8U7zFoBQz-a1i2sMbgrqEd7Vssk6orxZI2htkWl0pI4h8Z_v80SLzanELzV-v-zQkGI-LVb86FjXCjiEyGh4M4VKoqaBuDMSymi8MRfxHfzttC6xGY5yiYoh0upmP8roT_EHFa6WwPtLg3JIt_gRgODBKvqqe13f_Nk-o2nB52gJw3R6sE2G"/>
+</div>
+<div class="flex-1 flex flex-col gap-1">
+<div class="flex justify-between items-start">
+<h3 class="text-xl font-bold uppercase tracking-tight">Premium Silk Blouse</h3>
+<p class="text-xl font-heading tracking-wide">$120.00</p>
+</div>
+<p class="text-slate-500 text-sm">Size: Medium | Color: Ivory</p>
+<div class="mt-4 flex items-center justify-between">
+<div class="flex items-center bg-grey-custom rounded-full px-2 py-1 border border-white/10">
+<button class="size-8 flex items-center justify-center hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<span class="w-8 text-center text-sm font-bold">1</span>
+<button class="size-8 flex items-center justify-center hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+<button class="text-slate-500 hover:text-primary flex items-center gap-2 text-[10px] font-bold transition-colors uppercase tracking-[0.2em]">
+<span class="material-symbols-outlined text-lg">delete</span>
+                                    Remove
+                                </button>
+</div>
+</div>
+</div>
+<div class="h-px bg-white/5"></div>
+<!-- Item 2 -->
+<div class="flex flex-col sm:flex-row gap-6 items-start sm:items-center py-4 group">
+<div class="bg-grey-custom rounded-xl overflow-hidden aspect-square w-32 shrink-0 border border-white/5">
+<img alt="Tailored Trousers" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" data-alt="Professional black tailored trousers on a minimalist background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDU6hj-WoEB7iWlIlttOS95JpX0w4Xx6MS64ZDebh_5KiyT_PbX_skudND-va9dthbQ6JkIBY1qxYnmTyQLik4CfbKhIAW0m6B2xTlEyDtUKiZa3c0f126YHV4lHEl_J8BPOK0z2aSy1EZ1eA4SvlT26Gs2wPXS2VW0lhmbbDK9NiS9_4c4GLVqWKt3VUerZ2MUrjGuQcJLaqUfs5l976VAkGwwxYY9S62rhcXTusBaWoO3YKQtKeNk8qAYrMaR0gi4Y9I09MxmmprD"/>
+</div>
+<div class="flex-1 flex flex-col gap-1">
+<div class="flex justify-between items-start">
+<h3 class="text-xl font-bold uppercase tracking-tight">Tailored Wool Trousers</h3>
+<p class="text-xl font-heading tracking-wide">$180.00</p>
+</div>
+<p class="text-slate-500 text-sm">Size: 38 | Color: Obsidian Black</p>
+<div class="mt-4 flex items-center justify-between">
+<div class="flex items-center bg-grey-custom rounded-full px-2 py-1 border border-white/10">
+<button class="size-8 flex items-center justify-center hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<span class="w-8 text-center text-sm font-bold">1</span>
+<button class="size-8 flex items-center justify-center hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+<button class="text-slate-500 hover:text-primary flex items-center gap-2 text-[10px] font-bold transition-colors uppercase tracking-[0.2em]">
+<span class="material-symbols-outlined text-lg">delete</span>
+                                    Remove
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 p-8 rounded-2xl bg-grey-custom border border-white/5 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">local_shipping</span>
+<p class="text-sm font-medium">You qualify for <span class="text-primary font-bold uppercase tracking-wide">Free Standard Shipping</span></p>
+</div>
+<a class="text-[10px] font-black uppercase tracking-[0.2em] border-b-2 border-primary/40 hover:border-primary transition-all pb-1" href="#">Details</a>
+</div>
+</div>
+<!-- Right Column: Summary -->
+<div class="lg:col-span-4">
+<div class="bg-surface-dark rounded-2xl p-8 sticky top-32 border border-white/10">
+<h2 class="text-3xl font-heading mb-8 tracking-wide">Order Summary</h2>
+<div class="flex flex-col gap-4 mb-8">
+<div class="flex justify-between items-center">
+<span class="text-slate-400 text-sm uppercase tracking-widest">Subtotal</span>
+<span class="font-bold">$300.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-slate-400 text-sm uppercase tracking-widest">Shipping</span>
+<span class="font-bold text-primary">FREE</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-slate-400 text-sm uppercase tracking-widest">Estimated Tax</span>
+<span class="font-bold">$24.00</span>
+</div>
+<div class="h-px bg-white/5 my-2"></div>
+<div class="flex justify-between items-center">
+<span class="text-lg font-heading tracking-wider">Total</span>
+<span class="text-4xl font-heading text-primary tracking-wider">$324.00</span>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<button class="w-full bg-primary text-white py-5 rounded-xl font-heading text-xl tracking-[0.15em] hover:bg-[#E64A19] transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary/20">
+                            Checkout
+                            <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+<button class="w-full bg-transparent text-white border border-white/20 py-5 rounded-xl font-heading text-xl tracking-[0.15em] hover:bg-white/5 transition-all">
+                            Continue Shopping
+                        </button>
+</div>
+<div class="mt-8 flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-500 text-sm">verified_user</span>
+<p class="text-[9px] text-slate-500 uppercase tracking-widest leading-relaxed">Secure payment processed by stripe encrypted with 256-bit SSL</p>
+</div>
+<div class="flex gap-4 items-center justify-center opacity-30 grayscale contrast-125">
+<span class="material-symbols-outlined">credit_card</span>
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="material-symbols-outlined">payments</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="mt-auto border-t border-white/5 py-12 px-6 md:px-20 bg-background-dark">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-2 opacity-30">
+<span class="material-symbols-outlined text-sm">filter_vintage</span>
+<p class="text-[10px] uppercase tracking-[0.4em] font-bold">© 2024 HEUREUX ATELIER</p>
+</div>
+<div class="flex gap-12 text-[10px] font-black uppercase tracking-[0.3em] text-slate-500">
+<a class="hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms</a>
+<a class="hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

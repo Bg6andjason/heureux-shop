@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HEUREUX | Shopping Cart</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#000000",
+                        "background-light": "#f7f7f7",
+                        "background-dark": "#191919",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex min-h-screen w-full flex-col">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-6 lg:px-20 py-4">
+<div class="max-w-[1440px] mx-auto flex items-center justify-between">
+<div class="flex items-center gap-12">
+<div class="flex items-center gap-2">
+<div class="size-6 text-primary dark:text-white">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 45.8096C19.6865 45.8096 15.4698 44.5305 11.8832 42.134C8.29667 39.7376 5.50128 36.3314 3.85056 32.3462C2.19985 28.361 1.76794 23.9758 2.60947 19.7452C3.451 15.5145 5.52816 11.6284 8.57829 8.5783C11.6284 5.52817 15.5145 3.45101 19.7452 2.60948C23.9758 1.76795 28.361 2.19986 32.3462 3.85057C36.3314 5.50129 39.7376 8.29668 42.134 11.8833C44.5305 15.4698 45.8096 19.6865 45.8096 24L24 24L24 45.8096Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-xl font-extrabold tracking-tighter uppercase">HEUREUX</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-xs font-bold uppercase tracking-widest hover:text-primary/60 transition-colors" href="#">New Arrivals</a>
+<a class="text-xs font-bold uppercase tracking-widest hover:text-primary/60 transition-colors" href="#">Collections</a>
+<a class="text-xs font-bold uppercase tracking-widest hover:text-primary/60 transition-colors" href="#">Accessories</a>
+<a class="text-xs font-bold uppercase tracking-widest hover:text-primary/60 transition-colors" href="#">Journal</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<button class="flex items-center justify-center p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="flex items-center justify-center p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors relative">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white">2</span>
+</button>
+<button class="flex items-center justify-center p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow w-full max-w-[1440px] mx-auto px-6 lg:px-20 py-12 lg:py-20">
+<div class="flex flex-col lg:flex-row gap-16">
+<!-- Left Column: Shopping Cart Items -->
+<div class="flex-1 lg:w-2/3">
+<h1 class="text-4xl lg:text-5xl font-extralight tracking-tight mb-12 text-slate-900 dark:text-white">Shopping Cart</h1>
+<div class="space-y-0">
+<!-- Product Item 1 -->
+<div class="group py-8 border-t border-slate-200 dark:border-slate-800">
+<div class="flex gap-6 lg:gap-8">
+<div class="w-32 lg:w-40 aspect-[3/4] bg-slate-100 overflow-hidden rounded">
+<img alt="Silk Midi Dress" class="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Elegant silk midi dress in noir black" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUi9n3L0JguZNEeC-Lxz7pJyo1WgMjEgTQ61qpuR61G6B9gUe-hHXqroIV69QJmeX9T_05ZXNDE5fE2S3s6TDK7f-00gHFz7itnGsQf8eGJUX6Qp-R94aRczdfzX2s_Yd8oji4p1WKGkGGUwNhdmFA2R6R4AKbQTL75gANR0hlQLqcrdq8NyO-pWJhAWb2wWdyB46GvpRimEnJBFL438QG37l1k8at3WDDvMCpjatZmwiwHlAoIkdk2s3ORZIm9HjnoMYMUuFNRY4"/>
+</div>
+<div class="flex flex-1 flex-col">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-lg font-medium uppercase tracking-tight">Silk Midi Dress</h3>
+<p class="text-lg font-semibold tracking-tight">$450.00</p>
+</div>
+<p class="text-slate-500 text-sm font-light mb-auto">Color: Noir | Size: M</p>
+<div class="flex items-center justify-between mt-6">
+<div class="flex items-center border border-slate-200 dark:border-slate-700 rounded overflow-hidden">
+<button class="flex h-10 w-10 items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<span class="w-10 text-center text-sm font-medium">1</span>
+<button class="flex h-10 w-10 items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+<button class="flex items-center gap-1 text-slate-400 hover:text-primary text-xs uppercase tracking-widest transition-colors">
+<span class="material-symbols-outlined text-sm">close</span>
+<span>Remove</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Item 2 -->
+<div class="group py-8 border-t border-slate-200 dark:border-slate-800">
+<div class="flex gap-6 lg:gap-8">
+<div class="w-32 lg:w-40 aspect-[3/4] bg-slate-100 overflow-hidden rounded">
+<img alt="Leather Chelsea Boots" class="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Handcrafted luxury cognac leather chelsea boots" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsAunw96jUQbgCSSa3Ldj0R9JSeTlggVZhD58qxqicA__FrWuIKR17G7pCO7yrhmCEJhs1VYNgXyku8BppgJbMQsu7v7cVkyOR8-P3pIa5IVzxpE1CbzDXe835XezdNV389kJEqMHcPWPlpjZSOPJ72LtwqRJoGu2R5SZtly-zUta_Dhuca8pUxF85z4lbXKt3SSRr3l8sVdhQM3XE3dv5_bpujcoEO_vXptQI1u5QlNXxZ1MptXDYfKL0s3lfK4MV9e5N5vfJyZY"/>
+</div>
+<div class="flex flex-1 flex-col">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-lg font-medium uppercase tracking-tight">Leather Chelsea Boots</h3>
+<p class="text-lg font-semibold tracking-tight">$320.00</p>
+</div>
+<p class="text-slate-500 text-sm font-light mb-auto">Color: Cognac | Size: 42</p>
+<div class="flex items-center justify-between mt-6">
+<div class="flex items-center border border-slate-200 dark:border-slate-700 rounded overflow-hidden">
+<button class="flex h-10 w-10 items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<span class="w-10 text-center text-sm font-medium">1</span>
+<button class="flex h-10 w-10 items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+<button class="flex items-center gap-1 text-slate-400 hover:text-primary text-xs uppercase tracking-widest transition-colors">
+<span class="material-symbols-outlined text-sm">close</span>
+<span>Remove</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-slate-200 dark:border-slate-800"></div>
+</div>
+</div>
+<!-- Right Column: Order Summary -->
+<div class="lg:w-1/3">
+<div class="sticky top-32 bg-white dark:bg-background-dark border border-slate-200 dark:border-slate-800 p-8 rounded-lg shadow-sm">
+<h2 class="text-xl font-bold uppercase tracking-widest mb-8">Order Summary</h2>
+<div class="space-y-4 mb-8">
+<div class="flex justify-between items-center">
+<span class="text-slate-500 font-light">Subtotal</span>
+<span class="font-medium">$770.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-slate-500 font-light">Shipping</span>
+<span class="font-medium">Calculated at checkout</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-slate-500 font-light">Estimated Tax</span>
+<span class="font-medium">$61.60</span>
+</div>
+</div>
+<div class="border-t border-slate-100 dark:border-slate-800 pt-6 mb-8">
+<div class="flex justify-between items-end">
+<span class="text-lg font-bold uppercase tracking-wider">Total</span>
+<span class="text-2xl font-black">$831.60</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-slate-800 text-white font-bold py-5 px-6 rounded-lg uppercase tracking-[0.2em] text-sm transition-all shadow-xl shadow-primary/10 mb-8">
+                            Proceed to Checkout
+                        </button>
+<div class="space-y-6">
+<p class="text-[10px] text-center text-slate-400 uppercase tracking-widest font-bold">Secure Payment Methods</p>
+<div class="flex justify-center items-center gap-4 grayscale opacity-40">
+<svg class="h-6 w-auto" fill="none" viewbox="0 0 48 32" xmlns="http://www.w3.org/2000/svg">
+<rect fill="currentColor" height="32" rx="4" width="48"></rect>
+<path d="M12 10H14.5L13 22H10.5L12 10Z" fill="white"></path>
+<circle cx="28" cy="16" fill="white" fill-opacity="0.3" r="8"></circle>
+</svg>
+<svg class="h-6 w-auto" fill="none" viewbox="0 0 48 32" xmlns="http://www.w3.org/2000/svg">
+<rect fill="currentColor" height="32" rx="4" width="48"></rect>
+<circle cx="20" cy="16" fill="white" fill-opacity="0.5" r="8"></circle>
+<circle cx="28" cy="16" fill="white" fill-opacity="0.5" r="8"></circle>
+</svg>
+<svg class="h-6 w-auto" fill="none" viewbox="0 0 48 32" xmlns="http://www.w3.org/2000/svg">
+<rect fill="currentColor" height="32" rx="4" width="48"></rect>
+<path d="M16 12L20 20L24 12" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+</svg>
+<svg class="h-6 w-auto" fill="none" viewbox="0 0 48 32" xmlns="http://www.w3.org/2000/svg">
+<rect fill="currentColor" height="32" rx="4" width="48"></rect>
+<path d="M14 16H34M24 8V24" stroke="white" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+</div>
+</div>
+<div class="mt-8 text-center">
+<a class="text-xs text-slate-400 hover:text-primary underline underline-offset-4 transition-colors" href="#">Continue Shopping</a>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Minimal Footer -->
+<footer class="border-t border-slate-200 dark:border-slate-800 py-12 px-6 lg:px-20 bg-white dark:bg-background-dark">
+<div class="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-2">
+<h2 class="text-sm font-extrabold tracking-tighter uppercase">HEUREUX</h2>
+<span class="text-xs text-slate-400">© 2024. All rights reserved.</span>
+</div>
+<div class="flex gap-8 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Shipping &amp; Returns</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

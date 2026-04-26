@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HEUREUX | Radical Aesthetic</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- DIN Condensed substitute via Google Fonts or standard fallback strategy. Using 'Oswald' as a close web-font match for the "DIN Condensed Black" feel if not providing a custom font file, or specifying the request's intent. Let's use 'Barlow Condensed' for the high-impact heading feel. -->
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#FF5722",
+                        "background-light": "#f7f8f5",
+                        "background-dark": "#0a0a0a",
+                    },
+                    fontFamily: {
+                        "display": ["Barlow Condensed", "sans-serif"],
+                        "sans": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        h1, h2, h3, .heading-font {
+            font-family: 'Barlow Condensed', sans-serif;
+            text-transform: uppercase;
+        }
+        .brutalist-border {
+            border: 2px solid currentColor;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden">
+<div class="relative flex min-h-screen flex-col">
+<!-- Navigation -->
+<header class="sticky top-0 z-50 w-full border-b border-primary/20 bg-black/80 backdrop-blur-md px-6 lg:px-20 py-4">
+<div class="flex items-center justify-between max-w-7xl mx-auto">
+<div class="flex items-center gap-12">
+<div class="flex items-center gap-2 group cursor-pointer">
+<span class="material-symbols-outlined text-primary text-3xl">terminal</span>
+<h1 class="text-3xl font-black tracking-tighter text-slate-100">HEUREUX</h1>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">Shop</a>
+<a class="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">Archive</a>
+<a class="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">Manifesto</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary/60 text-xl">search</span>
+<input class="bg-primary/5 border border-primary/20 rounded-none py-2 pl-10 pr-4 text-xs font-bold tracking-widest focus:ring-1 focus:ring-primary focus:border-primary outline-none w-48 transition-all text-white" placeholder="SEARCH_DATABASE" type="text"/>
+</div>
+<button class="relative hover:text-primary transition-colors">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-black">0</span>
+</button>
+<button class="hover:text-primary transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="relative h-[85vh] flex items-center justify-center overflow-hidden border-b border-primary/10">
+<div class="absolute inset-0 z-0 opacity-40 grayscale" data-alt="High fashion model in minimalist architectural setting" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCEwjEQsPMpf9rFJvyLfxi_sQCCmd1wp9-uuzmvZWpQ1DVWL0C5CVBv1vjPhFBiHaLm9RDgpESnQPle_ysFLWZX23LGUstEe2yOR7OKvV5dYcZsUQRWs5ec2N5LrCqR0H0gqn3uB1cTCGFG0Ptb2la0SUttIP3x4l6TSBRu7RafB37KIS_AeYyyVPblnzA32LzwCnIHrNVO1--Ng5s2tE96Ngl3kmQzOa9t8RHaAvvlcQzJsWhfeJVYaH__hbed-eNa6yx_FAdqxC13'); background-size: cover; background-position: center;">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+<div class="relative z-10 text-center px-4 max-w-5xl">
+<h1 class="text-7xl md:text-[14rem] font-black leading-[0.8] tracking-tighter mb-8 text-slate-100 mix-blend-difference">
+                        ESTHÉTIQUE<br/>RADICALE
+                    </h1>
+<div class="flex flex-col md:flex-row items-center justify-center gap-8 mt-12">
+<p class="max-w-xs text-left text-sm font-medium leading-relaxed border-l-2 border-primary pl-4 tracking-tight text-slate-300">
+                            PURE FORM OVER REDUNDANT FUNCTION. THE ESSENTIALS REIMAGINED FOR THE MODERN BRUTALIST.
+                        </p>
+<a class="group relative inline-flex items-center justify-center px-12 py-5 bg-primary text-white font-black tracking-widest text-lg overflow-hidden transition-all hover:pr-16" href="#">
+<span class="heading-font">EXPLORE_DROP_01</span>
+<span class="material-symbols-outlined absolute right-4 translate-x-10 group-hover:translate-x-0 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="absolute bottom-10 left-10 hidden xl:block">
+<p class="text-[10px] font-bold tracking-[0.5em] uppercase vertical-text transform -rotate-90 origin-left text-primary/40">SPRING_SUMMER_2024</p>
+</div>
+</section>
+<!-- Featured Grid -->
+<section class="max-w-7xl mx-auto px-6 py-24">
+<div class="flex items-end justify-between mb-16 border-b border-primary/20 pb-8">
+<div>
+<span class="text-primary font-bold tracking-widest text-xs uppercase block mb-2">// CURRENT_DROPS</span>
+<h2 class="text-6xl font-black tracking-tighter uppercase">Selected Gear</h2>
+</div>
+<a class="text-xs font-bold tracking-[0.2em] uppercase border-b border-primary pb-1 hover:text-primary transition-colors" href="#">View_All_Inventory</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-primary/10 border border-primary/10">
+<!-- Product 1 -->
+<div class="bg-background-dark group cursor-pointer p-6 transition-all hover:bg-primary/5">
+<div class="aspect-[3/4] overflow-hidden mb-6 bg-primary/5 grayscale hover:grayscale-0 transition-all duration-500">
+<img alt="Noir Tee" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Black minimalist t-shirt on neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLX9eKQdbJkxQcTqV1gqYki8c3nJ_lhZCVn_wCo6X7L9O9SNzqFYORRVyJBG5Yu2lv_ZwAYLqESwJV9kKUhRBFGqqZflKqckvdDC4EyaeqZhHJiQ-etfTZq4nSVlICADsStRmNQriaWIhqKSTwK7p0Ej8YLrodaN8-4IrBoHgyZXGGsbiuwa5WWRJZNZ3HeRBVaUNHfVuuPIGPcrWlDCO_GtghSLT9Xvoast7qRkzVSyHK5Zani3bbx6AGtGta0SkqMiklkUDwH8HD"/>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-xl font-black tracking-tight uppercase">Noir Oversized Tee</h3>
+<p class="text-xs font-bold text-primary tracking-widest mt-1">CAT_001 / COTTON</p>
+</div>
+<span class="text-xl font-bold heading-font">€85</span>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="bg-background-dark group cursor-pointer p-6 transition-all hover:bg-primary/5">
+<div class="aspect-[3/4] overflow-hidden mb-6 bg-primary/5 grayscale hover:grayscale-0 transition-all duration-500">
+<img alt="Brutalist Hoodie" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Heavyweight grey boxy hoodie" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDk18IsSWcT-wBcK9U-Q73w5WS8pkDzK8QfhSgD-8Z0guFW_AJ_WsF7LFs4RWimGeXtKlfdit2pLs42WZNUHUqD_TqdOGfqxzW2EGoTWPMIr9foJ095gF5XWlTVVJSvJdYHUwXTUuqoq2mkBif2FRfTXZ32LMBTaAojr4axdHvqOATQta3Uh5ZGZ6y0xKYxq8fuytOP-KYajBaw-i8A3oN1e7M-UVKbm_n-mwRKavVbbRYenAn5EsZF3CPp3lQOVuQMCdf3pcqGyBmK"/>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-xl font-black tracking-tight uppercase">Brutalist Hoodie</h3>
+<p class="text-xs font-bold text-primary tracking-widest mt-1">CAT_002 / HEAVY_FLEECE</p>
+</div>
+<span class="text-xl font-bold heading-font">€160</span>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="bg-background-dark group cursor-pointer p-6 transition-all hover:bg-primary/5">
+<div class="aspect-[3/4] overflow-hidden mb-6 bg-primary/5 grayscale hover:grayscale-0 transition-all duration-500">
+<img alt="System Pant" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Technical wide leg trousers black" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDq_dbVlwvF79Se5ArQLvyu6o_Cu11kPoIcsajZQ9QATGKCZgrdQ5oNjNeZSYwO78j9z1BLWIh8kmytMrVey34mf5SyqYM_ubNdPXgiqLt0WUfPZ1T0VtOgYxnrBCR_v5vhofy2hnf66sDHIG3PE2H6LS5Sw7gq5Mug6dcsI1tqo1XP873gpgfkBUSyP51H6js7a9OzYPLOnHEDEw4ruGdNjwNYHlNSUeg28zvCvspEiQddczMtNPwArQpcdYfZ7qje7hdKtfTBvw8n"/>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-xl font-black tracking-tight uppercase">System Cargo Pant</h3>
+<p class="text-xs font-bold text-primary tracking-widest mt-1">CAT_003 / NYLON_TECH</p>
+</div>
+<span class="text-xl font-bold heading-font">€210</span>
+</div>
+</div>
+<!-- Product 4 -->
+<div class="bg-background-dark group cursor-pointer p-6 transition-all hover:bg-primary/5">
+<div class="aspect-[3/4] overflow-hidden mb-6 bg-primary/5 grayscale hover:grayscale-0 transition-all duration-500">
+<img alt="Structure Jacket" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Minimalist structured shell jacket" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAGUGb1UluWrVAQnovJGUIuI_vj76gxAjWczCyHPJvVipWosliKa6JOT3lzO1RRIMtxfH8cHcdGv33yYa56RNQ306LVq-IWMvQrhmK2AxJrsskgZY7-F1mv8inF7W9PSDENT_N_ilaKReG7-Khw21ouWqC8Xz5sYjmq8FnGQ2gCP47MbS2LDQl8t6LnuHuYDOe1WKShnWRpyRFHWIDlQRm4-idjCWycolEw0n3IVmq_cCANKyFesPlYpXjm_lRTsLvhx6ff2umo0jZ"/>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-xl font-black tracking-tight uppercase">Structure Shell</h3>
+<p class="text-xs font-bold text-primary tracking-widest mt-1">CAT_004 / WATER_REPELLENT</p>
+</div>
+<span class="text-xl font-bold heading-font">€340</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Marquee/Statement Section -->
+<section class="bg-primary py-12 overflow-hidden border-y-4 border-black">
+<div class="flex whitespace-nowrap animate-none">
+<div class="flex gap-20 text-white text-7xl font-black italic tracking-tighter uppercase items-center heading-font">
+<span>Pure Form</span>
+<span class="material-symbols-outlined text-5xl">emergency</span>
+<span>Zero Waste</span>
+<span class="material-symbols-outlined text-5xl">emergency</span>
+<span>Limited Release</span>
+<span class="material-symbols-outlined text-5xl">emergency</span>
+<span>Radical Aesthetic</span>
+<span class="material-symbols-outlined text-5xl">emergency</span>
+<span>Pure Form</span>
+<span class="material-symbols-outlined text-5xl">emergency</span>
+<span>Zero Waste</span>
+</div>
+</div>
+</section>
+<!-- Newsletter -->
+<section class="max-w-7xl mx-auto px-6 py-32">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="text-7xl md:text-9xl font-black tracking-tighter uppercase leading-none mb-8">
+                            JOIN_THE<br/><span class="text-primary italic">SYSTEM_</span>
+</h2>
+<p class="text-xl text-slate-400 font-medium max-w-md">
+                            BE THE FIRST TO ACCESS ARCHIVE DROPS AND EXCLUSIVE COLLABORATIONS. NO SPAM, ONLY ESSENTIAL INTEL.
+                        </p>
+</div>
+<div class="space-y-6">
+<div class="flex flex-col gap-4">
+<label class="text-xs font-bold tracking-[0.3em] uppercase text-primary">Email_Address</label>
+<div class="flex border-b-2 border-primary/30 focus-within:border-primary transition-colors">
+<input class="flex-grow bg-transparent border-none py-4 text-3xl font-black placeholder:text-slate-800 outline-none focus:ring-0 heading-font text-white" placeholder="USER@HEUREUX.LAB" type="email"/>
+<button class="group flex items-center justify-center p-4 hover:text-primary transition-colors text-white">
+<span class="material-symbols-outlined text-4xl">east</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<input class="rounded-none border-primary/30 bg-transparent text-primary focus:ring-primary" id="terms" type="checkbox"/>
+<label class="text-[10px] font-bold tracking-widest text-slate-500 uppercase" for="terms">I accept the terms of the radical manifest.</label>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-black border-t border-primary/20 py-20 px-6 lg:px-20">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+<div class="lg:col-span-1">
+<div class="flex items-center gap-2 mb-8">
+<span class="material-symbols-outlined text-primary text-3xl">terminal</span>
+<h2 class="text-3xl font-black tracking-tighter text-white">HEUREUX</h2>
+</div>
+<p class="text-xs font-bold tracking-widest text-slate-500 leading-relaxed uppercase">
+                        Built for those who find beauty in the brutal. 
+                        Designed in Paris. Dispatched worldwide.
+                        © 2024 HEUREUX_LAB. ALL_RIGHTS_RESERVED.
+                    </p>
+</div>
+<div>
+<h4 class="text-xs font-bold tracking-[0.3em] uppercase text-primary mb-8">// NAVIGATION</h4>
+<ul class="space-y-4">
+<li><a class="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">Shop All</a></li>
+<li><a class="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">Latest Drops</a></li>
+<li><a class="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">Collections</a></li>
+<li><a class="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">Size Guide</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-xs font-bold tracking-[0.3em] uppercase text-primary mb-8">// SUPPORT</h4>
+<ul class="space-y-4">
+<li><a class="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">Shipping</a></li>
+<li><a class="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">Returns</a></li>
+<li><a class="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">Contact</a></li>
+<li><a class="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">FAQ</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-xs font-bold tracking-[0.3em] uppercase text-primary mb-8">// CONNECT</h4>
+<div class="flex gap-6">
+<a class="hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
+<a class="hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-primary/5 flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="text-[10px] font-bold tracking-widest text-slate-600 uppercase">
+                    SYSTEM_STATUS: <span class="text-primary">ONLINE</span>
+</div>
+<div class="flex gap-8 text-[10px] font-bold tracking-widest text-slate-600 uppercase">
+<a class="hover:text-slate-100 transition-colors" href="#">Privacy_Policy</a>
+<a class="hover:text-slate-100 transition-colors" href="#">Terms_Of_Service</a>
+<a class="hover:text-slate-100 transition-colors" href="#">Cookies</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>
