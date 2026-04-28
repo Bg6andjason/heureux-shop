@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-page-custom-font, @next/next/google-font-display */
 import type { Metadata } from "next";
 import { Barlow_Condensed, Space_Grotesk } from "next/font/google";
 import "./globals.css";
@@ -29,8 +30,11 @@ export default function RootLayout({
   return (
     <html lang="zh-TW" className="dark">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        {/* Material Symbols is an icon font, so block prevents first-load ligature text. */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=optional"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=block"
           rel="stylesheet"
         />
       </head>
