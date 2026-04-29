@@ -67,7 +67,7 @@ export default async function HomePage() {
           </div>
 
           <div className="gap-4 md:mt-24 flex flex-col items-center justify-center">
-            <div className="h-full w-full bg-gradient-to-t from-black via-black/40 to-transparent flex items-center justify-center z-2">
+            <div className="h-full w-full from-black via-black/40 to-transparent flex items-center justify-center z-2">
               {/* <ASCIIText
               text="HEUREUX"
               enableWaves={true}  
@@ -110,7 +110,7 @@ export default async function HomePage() {
               <span className="text-primary font-bold tracking-widest text-xs uppercase block mb-2">
                 {"// CURRENT_DROPS"}
               </span>
-              <h2 className="text-6xl font-black tracking-tighter uppercase font-display">
+              <h2 className="text-6xl font-black tracking-normal uppercase font-display">
                 Selected Gear
               </h2>
             </div>
