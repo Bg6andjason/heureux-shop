@@ -17,6 +17,21 @@ export interface AuthUser {
   name: string | null;
 }
 
+export interface AuthProfile extends AuthUser {
+  created_at: string;
+  email_verified: boolean;
+  phone_verified: boolean;
+  member_level: string;
+  points: number;
+  coupons: number;
+  wishlist_count: number;
+  cart_count: number;
+  order_count: number;
+  total_spent: number;
+  default_address: string | null;
+  payment_methods: number;
+}
+
 export async function loginAction(formData: FormData) {
   const email = formData.get("email");
   const password = formData.get("password");
@@ -47,8 +62,12 @@ export async function loginAction(formData: FormData) {
   c.set("auth_token", data.token, COOKIE_OPTIONS);
   c.set("auth_user_id", String(data.user.id), COOKIE_OPTIONS);
   c.set("auth_user_name", data.user.name ?? "", COOKIE_OPTIONS);
+  c.set("auth_user_email", data.user.email, COOKIE_OPTIONS);
   const from = formData.get("from");
-  const path = typeof from === "string" && /^\/cart$|^\/orders/.test(from) ? from : "/";
+  const path =
+    typeof from === "string" && /^\/cart$|^\/orders|^\/account/.test(from)
+      ? from
+      : "/";
   redirect(path);
 }
 
@@ -90,6 +109,7 @@ export async function registerAction(formData: FormData) {
   c.set("auth_token", data.token, COOKIE_OPTIONS);
   c.set("auth_user_id", String(data.user.id), COOKIE_OPTIONS);
   c.set("auth_user_name", data.user.name ?? "", COOKIE_OPTIONS);
+  c.set("auth_user_email", data.user.email, COOKIE_OPTIONS);
   redirect("/");
 }
 
@@ -98,6 +118,7 @@ export async function logoutAction() {
   c.delete("auth_token");
   c.delete("auth_user_id");
   c.delete("auth_user_name");
+  c.delete("auth_user_email");
   redirect("/");
 }
 
@@ -115,4 +136,53 @@ export async function getAuthDisplayName(): Promise<string | null> {
   const c = await cookies();
   const name = c.get("auth_user_name")?.value;
   return name ?? null;
+}
+
+export async function getAuthEmail(): Promise<string | null> {
+  const c = await cookies();
+  const email = c.get("auth_user_email")?.value;
+  return email ?? null;
+}
+
+export async function getAuthProfile(): Promise<AuthProfile | null> {
+  const userId = await getAuthUserId();
+  if (userId === null) return null;
+
+  const fallbackProfile = async (): Promise<AuthProfile> => {
+    const name = await getAuthDisplayName();
+    const email = await getAuthEmail();
+    return {
+      id: userId,
+      email: email ?? "",
+      name,
+      created_at: new Date().toISOString(),
+      email_verified: Boolean(email),
+      phone_verified: false,
+      member_level: "Basic",
+      points: 0,
+      coupons: 0,
+      wishlist_count: 0,
+      cart_count: 0,
+      order_count: 0,
+      total_spent: 0,
+      default_address: null,
+      payment_methods: 0,
+    };
+  };
+
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+  if (!baseUrl) return fallbackProfile();
+
+  let res: Response;
+  try {
+    res = await fetch(`${baseUrl}/auth/profile?user_id=${userId}`, {
+      cache: "no-store",
+    });
+  } catch {
+    return fallbackProfile();
+  }
+  if (!res.ok) return fallbackProfile();
+
+  const body = (await res.json()) as { ok?: boolean; user?: AuthProfile };
+  return body.ok && body.user ? body.user : fallbackProfile();
 }

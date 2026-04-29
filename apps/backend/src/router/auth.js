@@ -89,4 +89,66 @@ router.post("/login", async (req, res) => {
   });
 });
 
+/**
+ * GET /auth/profile
+ * Query: user_id
+ * Returns basic account information and lightweight shopping summary.
+ */
+router.get("/profile", async (req, res) => {
+  const userId = parseInt(req.query.user_id, 10);
+  if (!Number.isInteger(userId) || userId < 1) {
+    return res.status(400).json({ ok: false, message: "Invalid user id" });
+  }
+
+  const [[user]] = await pool.query(
+    "SELECT id, email, name, created_at FROM users WHERE id = ?",
+    [userId],
+  );
+  if (!user) {
+    return res.status(404).json({ ok: false, message: "User not found" });
+  }
+
+  const [[orderSummary]] = await pool.query(
+    `SELECT
+        COUNT(o.id) AS order_count,
+        COALESCE(SUM((SELECT COALESCE(SUM(oi.price * oi.quantity), 0) FROM order_items oi WHERE oi.order_id = o.id)), 0) AS total_spent
+      FROM orders o
+      WHERE o.user_id = ?`,
+    [userId],
+  );
+  const [[cartSummary]] = await pool.query(
+    "SELECT COALESCE(SUM(quantity), 0) AS cart_count FROM cart_items WHERE user_id = ?",
+    [userId],
+  );
+  const totalSpent = Number(orderSummary?.total_spent ?? 0);
+  const orderCount = Number(orderSummary?.order_count ?? 0);
+  const memberLevel =
+    totalSpent >= 30000 || orderCount >= 10
+      ? "VIP"
+      : totalSpent >= 10000 || orderCount >= 3
+        ? "Gold"
+        : "Basic";
+
+  res.json({
+    ok: true,
+    user: {
+      id: user.id,
+      email: user.email,
+      name: user.name ?? null,
+      created_at: user.created_at,
+      email_verified: true,
+      phone_verified: false,
+      member_level: memberLevel,
+      points: Math.floor(totalSpent / 100),
+      coupons: 0,
+      wishlist_count: 0,
+      cart_count: Number(cartSummary?.cart_count ?? 0),
+      order_count: orderCount,
+      total_spent: totalSpent,
+      default_address: null,
+      payment_methods: 0,
+    },
+  });
+});
+
 export default router;
