@@ -221,40 +221,19 @@ export default async function HomePage() {
                 COLLABORATIONS. NO SPAM, ONLY ESSENTIAL INTEL.
               </p>
             </div>
-            <div className="space-y-6">
-              <div className="flex flex-col gap-4">
-                <label className="text-xs font-bold tracking-[0.3em] uppercase text-primary">
-                  Email_Address
-                </label>
-                <div className="flex border-b-2 border-primary/30 focus-within:border-primary transition-colors">
-                  <input
-                    className="flex-grow bg-transparent border-none py-4 text-3xl font-black placeholder:text-slate-800 outline-none focus:ring-0 font-display text-white"
-                    placeholder="USER@HEUREUX.LAB"
-                    type="email"
-                  />
-                  <button
-                    type="submit"
-                    className="group flex items-center justify-center p-4 hover:text-primary transition-colors text-white"
-                  >
-                    <span className="material-symbols-outlined text-4xl">
-                      east
-                    </span>
-                  </button>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <input
-                  className="rounded-none border-primary/30 bg-transparent text-primary focus:ring-primary"
-                  id="terms"
-                  type="checkbox"
-                />
-                <label
-                  className="text-[10px] font-bold tracking-widest text-slate-500 uppercase"
-                  htmlFor="terms"
-                >
-                  I accept the terms of the radical manifest.
-                </label>
-              </div>
+            <div className="flex flex-col items-start gap-6">
+              <Link
+                href="/login"
+                className="group relative inline-flex items-center justify-center overflow-hidden bg-primary px-12 py-5 text-lg font-black tracking-widest text-white transition-all hover:pr-16"
+              >
+                <span className="font-display">LOGIN_TO_JOIN</span>
+                <span className="material-symbols-outlined absolute right-4 translate-x-10 transition-transform group-hover:translate-x-0">
+                  arrow_forward
+                </span>
+              </Link>
+              <p className="text-xs font-bold uppercase tracking-[0.25em] text-slate-500">
+                SIGN IN TO ACCESS MEMBER DROPS.
+              </p>
             </div>
           </div>
         </section>

@@ -19,17 +19,10 @@ export interface AuthUser {
 
 export interface AuthProfile extends AuthUser {
   created_at: string;
-  email_verified: boolean;
-  phone_verified: boolean;
-  member_level: string;
-  points: number;
-  coupons: number;
   wishlist_count: number;
   cart_count: number;
   order_count: number;
   total_spent: number;
-  default_address: string | null;
-  payment_methods: number;
 }
 
 export async function loginAction(formData: FormData) {
@@ -156,17 +149,10 @@ export async function getAuthProfile(): Promise<AuthProfile | null> {
       email: email ?? "",
       name,
       created_at: new Date().toISOString(),
-      email_verified: Boolean(email),
-      phone_verified: false,
-      member_level: "Basic",
-      points: 0,
-      coupons: 0,
       wishlist_count: 0,
       cart_count: 0,
       order_count: 0,
       total_spent: 0,
-      default_address: null,
-      payment_methods: 0,
     };
   };
 

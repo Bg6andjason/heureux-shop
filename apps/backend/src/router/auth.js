@@ -122,12 +122,6 @@ router.get("/profile", async (req, res) => {
   );
   const totalSpent = Number(orderSummary?.total_spent ?? 0);
   const orderCount = Number(orderSummary?.order_count ?? 0);
-  const memberLevel =
-    totalSpent >= 30000 || orderCount >= 10
-      ? "VIP"
-      : totalSpent >= 10000 || orderCount >= 3
-        ? "Gold"
-        : "Basic";
 
   res.json({
     ok: true,
@@ -136,17 +130,10 @@ router.get("/profile", async (req, res) => {
       email: user.email,
       name: user.name ?? null,
       created_at: user.created_at,
-      email_verified: true,
-      phone_verified: false,
-      member_level: memberLevel,
-      points: Math.floor(totalSpent / 100),
-      coupons: 0,
       wishlist_count: 0,
       cart_count: Number(cartSummary?.cart_count ?? 0),
       order_count: orderCount,
       total_spent: totalSpent,
-      default_address: null,
-      payment_methods: 0,
     },
   });
 });
