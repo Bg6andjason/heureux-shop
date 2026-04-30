@@ -28,7 +28,10 @@ export default function LoginForm() {
         </p>
       )}
       <div className="space-y-2">
-        <label htmlFor="login-email" className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+        <label
+          htmlFor="login-email"
+          className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400"
+        >
           Email Address
         </label>
         <div className="relative group">
@@ -48,10 +51,18 @@ export default function LoginForm() {
       </div>
       <div className="space-y-2">
         <div className="flex justify-between items-center">
-          <label htmlFor="login-password" className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+          <label
+            htmlFor="login-password"
+            className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400"
+          >
             Password
           </label>
-          <Link className="text-xs font-bold text-primary hover:underline" href="#">Forgot?</Link>
+          <Link
+            className="text-xs font-bold text-primary hover:underline"
+            href="#"
+          >
+            Forgot?
+          </Link>
         </div>
         <div className="relative flex">
           <input
@@ -69,7 +80,9 @@ export default function LoginForm() {
             className="absolute right-4 top-4 text-slate-400 hover:text-primary transition-colors"
             aria-label={showPassword ? "Hide password" : "Show password"}
           >
-            <span className="material-symbols-outlined">{showPassword ? "visibility_off" : "visibility"}</span>
+            <span className="material-symbols-outlined">
+              {showPassword ? "visibility_off" : "visibility"}
+            </span>
           </button>
         </div>
       </div>
@@ -80,7 +93,7 @@ export default function LoginForm() {
         Sign In
         <span className="material-symbols-outlined">arrow_forward</span>
       </button>
-      <div className="relative flex items-center py-4">
+      {/* <div className="relative flex items-center py-4">
         <div className="flex-grow border-t border-slate-200 dark:border-white/10" />
         <span className="flex-shrink mx-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Or continue with</span>
         <div className="flex-grow border-t border-slate-200 dark:border-white/10" />
@@ -105,10 +118,13 @@ export default function LoginForm() {
           <span className="material-symbols-outlined mr-2 text-slate-900 dark:text-white">ios</span>
           <span className="text-xs font-bold uppercase tracking-wider">Apple</span>
         </button>
-      </div>
+      </div> */}
       <p className="text-center text-sm text-slate-400">
         Don&apos;t have an account?{" "}
-        <Link href="/register" className="text-primary hover:underline font-bold">
+        <Link
+          href="/register"
+          className="text-primary hover:underline font-bold"
+        >
           Register
         </Link>
       </p>
