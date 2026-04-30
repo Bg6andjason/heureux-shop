@@ -58,7 +58,12 @@ export async function loginAction(formData: FormData) {
   c.set("auth_user_email", data.user.email, COOKIE_OPTIONS);
   const from = formData.get("from");
   const path =
-    typeof from === "string" && /^\/cart$|^\/orders|^\/account/.test(from)
+    typeof from === "string" &&
+    (/^\/cart$/.test(from) ||
+      /^\/orders/.test(from) ||
+      /^\/account/.test(from) ||
+      /^\/wishlist$/.test(from) ||
+      /^\/products\/\d+$/.test(from))
       ? from
       : "/";
   redirect(path);

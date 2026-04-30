@@ -23,6 +23,7 @@ async function getProducts(
   q: string,
   category: string,
   sort: string,
+  userId: number | null,
 ): Promise<{ items: Product[]; total: number; perPage: number }> {
   const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
   if (!baseUrl) throw new Error("缺少 NEXT_PUBLIC_API_BASE_URL");
@@ -30,6 +31,7 @@ async function getProducts(
   if (q) params.set("q", q);
   if (category) params.set("category", category);
   if (sort) params.set("sort", sort);
+  if (userId !== null) params.set("user_id", String(userId));
   const res = await fetch(`${baseUrl}/api/products?${params.toString()}`, {
     cache: "no-store",
   });
@@ -76,7 +78,7 @@ export default async function ProductsPage({
   const userId = await getAuthUserId();
   const [categories, { items }] = await Promise.all([
     getCategories(),
-    getProducts(page, q, category, sort),
+    getProducts(page, q, category, sort, userId),
   ]);
 
   // 下方為不用解構的寫法

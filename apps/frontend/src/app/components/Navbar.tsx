@@ -88,7 +88,7 @@ export default async function Navbar() {
                   {[
                     ["會員中心", "/account", "manage_accounts"],
                     ["我的訂單", "/orders", "receipt_long"],
-                    ["收藏清單", "/account#wishlist", "favorite"],
+                    ["收藏清單", "/wishlist", "favorite"],
                   ].map(([text, href, icon]) => (
                     <Link
                       key={href}

@@ -3,7 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import AddToCartButton from "@/app/components/AddToCartButton";
+import FavoriteButton from "@/app/components/FavoriteButton";
 import { getAuthUserId } from "@/app/actions/auth";
+import { getFavoriteStatus } from "@/app/actions/favorites";
 import Footer from "@/app/components/Footer";
 import ProductDetailAccordion from "./ProductDetailAccordion";
 
@@ -52,6 +54,7 @@ export default async function ProductDetailPage({
   if (!product) notFound();
   const userId = await getAuthUserId();
   const isLoggedIn = userId !== null;
+  const isFavorite = isLoggedIn ? await getFavoriteStatus(product.id) : false;
   const imageUrl = product.image_url ?? "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=800&q=80";
 
   return (
@@ -139,13 +142,21 @@ export default async function ProductDetailPage({
                   Add to Bag
                 </Link>
               )}
-              <Link
-                href="/products"
-                className="w-full border border-slate-300 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900 py-4 rounded font-medium text-sm uppercase tracking-widest transition-all flex items-center justify-center gap-2"
-              >
-                <span className="material-symbols-outlined text-xl">favorite</span>
-                Add to Wishlist
-              </Link>
+              {isLoggedIn ? (
+                <FavoriteButton
+                  productId={product.id}
+                  userId={userId}
+                  initialFavorite={isFavorite}
+                />
+              ) : (
+                <Link
+                  href={`/login?from=/products/${product.id}`}
+                  className="w-full border border-slate-300 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900 py-4 rounded font-medium text-sm uppercase tracking-widest transition-all flex items-center justify-center gap-2"
+                >
+                  <span className="material-symbols-outlined text-xl">favorite</span>
+                  Add to Wishlist
+                </Link>
+              )}
             </div>
 
             {/* Accordion: Description, Shipping, Sustainability */}

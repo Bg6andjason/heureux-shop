@@ -120,6 +120,10 @@ router.get("/profile", async (req, res) => {
     "SELECT COALESCE(SUM(quantity), 0) AS cart_count FROM cart_items WHERE user_id = ?",
     [userId],
   );
+  const [[wishlistSummary]] = await pool.query(
+    "SELECT COUNT(*) AS wishlist_count FROM customer_favorites WHERE user_id = ?",
+    [userId],
+  );
   const totalSpent = Number(orderSummary?.total_spent ?? 0);
   const orderCount = Number(orderSummary?.order_count ?? 0);
 
@@ -130,7 +134,7 @@ router.get("/profile", async (req, res) => {
       email: user.email,
       name: user.name ?? null,
       created_at: user.created_at,
-      wishlist_count: 0,
+      wishlist_count: Number(wishlistSummary?.wishlist_count ?? 0),
       cart_count: Number(cartSummary?.cart_count ?? 0),
       order_count: orderCount,
       total_spent: totalSpent,

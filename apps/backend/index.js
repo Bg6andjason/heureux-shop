@@ -5,6 +5,7 @@ import getProductList from "./src/router/get-product-list.js";
 import getOrderList from "./src/router/get-order-list.js";
 import cartRouter from "./src/router/cart.js";
 import authRouter from "./src/router/auth.js";
+import favoritesRouter from "./src/router/favorites.js";
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use("/api/products", getProductList);
 app.use("/orders", getOrderList);
 app.use("/cart", cartRouter);
 app.use("/auth", authRouter);
+app.use("/favorites", favoritesRouter);
 
 app.get("/health", (req, res) => {
   res.json({ ok: true });

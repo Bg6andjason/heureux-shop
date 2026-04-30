@@ -48,17 +48,19 @@ router.get("/", async (req, res) => {
   const category =
     typeof req.query.category === "string" ? req.query.category.trim() : "";
   const sort = typeof req.query.sort === "string" ? req.query.sort.trim() : "";
+  const userId = parseInt(req.query.user_id, 10);
+  const hasUserId = Number.isInteger(userId) && userId > 0;
 
   const conditions = [];
   const bindings = [];
 
   if (q !== "") {
     const pattern = `%${escapeLike(q)}%`;
-    conditions.push("(name LIKE ? OR description LIKE ?)");
+    conditions.push("(p.name LIKE ? OR p.description LIKE ?)");
     bindings.push(pattern, pattern);
   }
   if (category !== "") {
-    conditions.push("category = ?");
+    conditions.push("p.category = ?");
     bindings.push(category);
   }
 
@@ -67,16 +69,27 @@ router.get("/", async (req, res) => {
 
   const orderBy = (() => {
     // 僅允許白名單排序，避免 SQL injection
-    if (sort === "newest" || sort === "") return "created_at DESC, id DESC";
-    if (sort === "oldest") return "created_at ASC, id ASC";
-    if (sort === "price_asc") return "price ASC, id DESC";
-    if (sort === "price_desc") return "price DESC, id DESC";
-    return "created_at DESC, id DESC";
+    if (sort === "newest" || sort === "") return "p.created_at DESC, p.id DESC";
+    if (sort === "oldest") return "p.created_at ASC, p.id ASC";
+    if (sort === "price_asc") return "p.price ASC, p.id DESC";
+    if (sort === "price_desc") return "p.price DESC, p.id DESC";
+    return "p.created_at DESC, p.id DESC";
   })();
 
+  const favoriteSelect = hasUserId
+    ? ", CASE WHEN f.id IS NULL THEN 0 ELSE 1 END AS is_favorite"
+    : ", 0 AS is_favorite";
+  const favoriteJoin = hasUserId
+    ? "LEFT JOIN customer_favorites f ON f.product_id = p.id AND f.user_id = ?"
+    : "";
   const [rows] = await pool.query(
-    `SELECT * FROM products ${whereClause} ORDER BY ${orderBy} LIMIT ? OFFSET ?`,
-    [...bindings, PER_PAGE, offset],
+    `SELECT p.*${favoriteSelect}
+      FROM products p
+      ${favoriteJoin}
+      ${whereClause}
+      ORDER BY ${orderBy}
+      LIMIT ? OFFSET ?`,
+    [...(hasUserId ? [userId] : []), ...bindings, PER_PAGE, offset],
   );
   res.json({ ok: true, items: rows });
 });

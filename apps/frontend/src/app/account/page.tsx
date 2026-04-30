@@ -1,6 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import { redirect } from "next/navigation";
 import { getAuthProfile } from "@/app/actions/auth";
+import { getFavoriteProducts } from "@/app/actions/favorites";
 
 export const metadata = {
   title: "Member Center | HEUREUX",
@@ -50,6 +52,7 @@ function InfoPanel({
 export default async function AccountPage() {
   const profile = await getAuthProfile();
   if (!profile) redirect("/login?from=/account");
+  const favorites = await getFavoriteProducts();
 
   const displayName = profile.name || "HEUREUX Member";
 
@@ -146,19 +149,84 @@ export default async function AccountPage() {
         </InfoPanel>
 
         <InfoPanel id="wishlist" icon="favorite" title="收藏清單">
-          <p className="text-sm text-slate-400">
-            已收藏 {profile.wishlist_count}{" "}
-            件商品。收藏功能資料表尚未建立，這裡已保留入口。
-          </p>
-          <Link
-            href="/products"
-            className="mt-6 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-primary hover:underline"
-          >
-            前往選購
-            <span className="material-symbols-outlined text-[18px]">
-              arrow_forward
-            </span>
-          </Link>
+          {favorites.length === 0 ? (
+            <>
+              <p className="text-sm text-slate-400">
+                目前尚未收藏商品，逛到喜歡的品項可以直接加入清單。
+              </p>
+              <Link
+                href="/products"
+                className="mt-6 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-primary hover:underline"
+              >
+                前往選購
+                <span className="material-symbols-outlined text-[18px]">
+                  arrow_forward
+                </span>
+              </Link>
+            </>
+          ) : (
+            <div className="grid gap-4">
+              <p className="text-sm text-slate-400">
+                已收藏 {profile.wishlist_count} 件商品。
+              </p>
+              <ul
+                className="relative grid gap-3 overflow-hidden"
+                style={favorites.length > 1 ? { maxHeight: "144px" } : undefined}
+              >
+                {favorites.slice(0, favorites.length > 1 ? 2 : 1).map((item) => (
+                  <li key={item.id}>
+                    <Link
+                      href={`/products/${item.product_id}`}
+                      className="flex items-center gap-4 border border-white/10 bg-white/[0.03] p-3 transition-colors hover:border-primary/50"
+                    >
+                      <div className="relative size-16 flex-shrink-0 overflow-hidden bg-[#262626]">
+                        {item.image_url ? (
+                          <Image
+                            src={item.image_url}
+                            alt={item.name}
+                            fill
+                            sizes="64px"
+                            className="object-cover"
+                            unoptimized
+                          />
+                        ) : (
+                          <div className="flex h-full w-full items-center justify-center text-[10px] text-slate-500">
+                            No Image
+                          </div>
+                        )}
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <p className="truncate text-sm font-bold uppercase tracking-wide text-white">
+                          {item.name}
+                        </p>
+                        <p className="text-xs text-slate-500">
+                          NT$ {item.price.toLocaleString("zh-TW")}
+                        </p>
+                      </div>
+                      <span className="material-symbols-outlined text-primary">
+                        arrow_forward
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+                {favorites.length > 1 && (
+                  <div
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-b from-transparent to-[#151515]"
+                    aria-hidden="true"
+                  />
+                )}
+              </ul>
+              <Link
+                href="/wishlist"
+                className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-primary hover:underline"
+              >
+                查看收藏
+                <span className="material-symbols-outlined text-[18px]">
+                  arrow_forward
+                </span>
+              </Link>
+            </div>
+          )}
         </InfoPanel>
       </div>
     </main>

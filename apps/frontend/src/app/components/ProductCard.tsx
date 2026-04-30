@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import AddToCartButton from "./AddToCartButton";
+import FavoriteButton from "./FavoriteButton";
 
 export interface Product {
   id: number;
@@ -10,6 +11,7 @@ export interface Product {
   description?: string | null;
   category?: string | null;
   is_new?: boolean;
+  is_favorite?: boolean | number;
 }
 
 interface ProductCardProps {
@@ -39,6 +41,17 @@ export default function ProductCard({ product: p, showAddToCart = true, userId =
           )}
         </Link>
         <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300 pointer-events-none" />
+        {userId !== null && (
+          <div className="absolute right-4 top-4 z-[2]">
+            <FavoriteButton
+              productId={p.id}
+              userId={userId}
+              initialFavorite={Boolean(p.is_favorite)}
+              showLabel={false}
+              className="flex size-11 items-center justify-center rounded-full border border-white/10 bg-black/60 text-white backdrop-blur transition-colors hover:border-primary hover:text-primary disabled:opacity-60"
+            />
+          </div>
+        )}
         {showAddToCart && (
           <div className="absolute bottom-6 left-6 right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto">
             <AddToCartButton
