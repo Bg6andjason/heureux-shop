@@ -13,12 +13,12 @@ export interface OrderSummary {
 }
 
 const STATUS_LABELS: Record<string, string> = {
-  created: "Created",
-  pending: "Pending",
-  paid: "Paid",
-  shipped: "Shipped",
-  completed: "Completed",
-  cancelled: "Cancelled",
+  created: "已建立",
+  pending: "待處理",
+  paid: "已付款",
+  shipped: "已出貨",
+  completed: "已完成",
+  cancelled: "已取消",
 };
 
 async function getOrders(
@@ -79,7 +79,7 @@ export default async function OrdersPage({
   const { items: orders } = await getOrders(page, status, userId);
 
   const statusTabs = [
-    { value: "", label: "All" },
+    { value: "", label: "全部" },
     ...Object.entries(STATUS_LABELS).map(([value, label]) => ({
       value,
       label,
