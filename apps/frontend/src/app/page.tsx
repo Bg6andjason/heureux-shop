@@ -209,7 +209,7 @@ export default async function HomePage() {
 
         {/* Newsletter */}
         <section className="max-w-7xl mx-auto px-6 py-32">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-52 items-center">
             <div>
               <h2 className="text-7xl md:text-9xl font-black tracking-normal uppercase leading-none mb-8 font-display">
                 JOIN_THE
