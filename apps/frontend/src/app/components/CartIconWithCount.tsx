@@ -13,9 +13,16 @@ export default function CartIconWithCount({ userId }: CartIconWithCountProps) {
   const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ?? "";
 
   const fetchCount = useCallback(async () => {
-    if (!baseUrl) return;
+    if (userId == null) {
+      setCount(0);
+      return;
+    }
+    if (!baseUrl) {
+      setCount(0);
+      return;
+    }
     try {
-      const url = userId != null ? `${baseUrl}/cart/count?user_id=${userId}` : `${baseUrl}/cart/count`;
+      const url = `${baseUrl}/cart/count?user_id=${userId}`;
       const res = await fetch(url, { cache: "no-store" });
       if (!res.ok) return;
       const body = (await res.json()) as { ok: boolean; count?: number };
