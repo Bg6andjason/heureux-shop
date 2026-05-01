@@ -105,17 +105,17 @@ export default async function HomePage() {
 
         {/* Featured Grid - Selected Gear */}
         <section className="max-w-7xl mx-auto px-6 py-24">
-          <div className="flex items-end justify-between mb-16 border-b border-primary/20 pb-8">
+          <div className="mb-16 flex min-w-0 flex-col items-start gap-5 border-b border-primary/20 pb-8 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <span className="text-primary font-bold tracking-widest text-xs uppercase block mb-2">
                 {"// CURRENT_DROPS"}
               </span>
-              <h2 className="text-6xl font-black tracking-normal uppercase font-display">
+              <h2 className="text-6xl font-black tracking-normal uppercase font-display leading-none">
                 Selected Gear
               </h2>
             </div>
             <Link
-              className="tap-target tap-target-subtle -mx-2 rounded-full px-2 text-xs font-bold tracking-[0.2em] uppercase border-b border-primary pb-1 hover:text-primary transition-colors"
+              className="tap-target tap-target-subtle -mx-2 inline-flex max-w-full items-center justify-center rounded-full border-b border-primary px-2 py-2 text-center text-xs font-bold uppercase tracking-[0.2em] break-words transition-colors hover:text-primary"
               href="/products"
             >
               View_All_Inventory
@@ -209,7 +209,7 @@ export default async function HomePage() {
 
         {/* Newsletter */}
         <section className="max-w-7xl mx-auto px-6 py-32">
-          <div className="grid lg:grid-cols-2 gap-52 items-center">
+          <div className="grid gap-16 lg:grid-cols-2 lg:gap-52 items-center">
             <div>
               <h2 className="text-7xl md:text-9xl font-black tracking-normal uppercase leading-none mb-8 font-display">
                 JOIN_THE
