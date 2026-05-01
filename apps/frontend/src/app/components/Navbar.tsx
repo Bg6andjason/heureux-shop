@@ -36,6 +36,25 @@ export default async function Navbar() {
           </Link>
         </div>
 
+        <nav
+          className="absolute left-1/2 -translate-x-1/2"
+          aria-label="主選單"
+        >
+          <Link
+            href="/products"
+            className="tap-target inline-flex rounded-full border border-primary bg-primary px-5 py-2.5 text-xs font-black uppercase tracking-widest text-black shadow-lg shadow-primary/25 transition-all hover:-translate-y-0.5 hover:border-white hover:bg-white hover:shadow-white/20 sm:inline-flex"
+          >
+            SHOP
+          </Link>
+          <Link
+            href="/products"
+            className="tap-target inline-flex size-11 items-center justify-center rounded-full border border-primary bg-primary text-black shadow-lg shadow-primary/25 transition-all hover:-translate-y-0.5 hover:border-white hover:bg-white sm:hidden"
+            aria-label="商品列表"
+          >
+            <span className="material-symbols-outlined">storefront</span>
+          </Link>
+        </nav>
+
         <div className="flex items-center gap-6">
           <div className="relative hidden sm:block">
             <ProductSearchBar className="relative" />
