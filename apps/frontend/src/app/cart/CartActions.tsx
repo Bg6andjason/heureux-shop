@@ -69,17 +69,17 @@ export default function CartActions({ item, baseUrl, userId }: CartActionsProps)
           type="button"
           onClick={() => handleUpdate(Math.max(1, quantity - 1))}
           disabled={pending || quantity <= 1}
-          className="size-8 flex items-center justify-center hover:text-primary transition-colors disabled:opacity-50"
+          className="tap-target tap-target-subtle flex size-11 items-center justify-center rounded-full hover:text-primary transition-colors disabled:opacity-50"
           aria-label="減少數量"
         >
           <span className="material-symbols-outlined text-sm">remove</span>
         </button>
-        <span className="w-8 text-center text-sm font-bold">{quantity}</span>
+        <span className="w-10 text-center text-sm font-bold">{quantity}</span>
         <button
           type="button"
           onClick={() => handleUpdate(Math.min(maxQty, quantity + 1))}
           disabled={pending || quantity >= maxQty}
-          className="size-8 flex items-center justify-center hover:text-primary transition-colors disabled:opacity-50"
+          className="tap-target tap-target-subtle flex size-11 items-center justify-center rounded-full hover:text-primary transition-colors disabled:opacity-50"
           aria-label="增加數量"
         >
           <span className="material-symbols-outlined text-sm">add</span>
@@ -89,7 +89,7 @@ export default function CartActions({ item, baseUrl, userId }: CartActionsProps)
         type="button"
         onClick={handleRemove}
         disabled={pending}
-        className="text-slate-500 hover:text-primary flex items-center gap-2 text-[10px] font-bold transition-colors uppercase tracking-[0.2em] disabled:opacity-50"
+        className="tap-target tap-target-subtle -mx-3 rounded-full px-3 text-slate-500 hover:text-primary flex items-center gap-2 text-[10px] font-bold transition-colors uppercase tracking-[0.2em] disabled:opacity-50"
       >
         <span className="material-symbols-outlined text-lg">delete</span>
         Remove

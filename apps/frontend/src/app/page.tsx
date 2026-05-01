@@ -86,7 +86,7 @@ export default async function HomePage() {
                 </p>
                 <Link
                   href="/products"
-                  className="group relative inline-flex items-center justify-center px-12 py-5 bg-primary text-white font-black tracking-widest text-lg overflow-hidden transition-all hover:pr-16"
+                  className="tap-target tap-target-solid group relative inline-flex items-center justify-center px-12 py-5 bg-primary text-white font-black tracking-widest text-lg overflow-hidden transition-all hover:pr-16"
                 >
                   <span className="font-display">EXPLORE THE SHOP</span>
                   <span className="material-symbols-outlined absolute right-4 translate-x-10 group-hover:translate-x-0 transition-transform">
@@ -115,7 +115,7 @@ export default async function HomePage() {
               </h2>
             </div>
             <Link
-              className="text-xs font-bold tracking-[0.2em] uppercase border-b border-primary pb-1 hover:text-primary transition-colors"
+              className="tap-target tap-target-subtle -mx-2 rounded-full px-2 text-xs font-bold tracking-[0.2em] uppercase border-b border-primary pb-1 hover:text-primary transition-colors"
               href="/products"
             >
               View_All_Inventory
@@ -126,7 +126,7 @@ export default async function HomePage() {
               <Link
                 key={p.id}
                 href={`/products/${p.id}`}
-                className="bg-[var(--background-dark)] group cursor-pointer p-6 transition-all hover:bg-primary/5"
+                className="tap-target tap-target-subtle bg-[var(--background-dark)] group cursor-pointer p-6 transition-all hover:bg-primary/5"
               >
                 <div className="aspect-[3/4] overflow-hidden mb-6 bg-primary/5 grayscale hover:grayscale-0 transition-all duration-500">
                   {p.image_url ? (
@@ -224,7 +224,7 @@ export default async function HomePage() {
             <div className="flex flex-col items-start gap-6">
               <Link
                 href="/login"
-                className="group relative inline-flex items-center justify-center overflow-hidden bg-primary px-12 py-5 text-lg font-black tracking-widest text-white transition-all hover:pr-16"
+                className="tap-target tap-target-solid group relative inline-flex items-center justify-center overflow-hidden bg-primary px-12 py-5 text-lg font-black tracking-widest text-white transition-all hover:pr-16"
               >
                 <span className="font-display">LOGIN_TO_JOIN</span>
                 <span className="material-symbols-outlined absolute right-4 translate-x-10 transition-transform group-hover:translate-x-0">

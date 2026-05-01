@@ -13,14 +13,11 @@ export default function CartIconWithCount({ userId }: CartIconWithCountProps) {
   const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ?? "";
 
   const fetchCount = useCallback(async () => {
-    if (userId == null) {
+    if (userId == null || !baseUrl) {
       setCount(0);
       return;
     }
-    if (!baseUrl) {
-      setCount(0);
-      return;
-    }
+
     try {
       const url = `${baseUrl}/cart/count?user_id=${userId}`;
       const res = await fetch(url, { cache: "no-store" });
@@ -44,11 +41,13 @@ export default function CartIconWithCount({ userId }: CartIconWithCountProps) {
   return (
     <Link
       href="/cart"
-      className="relative hover:text-primary transition-colors"
-      aria-label={userId != null ? `購物車 ${displayCount} 件` : "購物車"}
+      className="tap-target tap-target-subtle relative inline-flex size-11 items-center justify-center rounded-full hover:text-primary transition-colors"
+      aria-label={
+        userId != null ? `Cart, ${displayCount} items` : "Cart, sign in required"
+      }
     >
       <span className="material-symbols-outlined">shopping_bag</span>
-      <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-black">
+      <span className="absolute right-1 top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-bold text-black">
         {displayCount > 99 ? "99+" : displayCount}
       </span>
     </Link>

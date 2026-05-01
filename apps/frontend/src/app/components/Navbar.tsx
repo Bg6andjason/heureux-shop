@@ -24,7 +24,7 @@ export default async function Navbar() {
         <div className="flex items-center gap-12">
           <Link
             href="/"
-            className="group flex cursor-pointer items-center gap-2"
+            className="tap-target tap-target-subtle group -mx-2 flex cursor-pointer items-center gap-2 rounded-full px-2"
           >
             <span className="material-symbols-outlined text-3xl text-primary">
               Nest_Farsight_Seasonal

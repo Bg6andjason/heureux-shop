@@ -99,7 +99,7 @@ export default async function ProductsPage({
       <main className="max-w-7xl mx-auto w-full px-6 lg:px-20 py-12">
         {/* Breadcrumbs */}
         <nav className="flex items-center gap-2 mb-8 text-xs font-medium uppercase tracking-widest opacity-60">
-          <Link className="hover:text-primary transition-colors" href="/">
+          <Link className="tap-target tap-target-subtle -mx-2 rounded-full px-2 hover:text-primary transition-colors" href="/">
             Home
           </Link>
           <span className="material-symbols-outlined text-[10px]">
@@ -147,7 +147,7 @@ export default async function ProductsPage({
           {showLoadMore && (
             <Link
               href={buildListUrl(currentPage + 1, q, category, sort)}
-              className="px-12 py-5 bg-transparent border-2 border-primary text-primary font-display text-2xl uppercase tracking-widest rounded-lg hover:bg-primary hover:text-white transition-all duration-300"
+              className="tap-target tap-target-solid px-12 py-5 bg-transparent border-2 border-primary text-primary font-display text-2xl uppercase tracking-widest rounded-lg hover:bg-primary hover:text-white transition-all duration-300"
             >
               Load More
             </Link>

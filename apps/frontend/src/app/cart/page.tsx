@@ -64,7 +64,7 @@ export default async function CartPage() {
                 <p className="text-slate-400 mb-4">Your cart is empty</p>
                 <Link
                   href="/products"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white text-sm font-medium rounded-lg hover:opacity-90 transition-opacity"
+                  className="tap-target tap-target-solid inline-flex items-center gap-2 px-6 py-3 bg-primary text-white text-sm font-medium rounded-lg hover:opacity-90 transition-opacity"
                 >
                   Continue Shopping
                 </Link>
@@ -74,7 +74,7 @@ export default async function CartPage() {
                 <div className="flex flex-col gap-10">
                   {items.map((item) => (
                     <div key={item.id} className="flex flex-col sm:flex-row gap-6 items-start sm:items-center py-4 group">
-                      <Link href={`/products/${item.product_id}`} className="flex-shrink-0 w-32">
+                      <Link href={`/products/${item.product_id}`} className="tap-target flex-shrink-0 w-32 rounded-xl">
                         <div className="bg-[#262626] rounded-xl overflow-hidden aspect-square border border-white/5">
                           {item.image_url ? (
                             <Image
@@ -109,7 +109,7 @@ export default async function CartPage() {
                       You qualify for <span className="text-primary font-bold uppercase tracking-wide">Free Standard Shipping</span>
                     </p>
                   </div>
-                  <Link className="text-[10px] font-black uppercase tracking-[0.2em] border-b-2  border-primary/40 hover:border-primary transition-all pb-1" href="#">
+                  <Link className="tap-target tap-target-subtle -mx-2 rounded-full px-2 text-[10px] font-black uppercase tracking-[0.2em] border-b-2  border-primary/40 hover:border-primary transition-all pb-1" href="#">
                     Details
                   </Link>
                 </div>
@@ -144,7 +144,7 @@ export default async function CartPage() {
                 <CheckoutButton baseUrl={baseUrl} userId={userId} />
                 <Link
                   href="/products"
-                  className="w-full bg-transparent text-white border border-white/20 py-5 rounded-xl font-display text-xl tracking-[0.15em] hover:bg-white/5 transition-all text-center"
+                  className="tap-target tap-target-subtle w-full bg-transparent text-white border border-white/20 py-5 rounded-xl font-display text-xl tracking-[0.15em] hover:bg-white/5 transition-all text-center"
                 >
                   Continue Shopping
                 </Link>
@@ -173,9 +173,9 @@ export default async function CartPage() {
             <p className="text-[10px] uppercase tracking-[0.4em] font-bold">© 2024 HEUREUX ATELIER</p>
           </div>
           <div className="flex gap-12 text-[10px] font-black uppercase tracking-[0.3em] text-slate-500">
-            <Link className="hover:text-primary transition-colors" href="#">Privacy</Link>
-            <Link className="hover:text-primary transition-colors" href="#">Terms</Link>
-            <Link className="hover:text-primary transition-colors" href="#">Contact</Link>
+            <Link className="tap-target tap-target-subtle -mx-2 rounded-full px-2 hover:text-primary transition-colors" href="#">Privacy</Link>
+            <Link className="tap-target tap-target-subtle -mx-2 rounded-full px-2 hover:text-primary transition-colors" href="#">Terms</Link>
+            <Link className="tap-target tap-target-subtle -mx-2 rounded-full px-2 hover:text-primary transition-colors" href="#">Contact</Link>
           </div>
         </div>
       </footer>

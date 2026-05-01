@@ -25,6 +25,54 @@ body {
   font-family: var(--font-space-grotesk), system-ui, sans-serif;
 }
 
+.tap-target {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .tap-target {
+    min-height: 44px;
+    transition-duration: 140ms;
+    transition-property: background-color, border-color, box-shadow, color, opacity, transform;
+    transition-timing-function: ease;
+  }
+
+  .tap-target:active:not(:disabled) {
+    transform: scale(0.97);
+    border-color: rgba(255, 87, 34, 0.65);
+    box-shadow:
+      0 0 0 1px rgba(255, 87, 34, 0.28),
+      inset 0 0 24px rgba(255, 87, 34, 0.14);
+  }
+
+  .tap-target-subtle:active:not(:disabled) {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: var(--primary);
+  }
+
+  .tap-target-solid:active:not(:disabled) {
+    opacity: 0.92;
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.2),
+      inset 0 0 24px rgba(0, 0, 0, 0.16);
+  }
+
+  .tap-product-card:active .tap-product-media {
+    transform: scale(0.985);
+    border-color: rgba(255, 87, 34, 0.45);
+    box-shadow: 0 0 0 1px rgba(255, 87, 34, 0.22);
+  }
+
+  .tap-product-card:active .tap-product-title {
+    color: var(--primary);
+  }
+
+  .tap-product-card:active .tap-product-overlay {
+    background-color: rgba(255, 87, 34, 0.14);
+  }
+}
+
 .material-symbols-outlined {
   font-family: "Material Symbols Outlined";
   font-weight: normal;

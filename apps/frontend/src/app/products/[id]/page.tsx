@@ -62,9 +62,9 @@ export default async function ProductDetailPage({
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12 flex-grow">
         {/* Breadcrumbs */}
         <nav className="flex mb-8 text-xs font-medium uppercase tracking-widest text-slate-500 dark:text-slate-400">
-          <Link className="hover:text-primary" href="/">Home</Link>
+          <Link className="tap-target tap-target-subtle -mx-2 rounded-full px-2 hover:text-primary" href="/">Home</Link>
           <span className="mx-2">/</span>
-          <Link className="hover:text-primary" href="/products">Apparel</Link>
+          <Link className="tap-target tap-target-subtle -mx-2 rounded-full px-2 hover:text-primary" href="/products">Apparel</Link>
           <span className="mx-2">/</span>
           <span className="text-slate-900 dark:text-slate-100">{product.name}</span>
         </nav>
@@ -106,14 +106,14 @@ export default async function ProductDetailPage({
             <div>
               <div className="flex justify-between items-center mb-4">
                 <p className="text-sm font-bold uppercase tracking-widest">Select Size</p>
-                <button type="button" className="text-xs underline text-slate-500 dark:text-slate-400 hover:text-primary">Size Guide</button>
+                <button type="button" className="tap-target tap-target-subtle -mx-2 rounded-full px-2 text-xs underline text-slate-500 dark:text-slate-400 hover:text-primary">Size Guide</button>
               </div>
               <div className="grid grid-cols-5 gap-2">
                 {["XS", "S", "M", "L", "XL"].map((s) => (
                   <button
                     key={s}
                     type="button"
-                    className={`py-3 rounded text-sm font-medium transition-colors border ${
+                    className={`tap-target tap-target-subtle py-3 rounded text-sm font-medium transition-colors border ${
                       s === "M" ? "border-2 border-primary bg-primary/10 font-bold" : "border-slate-300 dark:border-slate-800 hover:border-primary"
                     }`}
                   >
@@ -137,7 +137,7 @@ export default async function ProductDetailPage({
               ) : (
                 <Link
                   href="/login"
-                  className="w-full bg-primary hover:bg-[#E64A19] text-white py-5 rounded font-display text-2xl tracking-wide transition-all shadow-lg shadow-primary/20 text-center"
+                  className="tap-target tap-target-solid w-full bg-primary hover:bg-[#E64A19] text-white py-5 rounded font-display text-2xl tracking-wide transition-all shadow-lg shadow-primary/20 text-center"
                 >
                   Add to Bag
                 </Link>
@@ -151,7 +151,7 @@ export default async function ProductDetailPage({
               ) : (
                 <Link
                   href={`/login?from=/products/${product.id}`}
-                  className="w-full border border-slate-300 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900 py-4 rounded font-medium text-sm uppercase tracking-widest transition-all flex items-center justify-center gap-2"
+                  className="tap-target tap-target-subtle w-full border border-slate-300 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900 py-4 rounded font-medium text-sm uppercase tracking-widest transition-all flex items-center justify-center gap-2"
                 >
                   <span className="material-symbols-outlined text-xl">favorite</span>
                   Add to Wishlist

@@ -52,10 +52,12 @@ export default function CheckoutButton({ baseUrl, userId }: CheckoutButtonProps)
       type="button"
       onClick={handleCheckout}
       disabled={pending}
-      className="w-full bg-primary text-white py-5 rounded-xl font-display text-xl tracking-[0.15em] hover:bg-[#E64A19] transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary/20 disabled:opacity-60"
+      className="tap-target tap-target-solid flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-5 font-display text-xl tracking-[0.15em] text-white shadow-lg shadow-primary/20 transition-all hover:bg-[#E64A19] disabled:opacity-60"
     >
-      {pending ? "Processing…" : "Checkout"}
-      <span className="material-symbols-outlined text-lg">arrow_forward</span>
+      {pending ? "Processing..." : "Checkout"}
+      <span className="material-symbols-outlined text-lg" aria-hidden>
+        arrow_forward
+      </span>
     </button>
   );
 }

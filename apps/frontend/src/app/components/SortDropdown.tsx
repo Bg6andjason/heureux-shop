@@ -63,7 +63,7 @@ export default function SortDropdown() {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="w-full flex items-center justify-between px-5 py-4 bg-transparent border-2 border-primary"
+        className="tap-target tap-target-subtle w-full flex items-center justify-between px-5 py-4 bg-transparent border-2 border-primary"
         aria-haspopup="listbox"
         aria-expanded={open}
       >
@@ -92,7 +92,7 @@ export default function SortDropdown() {
                 onChange(o.value);
                 setOpen(false);
               }}
-              className={`w-full text-left flex items-center justify-between px-5 py-3 hover:bg-white/5 cursor-pointer group transition-colors ${idx !== SORT_OPTIONS.length - 1 ? "border-b border-white/10" : ""}`}
+              className={`tap-target tap-target-subtle w-full text-left flex items-center justify-between px-5 py-3 hover:bg-white/5 cursor-pointer group transition-colors ${idx !== SORT_OPTIONS.length - 1 ? "border-b border-white/10" : ""}`}
               role="option"
               aria-selected={current === o.value}
             >

@@ -54,10 +54,7 @@ export default function FavoriteButton({
       disabled={pending || userId === null}
       aria-pressed={isFavorite}
       aria-label={isFavorite ? "Remove from wishlist" : "Add to wishlist"}
-      className={
-        className ||
-        "w-full border border-slate-300 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900 py-4 rounded font-medium text-sm uppercase tracking-widest transition-all flex items-center justify-center gap-2 disabled:cursor-not-allowed disabled:opacity-60"
-      }
+      className={`${className || "w-full border border-slate-300 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900 py-4 rounded font-medium text-sm uppercase tracking-widest transition-all flex items-center justify-center gap-2 disabled:cursor-not-allowed disabled:opacity-60"} tap-target tap-target-subtle`}
     >
       {isFavorite ? (
         <svg
