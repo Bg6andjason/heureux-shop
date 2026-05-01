@@ -1,5 +1,7 @@
 import Link from "next/link";
 import CartIconWithCount from "./CartIconWithCount";
+import ProductSearchBar from "./ProductSearchBar";
+import UserAccountMenu from "./UserAccountMenu";
 import {
   getAuthDisplayName,
   getAuthEmail,
@@ -7,7 +9,6 @@ import {
   getAuthUserId,
   logoutAction,
 } from "@/app/actions/auth";
-import ProductSearchBar from "./ProductSearchBar";
 
 export default async function Navbar() {
   const userId = await getAuthUserId();
@@ -42,86 +43,17 @@ export default async function Navbar() {
           <CartIconWithCount userId={userId} />
 
           {isLoggedIn ? (
-            <div className="group relative flex items-center gap-2">
-              <span className="max-w-[120px] truncate text-sm text-slate-400">
-                {label}
-              </span>
-              <button
-                type="button"
-                className="transition-colors hover:text-primary"
-                aria-label="開啟會員選單"
-              >
-                <span className="material-symbols-outlined">person</span>
-              </button>
-              <div className="invisible absolute right-0 top-full z-50 mt-3 w-80 translate-y-2 border border-primary/20 bg-[#111] p-4 opacity-0 shadow-2xl shadow-black/40 transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
-                <div className="border-b border-white/10 pb-4">
-                  <div className="min-w-0">
-                    <p className="truncate text-sm font-bold uppercase tracking-widest text-white">
-                      {label}
-                    </p>
-                    {accountEmail && (
-                      <p className="mt-1 truncate text-xs text-slate-400">
-                        {accountEmail}
-                      </p>
-                    )}
-                  </div>
-                  <div className="mt-4 grid grid-cols-2 gap-2 text-center">
-                    <div className="bg-white/5 p-3">
-                      <p className="font-display text-lg font-bold text-white">
-                        {profile?.order_count ?? 0}
-                      </p>
-                      <p className="text-[11px] uppercase tracking-widest text-slate-500">
-                        Orders
-                      </p>
-                    </div>
-                    <div className="bg-white/5 p-3">
-                      <p className="font-display text-lg font-bold text-white">
-                        {profile?.cart_count ?? 0}
-                      </p>
-                      <p className="text-[11px] uppercase tracking-widest text-slate-500">
-                        Cart
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <nav className="grid py-2 text-sm">
-                  {[
-                    ["會員中心", "/account", "manage_accounts"],
-                    ["我的訂單", "/orders", "receipt_long"],
-                    ["收藏清單", "/wishlist", "favorite"],
-                  ].map(([text, href, icon]) => (
-                    <Link
-                      key={href}
-                      href={href}
-                      className="flex items-center gap-3 px-2 py-3 text-slate-300 transition-colors hover:bg-white/5 hover:text-primary"
-                    >
-                      <span className="material-symbols-outlined text-[20px]">
-                        {icon}
-                      </span>
-                      <span>{text}</span>
-                    </Link>
-                  ))}
-                </nav>
-                <form
-                  action={logoutAction}
-                  className="border-t border-white/10 pt-2"
-                >
-                  <button
-                    type="submit"
-                    className="flex w-full items-center gap-3 px-2 py-3 text-left text-sm text-slate-400 transition-colors hover:bg-white/5 hover:text-primary"
-                  >
-                    <span className="material-symbols-outlined text-[20px]">
-                      logout
-                    </span>
-                    <span>登出</span>
-                  </button>
-                </form>
-              </div>
-            </div>
+            <UserAccountMenu
+              label={label}
+              accountEmail={accountEmail}
+              orderCount={profile?.order_count ?? 0}
+              cartCount={profile?.cart_count ?? 0}
+              logoutAction={logoutAction}
+            />
           ) : (
             <Link
               href="/login"
-              className="transition-colors hover:text-primary"
+              className="tap-target tap-target-subtle inline-flex size-11 items-center justify-center rounded-full transition-colors hover:text-primary"
               aria-label="登入"
             >
               <span className="material-symbols-outlined">person</span>

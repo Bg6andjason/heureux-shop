@@ -133,6 +133,41 @@ h3 {
   animation: marquee 30s linear infinite;
 }
 
+.user-menu-panel {
+  transform-origin: top right;
+  will-change: opacity, transform;
+}
+
+.user-menu-fade-in {
+  animation: user-menu-fade-in 160ms ease-out both;
+}
+
+.user-menu-fade-out {
+  pointer-events: none;
+  animation: user-menu-fade-out 180ms ease both;
+}
+
+@keyframes user-menu-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes user-menu-fade-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
 
 .faulty-terminal-container {
   width: 100%;

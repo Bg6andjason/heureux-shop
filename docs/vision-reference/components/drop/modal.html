@@ -1,0 +1,375 @@
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@900&amp;family=Space+Grotesk:wght@500;700&amp;family=Epilogue:wght@400;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error": "#690005",
+              "secondary-fixed-dim": "#c6c6c7",
+              "surface-container-highest": "#43302b",
+              "on-tertiary-fixed-variant": "#004c6d",
+              "on-primary-fixed": "#3b0900",
+              "surface-container-high": "#372621",
+              "primary-container": "#ff5722",
+              outline: "#ab8980",
+              "on-background": "#fadcd4",
+              "error-container": "#93000a",
+              "tertiary-fixed-dim": "#86cfff",
+              "on-primary-fixed-variant": "#862200",
+              background: "#1e100c",
+              "tertiary-container": "#019ad8",
+              "primary-fixed": "#ffdbd1",
+              "on-surface": "#fadcd4",
+              primary: "#ffb5a0",
+              "on-tertiary-fixed": "#001e2e",
+              tertiary: "#86cfff",
+              "inverse-on-surface": "#3e2c27",
+              "surface-dim": "#1e100c",
+              "surface-container-low": "#271813",
+              "inverse-primary": "#b02f00",
+              "surface-tint": "#ffb5a0",
+              "on-primary-container": "#541200",
+              error: "#ffb4ab",
+              "secondary-container": "#454747",
+              "inverse-surface": "#fadcd4",
+              surface: "#1e100c",
+              "on-tertiary-container": "#002d43",
+              "outline-variant": "#5b4039",
+              "on-secondary-fixed": "#1a1c1c",
+              "on-tertiary": "#00344c",
+              secondary: "#c6c6c7",
+              "surface-container-lowest": "#180b07",
+              "surface-bright": "#483530",
+              "on-secondary": "#2f3131",
+              "on-secondary-fixed-variant": "#454747",
+              "tertiary-fixed": "#c8e6ff",
+              "on-secondary-container": "#b4b5b5",
+              "surface-variant": "#43302b",
+              "on-error-container": "#ffdad6",
+              "on-primary": "#5f1500",
+              "surface-container": "#2c1c17",
+              "secondary-fixed": "#e2e2e2",
+              "primary-fixed-dim": "#ffb5a0",
+              "on-surface-variant": "#e4beb4",
+            },
+            borderRadius: {
+              DEFAULT: "0px",
+              lg: "0px",
+              xl: "0px",
+              full: "9999px",
+            },
+            spacing: {
+              "section-padding": "10rem",
+              "container-max": "1280px",
+              "technical-margin": "2.5rem",
+              gutter: "1px",
+            },
+            fontFamily: {
+              "display-lg": ["Barlow Condensed"],
+              "heading-md": ["Barlow Condensed"],
+              "body-base": ["Space Grotesk"],
+              "technical-label": ["Space Grotesk"],
+              "hero-mega": ["Barlow Condensed"],
+              epilogue: ["Epilogue"],
+            },
+            fontSize: {
+              "display-lg": ["6rem", { lineHeight: "0.9", fontWeight: "900" }],
+              "heading-md": [
+                "1.5rem",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "0.05em",
+                  fontWeight: "900",
+                },
+              ],
+              "body-base": [
+                "14px",
+                { lineHeight: "2", letterSpacing: "0.05em", fontWeight: "500" },
+              ],
+              "technical-label": [
+                "10px",
+                { lineHeight: "1", letterSpacing: "0.4em", fontWeight: "700" },
+              ],
+              "hero-mega": [
+                "13rem",
+                {
+                  lineHeight: "0.85",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "900",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+        display: inline-block;
+        line-height: 1;
+      }
+      .brutalist-border {
+        border: 2px solid white;
+      }
+      .brutalist-border-primary {
+        border: 2px solid #ff5722;
+      }
+    </style>
+  </head>
+  <body class="bg-surface-dim text-on-surface font-body-base overflow-hidden">
+    <!-- TopAppBar -->
+    <nav
+      class="fixed top-0 w-full z-50 bg-black/80 dark:bg-black/80 backdrop-blur-xl border-b-2 border-white dark:border-white flex justify-between items-center w-full px-6 py-4"
+    >
+      <div
+        class="text-2xl font-black text-white dark:text-white tracking-tighter italic font-epilogue"
+      >
+        HEUREUX
+      </div>
+      <div class="hidden md:flex gap-8">
+        <a
+          class="font-epilogue font-black tracking-[0.25em] uppercase text-white/60 dark:text-white/60 hover:text-[#FF5722] transition-colors duration-300"
+          href="#"
+          >SHOP</a
+        >
+        <a
+          class="font-epilogue font-black tracking-[0.25em] uppercase text-white/60 dark:text-white/60 hover:text-[#FF5722] transition-colors duration-300"
+          href="#"
+          >ARCHIVE</a
+        >
+        <a
+          class="font-epilogue font-black tracking-[0.25em] uppercase text-white/60 dark:text-white/60 hover:text-[#FF5722] transition-colors duration-300"
+          href="#"
+          >COLLECTIONS</a
+        >
+        <a
+          class="font-epilogue font-black tracking-[0.25em] uppercase text-white/60 dark:text-white/60 hover:text-[#FF5722] transition-colors duration-300"
+          href="#"
+          >STUDIO</a
+        >
+      </div>
+      <div class="flex gap-4 items-center">
+        <span
+          class="material-symbols-outlined text-white cursor-pointer hover:text-[#FF5722] transition-colors"
+          data-icon="shopping_bag"
+          >shopping_bag</span
+        >
+        <span
+          class="material-symbols-outlined text-white cursor-pointer hover:text-[#FF5722] transition-colors"
+          data-icon="person"
+          >person</span
+        >
+      </div>
+    </nav>
+    <!-- Main Content Canvas (Background context for modal) -->
+    <main
+      class="min-h-screen pt-32 px-10 grid grid-cols-4 border-l border-white/10 opacity-20 pointer-events-none"
+    >
+      <div class="col-span-2 space-y-8 border-r border-white/10 p-10">
+        <h1 class="font-hero-mega text-hero-mega text-white">CORE</h1>
+        <p class="max-w-md font-body-base text-body-base">
+          TECHNICAL GARMENTS FOR THE MODERN TERMINAL. BUILT FOR DURABILITY,
+          DESIGNED FOR PRECISION.
+        </p>
+      </div>
+      <div class="col-span-2 p-10 bg-surface-container">
+        <img
+          class="w-full h-[600px] object-cover grayscale"
+          data-alt="A high-contrast studio photograph of a premium black heavyweight cotton t-shirt displayed against a stark, industrial grey background. The lighting is dramatic and directional, emphasizing the fabric's technical texture and structured silhouette. The overall aesthetic is minimalist, brutalist, and evokes a sense of utilitarian luxury consistent with high-fashion technical brands."
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUPHv7B6KBr9XOyz2JgsyCcpkTBVym21u9jLclljGn8DWB82ghqU3JC1matL56KoBoCVGpf61sTvV9UUkbL8p-xpCz0lg7LjWETCdjzXVu1fuPVhv5eujwbCq3MwfmiRS1fce9mQakqjbh-XLMQ8zqhvyDJVC0eeisjI2OAcDoX3SM11oktG5cDUHTSXmAlrpokuht8QlfXfZt0tM1Kfqv8sVrg09W1P1IpbIwKgZHZriD0WmPAZ6VhEh9heKmVzc8Y75469iOraFG"
+        />
+      </div>
+    </main>
+    <!-- Modal Overlay -->
+    <div
+      class="fixed inset-0 z-[60] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
+    >
+      <!-- Modal Container -->
+      <div
+        class="relative w-full max-w-2xl bg-black border-2 border-white shadow-[10px_10px_0px_0px_#ff5722]"
+      >
+        <!-- Orange Accent Top Border -->
+        <div
+          class="absolute -top-[2px] -left-[2px] w-[calc(100%+4px)] h-2 bg-[#ff5722]"
+        ></div>
+        <div class="p-10 flex flex-col items-center">
+          <!-- Success Icon -->
+          <div class="mb-6">
+            <span
+              class="material-symbols-outlined text-8xl text-[#ff5722]"
+              data-icon="check_circle"
+              style="font-variation-settings: &quot;FILL&quot; 1"
+              >check_circle</span
+            >
+          </div>
+          <!-- Header -->
+          <h2
+            class="font-display-lg text-4xl md:text-5xl text-white tracking-[0.3em] uppercase mb-10 text-center"
+          >
+            ITEM ADDED TO SYSTEM
+          </h2>
+          <!-- Product Horizontal Card -->
+          <div
+            class="w-full border border-white/20 flex flex-row items-stretch mb-12 bg-surface-container-low"
+          >
+            <div class="w-1/3 border-r border-white/20 p-2">
+              <img
+                class="w-full aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                data-alt="A close-up technical product shot of a black heavy-gauge cotton t-shirt. The garment is presented in a flat, architectural style on a dark charcoal surface, highlighted by sharp, high-key white lighting that defines the collar's structure. The visual style is aggressive, modernist, and strictly minimalist with high contrast."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAM40rOAtZ_FQNMIqJo4Enoivfd1mVjRc_l_WjIseiKmrj03cd2qqQk4wP4FrWq-yq2ZrqSPxjPjaFs054LmlmFo-eNQ1HMIiZBAHR1NRqqUXW-0A5YD981AiTa3aWeCt2qmteoVXN6CE_o9P6eM18wpywjrcxiDpRw1cTtwHhY60RrQRqchYMVhoreZ99NYa9LvSkVwt5mxbiCwRARS22C9oWwGyM2XJ52ttgR6oCuSKr08_HetHMrEqRLOS9aUL_urJa56mbPBeGJ"
+              />
+            </div>
+            <div class="w-2/3 p-6 flex flex-col justify-center gap-2">
+              <div
+                class="font-technical-label text-technical-label text-[#ff5722]"
+              >
+                IDENTIFICATION // 004-CRT
+              </div>
+              <div class="font-heading-md text-heading-md text-white uppercase">
+                HEUREUX CORE TEE
+              </div>
+              <div class="font-body-base text-2xl text-white mt-2">$65.00</div>
+            </div>
+          </div>
+          <!-- Action Buttons -->
+          <div class="w-full flex flex-col gap-4">
+            <button
+              class="w-full bg-[#ff5722] py-6 px-8 flex justify-between items-center group transition-all duration-200 active:scale-[0.98]"
+            >
+              <span
+                class="font-epilogue font-black text-black tracking-[0.2em] text-xl"
+                >PROCEED TO CHECKOUT</span
+              >
+              <span
+                class="material-symbols-outlined text-black group-hover:translate-x-2 transition-transform"
+                data-icon="east"
+                >east</span
+              >
+            </button>
+            <button
+              class="w-full border-2 border-white py-6 px-8 flex justify-between items-center group hover:bg-white hover:text-black transition-all duration-200 active:scale-[0.98]"
+            >
+              <span class="font-epilogue font-black tracking-[0.2em] text-xl"
+                >CONTINUE SHOPPING</span
+              >
+              <span
+                class="material-symbols-outlined group-hover:rotate-180 transition-transform"
+                data-icon="sync"
+                >sync</span
+              >
+            </button>
+          </div>
+          <!-- Technical Footer Decoration -->
+          <div class="mt-8 w-full flex justify-between items-center opacity-30">
+            <div class="h-[1px] flex-grow bg-white"></div>
+            <div class="px-4 font-technical-label text-[8px]">
+              LOGISTIC_NODE_04 // READY
+            </div>
+            <div class="h-[1px] flex-grow bg-white"></div>
+          </div>
+        </div>
+        <!-- Close Button (Absolute) -->
+        <button
+          class="absolute top-4 right-4 text-white hover:text-[#ff5722] transition-colors p-2"
+        >
+          <span class="material-symbols-outlined text-3xl" data-icon="close"
+            >close</span
+          >
+        </button>
+      </div>
+    </div>
+    <!-- BottomNavBar (Hidden on desktop, logic as per mandate) -->
+    <nav
+      class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-stretch bg-black border-t-2 border-white"
+    >
+      <div
+        class="flex flex-col items-center justify-center text-white p-2 hover:bg-white/10 active:scale-95 transition-all flex-1"
+      >
+        <span class="material-symbols-outlined" data-icon="home">home</span>
+        <span class="font-epilogue text-[10px] font-bold tracking-widest"
+          >HOME</span
+        >
+      </div>
+      <div
+        class="flex flex-col items-center justify-center text-white p-2 hover:bg-white/10 active:scale-95 transition-all flex-1"
+      >
+        <span class="material-symbols-outlined" data-icon="grid_view"
+          >grid_view</span
+        >
+        <span class="font-epilogue text-[10px] font-bold tracking-widest"
+          >EXPLORE</span
+        >
+      </div>
+      <div
+        class="flex flex-col items-center justify-center bg-[#FF5722] text-black p-2 active:scale-95 transition-all flex-1"
+      >
+        <span class="material-symbols-outlined" data-icon="shopping_cart"
+          >shopping_cart</span
+        >
+        <span class="font-epilogue text-[10px] font-bold tracking-widest"
+          >CART</span
+        >
+      </div>
+      <div
+        class="flex flex-col items-center justify-center text-white p-2 hover:bg-white/10 active:scale-95 transition-all flex-1"
+      >
+        <span class="material-symbols-outlined" data-icon="person">person</span>
+        <span class="font-epilogue text-[10px] font-bold tracking-widest"
+          >USER</span
+        >
+      </div>
+    </nav>
+    <!-- Footer (Placeholder for scrolling) -->
+    <footer
+      class="w-full py-20 px-10 flex flex-col items-start gap-8 bg-black border-t-2 border-white mt-20 opacity-50"
+    >
+      <div class="text-white font-black font-epilogue">HEUREUX SYSTEM</div>
+      <div class="flex gap-10">
+        <a
+          class="font-epilogue text-xs tracking-widest uppercase text-white/40 hover:text-white transition-opacity"
+          href="#"
+          >PRIVACY</a
+        >
+        <a
+          class="font-epilogue text-xs tracking-widest uppercase text-white/40 hover:text-white transition-opacity"
+          href="#"
+          >LOGISTICS</a
+        >
+        <a
+          class="font-epilogue text-xs tracking-widest uppercase text-white/40 hover:text-white transition-opacity"
+          href="#"
+          >CONTACT</a
+        >
+      </div>
+      <div
+        class="font-epilogue text-xs tracking-widest uppercase text-white/40"
+      >
+        ©2024 HEUREUX SYSTEM. UTILITARIAN FORM.
+      </div>
+    </footer>
+  </body>
+</html>
