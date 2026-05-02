@@ -18,6 +18,7 @@ const MENU_ITEMS = [
 ] as const;
 
 const FADE_DURATION_MS = 180;
+const POINTER_CLOSE_DELAY_MS = 160;
 
 export default function UserAccountMenu({
   label,
@@ -29,6 +30,7 @@ export default function UserAccountMenu({
   const router = useRouter();
   const rootRef = useRef<HTMLDivElement | null>(null);
   const timerRef = useRef<number | null>(null);
+  const closeDelayRef = useRef<number | null>(null);
   const isOpenRef = useRef(false);
   const isClosingRef = useRef(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -52,11 +54,19 @@ export default function UserAccountMenu({
     }
   }, []);
 
+  const clearCloseDelay = useCallback(() => {
+    if (closeDelayRef.current !== null) {
+      window.clearTimeout(closeDelayRef.current);
+      closeDelayRef.current = null;
+    }
+  }, []);
+
   const openMenu = useCallback(() => {
+    clearCloseDelay();
     clearTimer();
     setClosingState(false);
     setOpenState(true);
-  }, [clearTimer, setClosingState, setOpenState]);
+  }, [clearCloseDelay, clearTimer, setClosingState, setOpenState]);
 
   const closeMenu = useCallback(
     (afterClose?: () => void) => {
@@ -67,6 +77,7 @@ export default function UserAccountMenu({
 
       if (isClosingRef.current) return;
 
+      clearCloseDelay();
       clearTimer();
       setClosingState(true);
       timerRef.current = window.setTimeout(() => {
@@ -76,8 +87,16 @@ export default function UserAccountMenu({
         afterClose?.();
       }, FADE_DURATION_MS);
     },
-    [clearTimer, setClosingState, setOpenState],
+    [clearCloseDelay, clearTimer, setClosingState, setOpenState],
   );
+
+  const schedulePointerClose = useCallback(() => {
+    clearCloseDelay();
+    closeDelayRef.current = window.setTimeout(() => {
+      closeDelayRef.current = null;
+      closeMenu();
+    }, POINTER_CLOSE_DELAY_MS);
+  }, [clearCloseDelay, closeMenu]);
 
   const handleIconClick = () => {
     if (isOpenRef.current) closeMenu();
@@ -117,6 +136,7 @@ export default function UserAccountMenu({
   }, [closeMenu]);
 
   useEffect(() => clearTimer, [clearTimer]);
+  useEffect(() => clearCloseDelay, [clearCloseDelay]);
 
   const menuVisible = isOpen || isClosing;
 
@@ -128,7 +148,7 @@ export default function UserAccountMenu({
         if (e.pointerType === "mouse") openMenu();
       }}
       onPointerLeave={(e) => {
-        if (e.pointerType === "mouse") closeMenu();
+        if (e.pointerType === "mouse") schedulePointerClose();
       }}
     >
       <span className="max-w-[120px] truncate text-sm text-slate-400">
@@ -147,69 +167,76 @@ export default function UserAccountMenu({
 
       {menuVisible && (
         <div
-          className={`user-menu-panel absolute right-0 top-full z-50 mt-3 w-80 border border-primary/20 bg-[#111] p-4 shadow-2xl shadow-black/40 ${
-            isClosing ? "user-menu-fade-out" : "user-menu-fade-in"
-          }`}
-          role="menu"
+          className="absolute right-0 top-full z-50 w-80 pt-3"
+          onPointerEnter={(e) => {
+            if (e.pointerType === "mouse") openMenu();
+          }}
         >
-          <div className="border-b border-white/10 pb-4">
-            <div className="min-w-0">
-              <p className="truncate text-sm font-bold uppercase tracking-widest text-white">
-                {label}
-              </p>
-              {accountEmail && (
-                <p className="mt-1 truncate text-xs text-slate-400">
-                  {accountEmail}
+          <div
+            className={`user-menu-panel border border-primary/20 bg-[#111] p-4 shadow-2xl shadow-black/40 ${
+              isClosing ? "user-menu-fade-out" : "user-menu-fade-in"
+            }`}
+            role="menu"
+          >
+            <div className="border-b border-white/10 pb-4">
+              <div className="min-w-0">
+                <p className="truncate text-sm font-bold uppercase tracking-widest text-white">
+                  {label}
                 </p>
-              )}
-            </div>
-            <div className="mt-4 grid grid-cols-2 gap-2 text-center">
-              <div className="bg-white/5 p-3">
-                <p className="font-display text-lg font-bold text-white">
-                  {orderCount}
-                </p>
-                <p className="text-[11px] uppercase tracking-widest text-slate-500">
-                  Orders
-                </p>
+                {accountEmail && (
+                  <p className="mt-1 truncate text-xs text-slate-400">
+                    {accountEmail}
+                  </p>
+                )}
               </div>
-              <div className="bg-white/5 p-3">
-                <p className="font-display text-lg font-bold text-white">
-                  {cartCount}
-                </p>
-                <p className="text-[11px] uppercase tracking-widest text-slate-500">
-                  Cart
-                </p>
+              <div className="mt-4 grid grid-cols-2 gap-2 text-center">
+                <div className="bg-white/5 p-3">
+                  <p className="font-display text-lg font-bold text-white">
+                    {orderCount}
+                  </p>
+                  <p className="text-[11px] uppercase tracking-widest text-slate-500">
+                    Orders
+                  </p>
+                </div>
+                <div className="bg-white/5 p-3">
+                  <p className="font-display text-lg font-bold text-white">
+                    {cartCount}
+                  </p>
+                  <p className="text-[11px] uppercase tracking-widest text-slate-500">
+                    Cart
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <nav className="grid py-2 text-sm" aria-label="會員選單">
-            {MENU_ITEMS.map(([text, href, icon]) => (
+            <nav className="grid py-2 text-sm" aria-label="會員選單">
+              {MENU_ITEMS.map(([text, href, icon]) => (
+                <button
+                  key={href}
+                  type="button"
+                  onClick={() => navigateAfterFade(href)}
+                  className="tap-target tap-target-subtle flex items-center gap-3 px-2 py-3 text-left text-slate-300 transition-colors hover:bg-white/5 hover:text-primary"
+                  role="menuitem"
+                >
+                  <span className="material-symbols-outlined text-[20px]">
+                    {icon}
+                  </span>
+                  <span>{text}</span>
+                </button>
+              ))}
+            </nav>
+            <div className="border-t border-white/10 pt-2">
               <button
-                key={href}
                 type="button"
-                onClick={() => navigateAfterFade(href)}
-                className="tap-target tap-target-subtle flex items-center gap-3 px-2 py-3 text-left text-slate-300 transition-colors hover:bg-white/5 hover:text-primary"
+                onClick={logoutAfterFade}
+                className="tap-target tap-target-subtle flex w-full items-center gap-3 px-2 py-3 text-left text-sm text-slate-400 transition-colors hover:bg-white/5 hover:text-primary"
                 role="menuitem"
               >
                 <span className="material-symbols-outlined text-[20px]">
-                  {icon}
+                  logout
                 </span>
-                <span>{text}</span>
+                <span>登出</span>
               </button>
-            ))}
-          </nav>
-          <div className="border-t border-white/10 pt-2">
-            <button
-              type="button"
-              onClick={logoutAfterFade}
-              className="tap-target tap-target-subtle flex w-full items-center gap-3 px-2 py-3 text-left text-sm text-slate-400 transition-colors hover:bg-white/5 hover:text-primary"
-              role="menuitem"
-            >
-              <span className="material-symbols-outlined text-[20px]">
-                logout
-              </span>
-              <span>登出</span>
-            </button>
+            </div>
           </div>
         </div>
       )}
