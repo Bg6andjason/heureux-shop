@@ -39,10 +39,13 @@ export default async function Navbar() {
             </Link>
           </div>
 
-          <nav className="absolute left-1/2 -translate-x-1/2" aria-label="Main navigation">
+          <nav
+            className="absolute left-1/2 -translate-x-1/2 md:left-[42%] lg:left-1/2"
+            aria-label="Main navigation"
+          >
             <Link
               href="/products"
-              className="tap-target inline-flex rounded-full border border-primary bg-primary px-5 py-2.5 text-xs font-black uppercase tracking-widest text-black shadow-lg shadow-primary/25 transition-all hover:-translate-y-0.5 hover:border-white hover:bg-white hover:shadow-white/20"
+              className="tap-target inline-flex min-h-11 items-center justify-center rounded-full border border-primary bg-primary px-5 py-0 text-xs font-black uppercase leading-none tracking-widest text-black shadow-lg shadow-primary/25 transition-all hover:-translate-y-0.5 hover:border-white hover:bg-white hover:shadow-white/20"
             >
               SHOP
             </Link>
