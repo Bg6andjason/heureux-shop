@@ -1,5 +1,6 @@
 import Link from "next/link";
 import CartIconWithCount from "./CartIconWithCount";
+import MobileBottomNav from "./MobileBottomNav";
 import ProductSearchBar from "./ProductSearchBar";
 import UserAccountMenu from "./UserAccountMenu";
 import {
@@ -38,7 +39,7 @@ export default async function Navbar() {
             </Link>
           </div>
 
-          <nav className="absolute left-1/2 -translate-x-1/2" aria-label="主導覽">
+          <nav className="absolute left-1/2 -translate-x-1/2" aria-label="Main navigation">
             <Link
               href="/products"
               className="tap-target inline-flex rounded-full border border-primary bg-primary px-5 py-2.5 text-xs font-black uppercase tracking-widest text-black shadow-lg shadow-primary/25 transition-all hover:-translate-y-0.5 hover:border-white hover:bg-white hover:shadow-white/20"
@@ -65,7 +66,7 @@ export default async function Navbar() {
               <Link
                 href="/login"
                 className="tap-target tap-target-subtle inline-flex size-11 items-center justify-center rounded-full transition-colors hover:text-primary"
-                aria-label="登入"
+                aria-label="Login"
               >
                 <span className="material-symbols-outlined">person</span>
               </Link>
@@ -74,36 +75,7 @@ export default async function Navbar() {
         </div>
       </header>
 
-      <nav
-        className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-4 border-t border-primary/20 bg-black/90 px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2.5 backdrop-blur-md sm:hidden"
-        aria-label="手機導覽"
-      >
-        <Link
-          href="/products"
-          className="tap-target tap-target-subtle inline-flex min-h-14 items-center justify-center rounded-full transition-colors hover:text-primary"
-          aria-label="商店"
-        >
-          <span className="material-symbols-outlined text-[26px]">storefront</span>
-        </Link>
-        <Link
-          href="/products"
-          className="tap-target tap-target-subtle inline-flex min-h-14 items-center justify-center rounded-full transition-colors hover:text-primary"
-          aria-label="搜尋"
-        >
-          <span className="material-symbols-outlined text-[26px]">search</span>
-        </Link>
-        <CartIconWithCount
-          userId={userId}
-          className="mx-auto min-h-14 text-[26px]"
-        />
-        <Link
-          href={accountHref}
-          className="tap-target tap-target-subtle inline-flex min-h-14 items-center justify-center rounded-full transition-colors hover:text-primary"
-          aria-label="使用者"
-        >
-          <span className="material-symbols-outlined text-[26px]">person</span>
-        </Link>
-      </nav>
+      <MobileBottomNav userId={userId} accountHref={accountHref} />
     </>
   );
 }

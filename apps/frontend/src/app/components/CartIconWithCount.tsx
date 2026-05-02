@@ -7,11 +7,13 @@ import { CART_UPDATED_EVENT } from "./AddToCartButton";
 interface CartIconWithCountProps {
   userId?: number | null;
   className?: string;
+  tabIndex?: number;
 }
 
 export default function CartIconWithCount({
   userId,
   className = "",
+  tabIndex,
 }: CartIconWithCountProps) {
   const [count, setCount] = useState<number | null>(null);
   const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ?? "";
@@ -49,6 +51,7 @@ export default function CartIconWithCount({
       aria-label={
         userId != null ? `Cart, ${displayCount} items` : "Cart, sign in required"
       }
+      tabIndex={tabIndex}
     >
       <span className="material-symbols-outlined">shopping_bag</span>
       <span className="absolute right-1 top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-bold text-black">
