@@ -39,7 +39,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${spaceGrotesk.variable} ${barlowCondensed.variable} antialiased min-h-screen flex flex-col bg-[var(--background-dark)] text-slate-100 overflow-x-hidden`}
+        className={`${spaceGrotesk.variable} ${barlowCondensed.variable} min-h-screen overflow-x-hidden bg-[var(--background-dark)] pb-24 text-slate-100 antialiased sm:pb-0 flex flex-col`}
       >
         <Navbar />
         {children}

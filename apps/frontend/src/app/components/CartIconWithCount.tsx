@@ -6,9 +6,13 @@ import { CART_UPDATED_EVENT } from "./AddToCartButton";
 
 interface CartIconWithCountProps {
   userId?: number | null;
+  className?: string;
 }
 
-export default function CartIconWithCount({ userId }: CartIconWithCountProps) {
+export default function CartIconWithCount({
+  userId,
+  className = "",
+}: CartIconWithCountProps) {
   const [count, setCount] = useState<number | null>(null);
   const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ?? "";
 
@@ -41,7 +45,7 @@ export default function CartIconWithCount({ userId }: CartIconWithCountProps) {
   return (
     <Link
       href="/cart"
-      className="tap-target tap-target-subtle relative inline-flex size-11 items-center justify-center rounded-full hover:text-primary transition-colors"
+      className={`tap-target tap-target-subtle relative inline-flex size-11 items-center justify-center rounded-full transition-colors hover:text-primary ${className}`}
       aria-label={
         userId != null ? `Cart, ${displayCount} items` : "Cart, sign in required"
       }
