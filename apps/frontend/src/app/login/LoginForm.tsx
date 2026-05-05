@@ -42,7 +42,7 @@ export default function LoginForm() {
             required
             autoComplete="email"
             className="w-full h-14 bg-slate-50 dark:bg-black border border-slate-200 dark:border-white/20 rounded px-4 pr-12 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
-            placeholder="name@example.com"
+            placeholder="demo@example.com"
           />
           <span className="material-symbols-outlined absolute right-4 top-4 text-slate-400 group-focus-within:text-primary transition-colors pointer-events-none">
             mail
@@ -72,7 +72,7 @@ export default function LoginForm() {
             required
             autoComplete="current-password"
             className="w-full h-14 bg-slate-50 dark:bg-black border border-slate-200 dark:border-white/20 rounded px-4 pr-12 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
-            placeholder="••••••••"
+            placeholder="demo123"
           />
           <button
             type="button"
