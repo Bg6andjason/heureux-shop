@@ -10,9 +10,13 @@
     "dev": "npm run dev -w @heureux/frontend",
     "dev:frontend": "npm run dev -w @heureux/frontend",
     "dev:backend": "npm run dev -w @heureux/backend",
+    "dev:cms": "npm run dev -w @heureux/cms",
     "build": "npm run build -w @heureux/frontend",
+    "build:cms": "npm run build -w @heureux/cms",
     "start:frontend": "npm run start -w @heureux/frontend",
     "start:backend": "npm run start -w @heureux/backend",
+    "start:cms": "npm run start -w @heureux/cms",
+    "lint:cms": "npm run lint -w @heureux/cms",
     "lint": "npm run lint -w @heureux/frontend"
   }
 }
