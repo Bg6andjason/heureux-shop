@@ -14,6 +14,10 @@ const {
   JWT_SECRET,
 } = process.env;
 
+const corsOrigin = CORS_ORIGIN
+  ? CORS_ORIGIN.split(",").map((origin) => origin.trim()).filter(Boolean)
+  : undefined;
+
 export const env = {
   nodeEnv: NODE_ENV || "development",
   port: Number(PORT) || 3001,
@@ -26,7 +30,7 @@ export const env = {
     database: DB_NAME,
   },
 
-  corsOrigin: CORS_ORIGIN,
+  corsOrigin,
 
   /** 用於簽署 JWT，開發可省略（使用預設值） */
   jwtSecret: JWT_SECRET || "heureux-demo-secret",

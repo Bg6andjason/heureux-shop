@@ -20,7 +20,7 @@ export default function LoginPage() {
 
         <LoginForm />
 
-        <p className="auth-hint">下一步會串接後端管理員登入 API。</p>
+        <p className="auth-hint">請使用後端建立的管理員帳號登入。</p>
       </section>
     </main>
   );

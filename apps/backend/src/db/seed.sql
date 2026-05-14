@@ -49,6 +49,15 @@ VALUES (
         'Demo User'
     );
 
+-- Demo admin (password: heureux-admin)
+INSERT INTO
+    admin_users (email, password_hash, name)
+VALUES (
+        'admin@heureux.local',
+        '$2b$10$1l0ho4zMUxd581Y8o457e.UmFAlIMQUeTARfG1k6JaTxnmEW.ADOi',
+        'CMS Admin'
+    );
+
 -- Demo orders (user_id = 1)
 INSERT INTO
     orders (user_id, total, status)

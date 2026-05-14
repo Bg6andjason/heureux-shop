@@ -92,6 +92,49 @@ router.post("/login", async (req, res) => {
 });
 
 /**
+ * POST /auth/admin/login
+ * Body: email, password
+ * 回傳 { ok, token, admin: { id, email, name } } 或 { ok: false, message }
+ */
+router.post("/admin/login", async (req, res) => {
+  const email =
+    typeof req.body?.email === "string" ? req.body.email.trim() : "";
+  const password =
+    typeof req.body?.password === "string" ? req.body.password : "";
+
+  if (!email || !password) {
+    return res
+      .status(400)
+      .json({ ok: false, message: "請提供 email 與 password" });
+  }
+
+  const [[row]] = await pool.query(
+    "SELECT id, email, name, password_hash FROM admin_users WHERE email = ?",
+    [email],
+  );
+  if (!row) {
+    return res.status(401).json({ ok: false, message: "管理員帳號或密碼錯誤" });
+  }
+
+  const match = await bcrypt.compare(password, row.password_hash);
+  if (!match) {
+    return res.status(401).json({ ok: false, message: "管理員帳號或密碼錯誤" });
+  }
+
+  const token = jwt.sign(
+    { adminId: row.id, email: row.email, role: "admin" },
+    env.jwtSecret,
+    { expiresIn: "7d" },
+  );
+
+  res.json({
+    ok: true,
+    token,
+    admin: { id: row.id, email: row.email, name: row.name ?? null },
+  });
+});
+
+/**
  * GET /auth/profile
  * Query: user_id
  * Returns basic account information and lightweight shopping summary.

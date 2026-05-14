@@ -4,8 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import {
   ADMIN_DEMO_EMAIL,
-  ADMIN_DEMO_PASSWORD,
-  validateAdminLogin,
+  loginAdmin,
 } from "@/lib/admin-auth";
 
 type FieldErrors = {
@@ -20,14 +19,14 @@ export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  function handleSubmit(formData: FormData) {
+  async function handleSubmit(formData: FormData) {
     setError(null);
     setFieldErrors({});
     setIsSubmitting(true);
 
     const email = String(formData.get("email") ?? "");
     const password = String(formData.get("password") ?? "");
-    const result = validateAdminLogin(email, password);
+    const result = await loginAdmin(email, password);
 
     if (!result.ok) {
       setIsSubmitting(false);
@@ -39,7 +38,8 @@ export default function LoginForm() {
       return;
     }
 
-    window.sessionStorage.setItem("heureux-cms-admin", "demo");
+    window.sessionStorage.setItem("heureux-cms-admin-token", result.token);
+    window.sessionStorage.setItem("heureux-cms-admin", JSON.stringify(result.admin));
     router.replace("/");
   }
 
@@ -78,7 +78,6 @@ export default function LoginForm() {
             aria-describedby={fieldErrors.password ? "admin-password-error" : undefined}
             aria-invalid={fieldErrors.password ? "true" : "false"}
             autoComplete="current-password"
-            defaultValue={ADMIN_DEMO_PASSWORD}
             id="admin-password"
             name="password"
             required
