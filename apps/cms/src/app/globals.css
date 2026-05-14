@@ -41,7 +41,8 @@ a {
 }
 
 button,
-input {
+input,
+textarea {
   font: inherit;
 }
 
@@ -211,6 +212,11 @@ button {
   font-weight: 700;
 }
 
+.primary-button:disabled {
+  cursor: progress;
+  opacity: 0.72;
+}
+
 .task-list {
   display: grid;
   gap: 12px;
@@ -313,6 +319,63 @@ button {
 
 .product-summary strong {
   font-size: 24px;
+}
+
+.product-create-panel {
+  display: grid;
+  gap: 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  background: #f8faf9;
+}
+
+.product-form {
+  display: grid;
+  gap: 16px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.product-form label {
+  display: grid;
+  gap: 8px;
+  color: #35423f;
+  font-weight: 700;
+}
+
+.product-form input,
+.product-form textarea {
+  width: 100%;
+  border: 1px solid #cad8d4;
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: var(--surface);
+  color: var(--foreground);
+}
+
+.product-form input {
+  min-height: 42px;
+}
+
+.product-form textarea {
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.form-message {
+  color: var(--muted);
+  font-weight: 700;
 }
 
 .category-grid,
@@ -467,7 +530,8 @@ button {
 @media (max-width: 1000px) {
   .dashboard-grid,
   .metric-grid.compact,
-  .product-summary {
+  .product-summary,
+  .form-grid {
     grid-template-columns: 1fr;
   }
 
@@ -502,7 +566,8 @@ button {
   }
 
   .cms-header,
-  .section-heading-row {
+  .section-heading-row,
+  .form-actions {
     align-items: flex-start;
     flex-direction: column;
   }

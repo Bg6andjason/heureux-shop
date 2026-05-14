@@ -1,4 +1,5 @@
 import { formatCurrency, getCmsProducts, type CmsProduct } from "@/lib/products";
+import ProductCreateForm from "./ProductCreateForm";
 
 function getStockStatus(stock: number) {
   if (stock <= 0) return "售完";
@@ -31,12 +32,17 @@ export default async function ProductsPage() {
           <p>商品管理</p>
           <h2>商品列表</h2>
         </div>
-        <button className="primary-button" type="button">
-          新增商品
-        </button>
       </div>
 
       {fetchError ? <p className="inline-alert">{fetchError}</p> : null}
+
+      <section className="product-create-panel" aria-label="新增商品">
+        <div className="section-heading">
+          <p>新增商品</p>
+          <h2>建立商品資料</h2>
+        </div>
+        <ProductCreateForm />
+      </section>
 
       <div className="product-summary" aria-label="商品摘要">
         <article>

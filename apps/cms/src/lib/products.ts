@@ -15,6 +15,19 @@ export type CmsCategorySummary = {
   stock: number;
 };
 
+export type CreateProductInput = {
+  name: string;
+  price: number;
+  stock: number;
+  category?: string;
+  description?: string;
+  image_url?: string;
+};
+
+export type CreateProductResult =
+  | { ok: true; item: CmsProduct }
+  | { ok: false; message: string };
+
 const defaultApiBaseUrl = "http://localhost:3001";
 
 function getApiBaseUrl() {
@@ -36,6 +49,30 @@ export async function getCmsProducts(): Promise<CmsProduct[]> {
   }
 
   return data.items;
+}
+
+export async function createCmsProduct(
+  input: CreateProductInput,
+  adminToken: string,
+): Promise<CreateProductResult> {
+  const response = await fetch(`${getApiBaseUrl()}/api/products`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${adminToken}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(input),
+  });
+
+  const data = (await response.json().catch(() => null)) as
+    | { ok?: boolean; message?: string; item?: CmsProduct }
+    | null;
+
+  if (!response.ok || !data?.ok || !data.item) {
+    return { ok: false, message: data?.message || "新增商品失敗，請稍後再試。" };
+  }
+
+  return { ok: true, item: data.item };
 }
 
 export function summarizeCategories(products: CmsProduct[]): CmsCategorySummary[] {
