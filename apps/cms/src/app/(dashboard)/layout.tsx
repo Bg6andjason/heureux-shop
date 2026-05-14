@@ -1,4 +1,5 @@
 import Link from "next/link";
+import DashboardAuthGuard from "./DashboardAuthGuard";
 
 const navigationItems = [
   { href: "/", label: "總覽" },
@@ -34,17 +35,7 @@ export default function DashboardLayout({
       </aside>
 
       <section className="cms-content">
-        <header className="cms-header">
-          <div>
-            <p>後台管理</p>
-            <h1>Heureux Shop CMS</h1>
-          </div>
-          <Link className="header-action" href="/login">
-            登入
-          </Link>
-        </header>
-
-        {children}
+        <DashboardAuthGuard>{children}</DashboardAuthGuard>
       </section>
     </main>
   );

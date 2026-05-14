@@ -41,6 +41,7 @@ export default function LoginForm() {
     window.sessionStorage.setItem("heureux-cms-admin-token", result.token);
     window.sessionStorage.setItem("heureux-cms-admin", JSON.stringify(result.admin));
     router.replace("/");
+    router.refresh();
   }
 
   return (

@@ -122,6 +122,46 @@ button {
   font-weight: 700;
 }
 
+button.header-action {
+  cursor: pointer;
+}
+
+.admin-session {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-session span {
+  display: grid;
+  text-align: right;
+}
+
+.admin-session small {
+  color: var(--muted);
+}
+
+.auth-check-page {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 24px;
+}
+
+.auth-check-panel {
+  display: grid;
+  gap: 8px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  background: var(--surface);
+  color: var(--muted);
+}
+
+.auth-check-panel strong {
+  color: var(--foreground);
+}
+
 .cms-content {
   display: grid;
   align-content: start;
@@ -759,6 +799,7 @@ button {
   }
 
   .cms-header,
+  .admin-session,
   .section-heading-row,
   .form-actions,
   .settings-definition div,
