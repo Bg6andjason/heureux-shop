@@ -530,19 +530,82 @@ button {
   color: var(--foreground);
 }
 
+.settings-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.settings-panel {
+  display: grid;
+  gap: 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  background: var(--surface);
+}
+
+.settings-definition {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.settings-definition div,
+.settings-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  background: #f8faf9;
+}
+
+.settings-definition dt,
+.settings-item span {
+  color: var(--muted);
+}
+
+.settings-definition dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-weight: 700;
+}
+
 .settings-list {
   display: grid;
   gap: 12px;
 }
 
-.settings-list button {
-  min-height: 48px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface);
-  color: var(--foreground);
-  text-align: left;
-  padding: 0 14px;
+.settings-item strong,
+.settings-item span {
+  display: block;
+}
+
+.settings-item span {
+  margin-top: 4px;
+}
+
+.status-pill {
+  display: inline-flex;
+  min-height: 28px;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0 10px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.status-pill.online {
+  background: var(--success-bg);
+  color: var(--success-fg);
+}
+
+.status-pill.offline {
+  background: #fff2f1;
+  color: #b3261e;
 }
 
 .auth-page {
@@ -660,7 +723,8 @@ button {
   .dashboard-grid,
   .metric-grid.compact,
   .product-summary,
-  .form-grid {
+  .form-grid,
+  .settings-grid {
     grid-template-columns: 1fr;
   }
 
@@ -696,7 +760,9 @@ button {
 
   .cms-header,
   .section-heading-row,
-  .form-actions {
+  .form-actions,
+  .settings-definition div,
+  .settings-item {
     align-items: flex-start;
     flex-direction: column;
   }
