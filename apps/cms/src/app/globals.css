@@ -217,6 +217,31 @@ button {
   opacity: 0.72;
 }
 
+.secondary-button,
+.danger-button {
+  min-height: 36px;
+  border-radius: 8px;
+  padding: 0 12px;
+  font-weight: 700;
+}
+
+.secondary-button {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--foreground);
+}
+
+.danger-button {
+  border: 1px solid #f2b8b5;
+  background: #fff2f1;
+  color: #b3261e;
+}
+
+.danger-button:disabled {
+  cursor: progress;
+  opacity: 0.72;
+}
+
 .task-list {
   display: grid;
   gap: 12px;
@@ -272,7 +297,7 @@ button {
 }
 
 .product-row {
-  grid-template-columns: minmax(220px, 1.4fr) 110px 120px 100px 80px 120px;
+  grid-template-columns: minmax(220px, 1.4fr) 110px 120px 100px 80px 120px minmax(170px, 0.8fr);
 }
 
 .data-row-head {
@@ -330,7 +355,8 @@ button {
   background: #f8faf9;
 }
 
-.product-form {
+.product-form,
+.product-edit-form {
   display: grid;
   gap: 16px;
 }
@@ -341,7 +367,8 @@ button {
   gap: 12px;
 }
 
-.product-form label {
+.product-form label,
+.product-edit-form label {
   display: grid;
   gap: 8px;
   color: #35423f;
@@ -349,7 +376,9 @@ button {
 }
 
 .product-form input,
-.product-form textarea {
+.product-form textarea,
+.product-edit-form input,
+.product-edit-form textarea {
   width: 100%;
   border: 1px solid #cad8d4;
   border-radius: 8px;
@@ -358,11 +387,13 @@ button {
   color: var(--foreground);
 }
 
-.product-form input {
+.product-form input,
+.product-edit-form input {
   min-height: 42px;
 }
 
-.product-form textarea {
+.product-form textarea,
+.product-edit-form textarea {
   resize: vertical;
 }
 
@@ -376,6 +407,23 @@ button {
 .form-message {
   color: var(--muted);
   font-weight: 700;
+}
+
+.product-actions {
+  display: grid;
+  gap: 10px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.product-edit-form {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px;
+  background: var(--surface);
 }
 
 .category-grid,
@@ -586,6 +634,6 @@ button {
   .data-row,
   .data-row-four,
   .product-row {
-    min-width: 760px;
+    min-width: 940px;
   }
 }

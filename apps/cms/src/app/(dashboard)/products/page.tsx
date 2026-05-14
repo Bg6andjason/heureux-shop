@@ -1,4 +1,5 @@
 import { formatCurrency, getCmsProducts, type CmsProduct } from "@/lib/products";
+import ProductActions from "./ProductActions";
 import ProductCreateForm from "./ProductCreateForm";
 
 function getStockStatus(stock: number) {
@@ -67,6 +68,7 @@ export default async function ProductsPage() {
           <span role="columnheader">狀態</span>
           <span role="columnheader">庫存</span>
           <span role="columnheader">建立日期</span>
+          <span role="columnheader">操作</span>
         </div>
         {products.length > 0 ? (
           products.map((product) => (
@@ -80,6 +82,9 @@ export default async function ProductsPage() {
               <span role="cell">{getStockStatus(product.stock)}</span>
               <span role="cell">{product.stock}</span>
               <span role="cell">{formatDate(product.created_at)}</span>
+              <span role="cell">
+                <ProductActions product={product} />
+              </span>
             </div>
           ))
         ) : (

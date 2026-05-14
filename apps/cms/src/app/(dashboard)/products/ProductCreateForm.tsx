@@ -40,6 +40,8 @@ export default function ProductCreateForm() {
     }
 
     setMessage("商品已新增。");
+    const form = document.querySelector<HTMLFormElement>(".product-form");
+    form?.reset();
     router.refresh();
   }
 

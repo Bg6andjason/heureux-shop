@@ -32,6 +32,46 @@ function requireAdmin(req, res, next) {
   }
 }
 
+function parseProductId(req, res) {
+  const id = parseInt(req.params.id, 10);
+  if (!Number.isInteger(id) || id < 1) {
+    res.status(400).json({ ok: false, message: "Invalid product id" });
+    return null;
+  }
+  return id;
+}
+
+function readProductPayload(body) {
+  return {
+    name: typeof body?.name === "string" ? body.name.trim() : "",
+    price: Number(body?.price),
+    stock: Number(body?.stock),
+    category: typeof body?.category === "string" ? body.category.trim() : "",
+    description:
+      typeof body?.description === "string" ? body.description.trim() : "",
+    imageUrl: typeof body?.image_url === "string" ? body.image_url.trim() : "",
+  };
+}
+
+function validateProductPayload(payload, res) {
+  if (!payload.name) {
+    res.status(400).json({ ok: false, message: "請輸入商品名稱" });
+    return false;
+  }
+
+  if (!Number.isInteger(payload.price) || payload.price < 0) {
+    res.status(400).json({ ok: false, message: "請輸入有效價格" });
+    return false;
+  }
+
+  if (!Number.isInteger(payload.stock) || payload.stock < 0) {
+    res.status(400).json({ ok: false, message: "請輸入有效庫存" });
+    return false;
+  }
+
+  return true;
+}
+
 router.get("/categories", async (req, res) => {
   const [rows] = await pool.query(
     "SELECT DISTINCT category FROM products WHERE category IS NOT NULL ORDER BY category",
@@ -117,26 +157,9 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", requireAdmin, async (req, res) => {
-  const name = typeof req.body?.name === "string" ? req.body.name.trim() : "";
-  const price = Number(req.body?.price);
-  const stock = Number(req.body?.stock);
-  const category =
-    typeof req.body?.category === "string" ? req.body.category.trim() : "";
-  const description =
-    typeof req.body?.description === "string" ? req.body.description.trim() : "";
-  const imageUrl =
-    typeof req.body?.image_url === "string" ? req.body.image_url.trim() : "";
-
-  if (!name) {
-    return res.status(400).json({ ok: false, message: "請輸入商品名稱" });
-  }
-
-  if (!Number.isInteger(price) || price < 0) {
-    return res.status(400).json({ ok: false, message: "請輸入有效價格" });
-  }
-
-  if (!Number.isInteger(stock) || stock < 0) {
-    return res.status(400).json({ ok: false, message: "請輸入有效庫存" });
+  const payload = readProductPayload(req.body);
+  if (!validateProductPayload(payload, res)) {
+    return;
   }
 
   try {
@@ -144,12 +167,12 @@ router.post("/", requireAdmin, async (req, res) => {
       `INSERT INTO products (name, price, description, category, stock, image_url)
        VALUES (?, ?, ?, ?, ?, ?)`,
       [
-        name,
-        price,
-        description || null,
-        category || null,
-        stock,
-        imageUrl || null,
+        payload.name,
+        payload.price,
+        payload.description || null,
+        payload.category || null,
+        payload.stock,
+        payload.imageUrl || null,
       ],
     );
 
@@ -158,6 +181,64 @@ router.post("/", requireAdmin, async (req, res) => {
     ]);
 
     res.status(201).json({ ok: true, item: product });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ ok: false, message: "Server error" });
+  }
+});
+
+router.patch("/:id", requireAdmin, async (req, res) => {
+  const id = parseProductId(req, res);
+  if (!id) return;
+
+  const payload = readProductPayload(req.body);
+  if (!validateProductPayload(payload, res)) {
+    return;
+  }
+
+  try {
+    const [update] = await pool.query(
+      `UPDATE products
+       SET name = ?, price = ?, description = ?, category = ?, stock = ?, image_url = ?
+       WHERE id = ?`,
+      [
+        payload.name,
+        payload.price,
+        payload.description || null,
+        payload.category || null,
+        payload.stock,
+        payload.imageUrl || null,
+        id,
+      ],
+    );
+
+    if (update.affectedRows === 0) {
+      return res.status(404).json({ ok: false, message: "Product not found" });
+    }
+
+    const [[product]] = await pool.query("SELECT * FROM products WHERE id = ?", [
+      id,
+    ]);
+
+    res.json({ ok: true, item: product });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ ok: false, message: "Server error" });
+  }
+});
+
+router.delete("/:id", requireAdmin, async (req, res) => {
+  const id = parseProductId(req, res);
+  if (!id) return;
+
+  try {
+    const [result] = await pool.query("DELETE FROM products WHERE id = ?", [id]);
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ ok: false, message: "Product not found" });
+    }
+
+    res.json({ ok: true });
   } catch (error) {
     console.error(error);
     res.status(500).json({ ok: false, message: "Server error" });

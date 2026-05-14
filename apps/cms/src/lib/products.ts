@@ -24,9 +24,11 @@ export type CreateProductInput = {
   image_url?: string;
 };
 
-export type CreateProductResult =
+export type ProductMutationResult =
   | { ok: true; item: CmsProduct }
   | { ok: false; message: string };
+
+export type DeleteProductResult = { ok: true } | { ok: false; message: string };
 
 const defaultApiBaseUrl = "http://localhost:3001";
 
@@ -54,7 +56,7 @@ export async function getCmsProducts(): Promise<CmsProduct[]> {
 export async function createCmsProduct(
   input: CreateProductInput,
   adminToken: string,
-): Promise<CreateProductResult> {
+): Promise<ProductMutationResult> {
   const response = await fetch(`${getApiBaseUrl()}/api/products`, {
     method: "POST",
     headers: {
@@ -73,6 +75,53 @@ export async function createCmsProduct(
   }
 
   return { ok: true, item: data.item };
+}
+
+export async function updateCmsProduct(
+  id: number,
+  input: CreateProductInput,
+  adminToken: string,
+): Promise<ProductMutationResult> {
+  const response = await fetch(`${getApiBaseUrl()}/api/products/${id}`, {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${adminToken}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(input),
+  });
+
+  const data = (await response.json().catch(() => null)) as
+    | { ok?: boolean; message?: string; item?: CmsProduct }
+    | null;
+
+  if (!response.ok || !data?.ok || !data.item) {
+    return { ok: false, message: data?.message || "更新商品失敗，請稍後再試。" };
+  }
+
+  return { ok: true, item: data.item };
+}
+
+export async function deleteCmsProduct(
+  id: number,
+  adminToken: string,
+): Promise<DeleteProductResult> {
+  const response = await fetch(`${getApiBaseUrl()}/api/products/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${adminToken}`,
+    },
+  });
+
+  const data = (await response.json().catch(() => null)) as
+    | { ok?: boolean; message?: string }
+    | null;
+
+  if (!response.ok || !data?.ok) {
+    return { ok: false, message: data?.message || "刪除商品失敗，請稍後再試。" };
+  }
+
+  return { ok: true };
 }
 
 export function summarizeCategories(products: CmsProduct[]): CmsCategorySummary[] {
