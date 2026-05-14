@@ -1,3 +1,5 @@
+import LoginForm from "./LoginForm";
+
 export default function LoginPage() {
   return (
     <main className="auth-page">
@@ -16,19 +18,7 @@ export default function LoginPage() {
           <p className="auth-copy">請使用管理員帳號登入 Heureux Shop CMS。</p>
         </div>
 
-        <form className="auth-form">
-          <label>
-            <span>Email</span>
-            <input autoComplete="email" name="email" required type="email" />
-          </label>
-
-          <label>
-            <span>密碼</span>
-            <input autoComplete="current-password" name="password" required type="password" />
-          </label>
-
-          <button type="submit">登入</button>
-        </form>
+        <LoginForm />
 
         <p className="auth-hint">下一步會串接後端管理員登入 API。</p>
       </section>

@@ -347,6 +347,7 @@ button {
 }
 
 .auth-form input {
+  width: 100%;
   min-height: 44px;
   border: 1px solid #cad8d4;
   border-radius: 8px;
@@ -360,6 +361,51 @@ button {
   border-radius: 8px;
   background: var(--sidebar);
   color: #ffffff;
+}
+
+.auth-form button:disabled {
+  cursor: progress;
+  opacity: 0.72;
+}
+
+.auth-message {
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-weight: 700;
+}
+
+.auth-message-error {
+  border: 1px solid #f2b8b5;
+  background: #fff2f1;
+  color: #b3261e;
+}
+
+.field-error {
+  color: #b3261e;
+  font-weight: 700;
+}
+
+.password-field {
+  position: relative;
+  display: block;
+}
+
+.password-field input {
+  padding-right: 70px;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  min-height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0 10px;
+  background: var(--surface);
+  color: var(--foreground);
+  font-size: 14px;
+  font-weight: 700;
 }
 
 @media (max-width: 1000px) {
