@@ -300,6 +300,10 @@ button {
   grid-template-columns: minmax(220px, 1.4fr) 110px 120px 100px 80px 120px minmax(170px, 0.8fr);
 }
 
+.order-row {
+  grid-template-columns: 90px minmax(180px, 1fr) 120px 100px 150px minmax(180px, 0.9fr);
+}
+
 .data-row-head {
   background: #f8faf9;
   color: var(--muted);
@@ -424,6 +428,25 @@ button {
   border-radius: 8px;
   padding: 14px;
   background: var(--surface);
+}
+
+.status-control {
+  display: grid;
+  gap: 8px;
+}
+
+.status-control select {
+  min-height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0 10px;
+  background: var(--surface);
+  color: var(--foreground);
+}
+
+.status-control small {
+  color: var(--muted);
+  font-weight: 700;
 }
 
 .category-grid,
@@ -633,7 +656,8 @@ button {
 
   .data-row,
   .data-row-four,
-  .product-row {
+  .product-row,
+  .order-row {
     min-width: 940px;
   }
 }

@@ -1,8 +1,41 @@
 import express from "express";
+import jwt from "jsonwebtoken";
+import { env } from "../config/env.js";
 import pool from "../utils/connect-mysql.js";
 
 const PER_PAGE = 20;
 const router = express.Router();
+
+const allowedStatuses = new Set(["created", "paid", "completed", "cancelled"]);
+
+function requireAdmin(req, res, next) {
+  const authHeader = req.get("authorization") || "";
+  const token = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : "";
+
+  if (!token) {
+    return res.status(401).json({ ok: false, message: "Missing admin token" });
+  }
+
+  try {
+    const payload = jwt.verify(token, env.jwtSecret);
+    if (!payload?.adminId || payload?.role !== "admin") {
+      return res.status(403).json({ ok: false, message: "Invalid admin token" });
+    }
+    req.admin = payload;
+    next();
+  } catch {
+    return res.status(401).json({ ok: false, message: "Invalid admin token" });
+  }
+}
+
+function parseOrderId(req, res) {
+  const id = parseInt(req.params.id, 10);
+  if (!Number.isInteger(id) || id < 1) {
+    res.status(400).json({ ok: false, message: "Invalid order id" });
+    return null;
+  }
+  return id;
+}
 
 /**
  * GET /orders
@@ -32,10 +65,11 @@ router.get("/", async (req, res) => {
     conditions.length > 0 ? `WHERE ${conditions.join(" AND ")}` : "";
 
   const [orders] = await pool.query(
-    `SELECT o.id, o.user_id,
+    `SELECT o.id, o.user_id, u.email AS user_email, u.name AS user_name,
         (SELECT COALESCE(SUM(oi.price * oi.quantity), 0) FROM order_items oi WHERE oi.order_id = o.id) AS total,
         o.status, o.created_at
     FROM orders o
+    LEFT JOIN users u ON u.id = o.user_id
     ${whereClause}
     ORDER BY o.created_at DESC
     LIMIT ? OFFSET ?`,
@@ -53,7 +87,10 @@ router.get("/:id", async (req, res) => {
     return res.status(400).json({ ok: false, message: "Invalid order id" });
   }
   const [[order]] = await pool.query(
-    "SELECT id, user_id, status, created_at FROM orders WHERE id = ?",
+    `SELECT o.id, o.user_id, u.email AS user_email, u.name AS user_name, o.status, o.created_at
+     FROM orders o
+     LEFT JOIN users u ON u.id = o.user_id
+     WHERE o.id = ?`,
     [id],
   );
   if (!order) {
@@ -72,6 +109,42 @@ router.get("/:id", async (req, res) => {
     0,
   );
   res.json({ ok: true, item: { ...order, total, items } });
+});
+
+/**
+ * PATCH /orders/:id/status
+ * Body: status
+ */
+router.patch("/:id/status", requireAdmin, async (req, res) => {
+  const id = parseOrderId(req, res);
+  if (!id) return;
+
+  const status =
+    typeof req.body?.status === "string" ? req.body.status.trim() : "";
+  if (!allowedStatuses.has(status)) {
+    return res.status(400).json({ ok: false, message: "Invalid order status" });
+  }
+
+  const [update] = await pool.query("UPDATE orders SET status = ? WHERE id = ?", [
+    status,
+    id,
+  ]);
+
+  if (update.affectedRows === 0) {
+    return res.status(404).json({ ok: false, message: "Order not found" });
+  }
+
+  const [[order]] = await pool.query(
+    `SELECT o.id, o.user_id, u.email AS user_email, u.name AS user_name,
+        (SELECT COALESCE(SUM(oi.price * oi.quantity), 0) FROM order_items oi WHERE oi.order_id = o.id) AS total,
+        o.status, o.created_at
+     FROM orders o
+     LEFT JOIN users u ON u.id = o.user_id
+     WHERE o.id = ?`,
+    [id],
+  );
+
+  res.json({ ok: true, item: order });
 });
 
 export default router;
