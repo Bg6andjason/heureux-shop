@@ -2,18 +2,18 @@ export default function LoginPage() {
   return (
     <main className="auth-page">
       <section className="auth-panel">
-        <div className="brand">
+        <div className="brand auth-brand">
           <span className="brand-mark">H</span>
-          <div>
+          <span>
             <strong>Heureux Shop</strong>
             <small>CMS 管理後台</small>
-          </div>
+          </span>
         </div>
 
-        <div>
+        <div className="auth-copy-block">
           <p className="auth-eyebrow">管理員登入</p>
           <h1>登入後台</h1>
-          <p className="auth-copy">請使用管理員帳號進入 Heureux Shop CMS。</p>
+          <p className="auth-copy">請使用管理員帳號登入 Heureux Shop CMS。</p>
         </div>
 
         <form className="auth-form">
@@ -30,7 +30,7 @@ export default function LoginPage() {
           <button type="submit">登入</button>
         </form>
 
-        <p className="auth-hint">下一階段會串接後端管理員登入 API。</p>
+        <p className="auth-hint">下一步會串接後端管理員登入 API。</p>
       </section>
     </main>
   );
