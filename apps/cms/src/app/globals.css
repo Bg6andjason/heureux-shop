@@ -291,11 +291,48 @@ button.header-action {
 }
 
 .task-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
   border-radius: 8px;
   padding: 12px 14px;
   background: var(--success-bg);
   color: var(--success-fg);
   font-weight: 700;
+}
+
+.task-list strong {
+  white-space: nowrap;
+}
+
+.activity-list {
+  display: grid;
+  gap: 12px;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  background: #f8faf9;
+}
+
+.activity-item span {
+  display: grid;
+  gap: 4px;
+}
+
+.activity-item span:last-child {
+  text-align: right;
+}
+
+.activity-item small {
+  color: var(--muted);
 }
 
 .data-table {
@@ -801,6 +838,7 @@ button.header-action {
   .cms-header,
   .admin-session,
   .section-heading-row,
+  .activity-item,
   .form-actions,
   .settings-definition div,
   .settings-item {
