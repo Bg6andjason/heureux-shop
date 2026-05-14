@@ -1,10 +1,29 @@
-const products = [
-  { name: "尚未建立商品", status: "待新增", stock: "-" },
-  { name: "精選商品版位", status: "待規劃", stock: "-" },
-  { name: "新品上架清單", status: "待整理", stock: "-" },
-];
+import { formatCurrency, getCmsProducts, type CmsProduct } from "@/lib/products";
 
-export default function ProductsPage() {
+function getStockStatus(stock: number) {
+  if (stock <= 0) return "售完";
+  if (stock <= 10) return "低庫存";
+  return "販售中";
+}
+
+function formatDate(value: string) {
+  return new Intl.DateTimeFormat("zh-Hant-TW", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date(value));
+}
+
+export default async function ProductsPage() {
+  let products: CmsProduct[] = [];
+  let fetchError: string | null = null;
+
+  try {
+    products = await getCmsProducts();
+  } catch {
+    fetchError = "目前無法讀取商品資料，請確認後端 API 是否已啟動。";
+  }
+
   return (
     <section className="workspace-panel">
       <div className="section-heading section-heading-row">
@@ -17,19 +36,49 @@ export default function ProductsPage() {
         </button>
       </div>
 
+      {fetchError ? <p className="inline-alert">{fetchError}</p> : null}
+
+      <div className="product-summary" aria-label="商品摘要">
+        <article>
+          <span>商品數</span>
+          <strong>{products.length}</strong>
+        </article>
+        <article>
+          <span>總庫存</span>
+          <strong>{products.reduce((total, product) => total + product.stock, 0)}</strong>
+        </article>
+        <article>
+          <span>低庫存</span>
+          <strong>{products.filter((product) => product.stock > 0 && product.stock <= 10).length}</strong>
+        </article>
+      </div>
+
       <div className="data-table" role="table" aria-label="商品列表">
-        <div className="data-row data-row-head" role="row">
+        <div className="data-row product-row data-row-head" role="row">
           <span role="columnheader">商品名稱</span>
+          <span role="columnheader">分類</span>
+          <span role="columnheader">價格</span>
           <span role="columnheader">狀態</span>
           <span role="columnheader">庫存</span>
+          <span role="columnheader">建立日期</span>
         </div>
-        {products.map((product) => (
-          <div className="data-row" role="row" key={product.name}>
-            <span role="cell">{product.name}</span>
-            <span role="cell">{product.status}</span>
-            <span role="cell">{product.stock}</span>
-          </div>
-        ))}
+        {products.length > 0 ? (
+          products.map((product) => (
+            <div className="data-row product-row" role="row" key={product.id}>
+              <span role="cell">
+                <strong>{product.name}</strong>
+                <small>{product.description || "尚無描述"}</small>
+              </span>
+              <span role="cell">{product.category || "未分類"}</span>
+              <span role="cell">{formatCurrency(product.price)}</span>
+              <span role="cell">{getStockStatus(product.stock)}</span>
+              <span role="cell">{product.stock}</span>
+              <span role="cell">{formatDate(product.created_at)}</span>
+            </div>
+          ))
+        ) : (
+          <div className="empty-state">目前沒有商品資料。</div>
+        )}
       </div>
     </section>
   );
