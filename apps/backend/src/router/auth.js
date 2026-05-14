@@ -12,12 +12,16 @@ const router = express.Router();
  * 回傳 { ok, token, user: { id, email, name } } 或 { ok: false, message }
  */
 router.post("/register", async (req, res) => {
-  const email = typeof req.body?.email === "string" ? req.body.email.trim() : "";
-  const password = typeof req.body?.password === "string" ? req.body.password : "";
+  const email =
+    typeof req.body?.email === "string" ? req.body.email.trim() : "";
+  const password =
+    typeof req.body?.password === "string" ? req.body.password : "";
   const name = typeof req.body?.name === "string" ? req.body.name.trim() : null;
 
   if (!email || !password) {
-    return res.status(400).json({ ok: false, message: "請提供 email 與 password" });
+    return res
+      .status(400)
+      .json({ ok: false, message: "請提供 email 與 password" });
   }
   if (password.length < 6) {
     return res.status(400).json({ ok: false, message: "密碼至少 6 碼" });
@@ -37,11 +41,7 @@ router.post("/register", async (req, res) => {
     [email, password_hash, name || null],
   );
   const userId = Number(insert.insertId);
-  const token = jwt.sign(
-    { userId, email },
-    env.jwtSecret,
-    { expiresIn: "7d" },
-  );
+  const token = jwt.sign({ userId, email }, env.jwtSecret, { expiresIn: "7d" });
 
   res.status(201).json({
     ok: true,
@@ -56,11 +56,15 @@ router.post("/register", async (req, res) => {
  * 回傳 { ok, token, user: { id, email, name } } 或 { ok: false, message }
  */
 router.post("/login", async (req, res) => {
-  const email = typeof req.body?.email === "string" ? req.body.email.trim() : "";
-  const password = typeof req.body?.password === "string" ? req.body.password : "";
+  const email =
+    typeof req.body?.email === "string" ? req.body.email.trim() : "";
+  const password =
+    typeof req.body?.password === "string" ? req.body.password : "";
 
   if (!email || !password) {
-    return res.status(400).json({ ok: false, message: "請提供 email 與 password" });
+    return res
+      .status(400)
+      .json({ ok: false, message: "請提供 email 與 password" });
   }
 
   const [[row]] = await pool.query(
@@ -76,11 +80,9 @@ router.post("/login", async (req, res) => {
     return res.status(401).json({ ok: false, message: "email 或密碼錯誤" });
   }
 
-  const token = jwt.sign(
-    { userId: row.id, email: row.email },
-    env.jwtSecret,
-    { expiresIn: "7d" },
-  );
+  const token = jwt.sign({ userId: row.id, email: row.email }, env.jwtSecret, {
+    expiresIn: "7d",
+  });
 
   res.json({
     ok: true,

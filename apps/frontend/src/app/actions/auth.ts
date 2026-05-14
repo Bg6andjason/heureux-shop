@@ -28,12 +28,17 @@ export interface AuthProfile extends AuthUser {
 export async function loginAction(formData: FormData) {
   const email = formData.get("email");
   const password = formData.get("password");
-  if (typeof email !== "string" || typeof password !== "string" || !email.trim()) {
-    return { ok: false, message: "請填寫 email 與密碼" };
+  if (
+    typeof email !== "string" ||
+    typeof password !== "string" ||
+    !email.trim()
+  ) {
+    return { ok: false, message: "Please enter email and password." };
   }
 
   const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-  if (!baseUrl) return { ok: false, message: "API 未設定" };
+  if (!baseUrl)
+    return { ok: false, message: "API base URL is not configured." };
 
   const res = await fetch(`${baseUrl}/auth/login`, {
     method: "POST",
@@ -48,7 +53,7 @@ export async function loginAction(formData: FormData) {
   };
 
   if (!res.ok || !data.ok || !data.token || !data.user) {
-    return { ok: false, message: data.message ?? "登入失敗" };
+    return { ok: false, message: data.message ?? "Login failed." };
   }
 
   const c = await cookies();
@@ -73,15 +78,20 @@ export async function registerAction(formData: FormData) {
   const email = formData.get("email");
   const password = formData.get("password");
   const name = formData.get("name");
-  if (typeof email !== "string" || typeof password !== "string" || !email.trim()) {
-    return { ok: false, message: "請填寫 email 與密碼" };
+  if (
+    typeof email !== "string" ||
+    typeof password !== "string" ||
+    !email.trim()
+  ) {
+    return { ok: false, message: "Please enter email and password." };
   }
   if (password.length < 6) {
-    return { ok: false, message: "密碼至少 6 碼" };
+    return { ok: false, message: "Password must be at least 6 characters." };
   }
 
   const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-  if (!baseUrl) return { ok: false, message: "API 未設定" };
+  if (!baseUrl)
+    return { ok: false, message: "API base URL is not configured." };
 
   const res = await fetch(`${baseUrl}/auth/register`, {
     method: "POST",
@@ -100,7 +110,7 @@ export async function registerAction(formData: FormData) {
   };
 
   if (!res.ok || !data.ok || !data.token || !data.user) {
-    return { ok: false, message: data.message ?? "註冊失敗" };
+    return { ok: false, message: data.message ?? "註冊失敗." };
   }
 
   const c = await cookies();
@@ -108,7 +118,8 @@ export async function registerAction(formData: FormData) {
   c.set("auth_user_id", String(data.user.id), COOKIE_OPTIONS);
   c.set("auth_user_name", data.user.name ?? "", COOKIE_OPTIONS);
   c.set("auth_user_email", data.user.email, COOKIE_OPTIONS);
-  redirect("/");
+
+  return { ok: true, message: "註冊成功" };
 }
 
 export async function logoutAction() {
@@ -120,7 +131,6 @@ export async function logoutAction() {
   redirect("/");
 }
 
-/** 在 Server Component / Server Action 中取得目前登入者 id，未登入回傳 null */
 export async function getAuthUserId(): Promise<number | null> {
   const c = await cookies();
   const id = c.get("auth_user_id")?.value;
@@ -129,7 +139,6 @@ export async function getAuthUserId(): Promise<number | null> {
   return Number.isInteger(n) && n > 0 ? n : null;
 }
 
-/** 取得登入者顯示名稱（用於 Navbar） */
 export async function getAuthDisplayName(): Promise<string | null> {
   const c = await cookies();
   const name = c.get("auth_user_name")?.value;
