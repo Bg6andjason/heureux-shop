@@ -6,6 +6,26 @@ import { env } from "../config/env.js";
 
 const router = express.Router();
 
+function requireAdmin(req, res, next) {
+  const authHeader = req.get("authorization") || "";
+  const token = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : "";
+
+  if (!token) {
+    return res.status(401).json({ ok: false, message: "Missing admin token" });
+  }
+
+  try {
+    const payload = jwt.verify(token, env.jwtSecret);
+    if (!payload?.adminId || payload?.role !== "admin") {
+      return res.status(403).json({ ok: false, message: "Invalid admin token" });
+    }
+    req.admin = payload;
+    next();
+  } catch {
+    return res.status(401).json({ ok: false, message: "Invalid admin token" });
+  }
+}
+
 /**
  * POST /auth/register
  * Body: email, password, name (optional)
@@ -132,6 +152,31 @@ router.post("/admin/login", async (req, res) => {
     token,
     admin: { id: row.id, email: row.email, name: row.name ?? null },
   });
+});
+
+/**
+ * GET /auth/admin/customers
+ * Returns customer list with lightweight shopping summary.
+ */
+router.get("/admin/customers", requireAdmin, async (req, res) => {
+  const [rows] = await pool.query(
+    `SELECT
+        u.id,
+        u.email,
+        u.name,
+        u.created_at,
+        COUNT(DISTINCT o.id) AS order_count,
+        COALESCE(SUM(oi.price * oi.quantity), 0) AS total_spent,
+        (SELECT COALESCE(SUM(ci.quantity), 0) FROM cart_items ci WHERE ci.user_id = u.id) AS cart_count,
+        (SELECT COUNT(*) FROM customer_favorites cf WHERE cf.user_id = u.id) AS wishlist_count
+      FROM users u
+      LEFT JOIN orders o ON o.user_id = u.id
+      LEFT JOIN order_items oi ON oi.order_id = o.id
+      GROUP BY u.id, u.email, u.name, u.created_at
+      ORDER BY u.created_at DESC, u.id DESC`,
+  );
+
+  res.json({ ok: true, items: rows });
 });
 
 /**

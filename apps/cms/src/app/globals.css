@@ -304,6 +304,10 @@ button {
   grid-template-columns: 90px minmax(180px, 1fr) 120px 100px 150px minmax(180px, 0.9fr);
 }
 
+.customer-row {
+  grid-template-columns: minmax(220px, 1.2fr) 90px 130px 90px 90px 120px;
+}
+
 .data-row-head {
   background: #f8faf9;
   color: var(--muted);
@@ -657,7 +661,8 @@ button {
   .data-row,
   .data-row-four,
   .product-row,
-  .order-row {
+  .order-row,
+  .customer-row {
     min-width: 940px;
   }
 }

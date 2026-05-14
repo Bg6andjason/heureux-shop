@@ -1,8 +1,4 @@
-const segments = [
-  { label: "全部會員", value: "0" },
-  { label: "本月新增", value: "0" },
-  { label: "待處理客服", value: "0" },
-];
+import CustomerList from "./CustomerList";
 
 export default function CustomersPage() {
   return (
@@ -12,14 +8,7 @@ export default function CustomersPage() {
         <h2>會員總覽</h2>
       </div>
 
-      <div className="metric-grid compact">
-        {segments.map((segment) => (
-          <article className="metric-card" key={segment.label}>
-            <span>{segment.label}</span>
-            <strong>{segment.value}</strong>
-          </article>
-        ))}
-      </div>
+      <CustomerList />
     </section>
   );
 }
