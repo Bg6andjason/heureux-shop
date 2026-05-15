@@ -1,3 +1,5 @@
+import { getCmsApiBaseUrl } from "@/lib/api";
+
 export const ADMIN_DEMO_EMAIL = "admin@heureux.local";
 
 export type AdminLoginResult =
@@ -5,7 +7,6 @@ export type AdminLoginResult =
   | { ok: false; field?: "email" | "password"; message: string };
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const defaultApiBaseUrl = "http://localhost:3001";
 
 export function validateAdminLoginFields(
   email: string,
@@ -38,11 +39,8 @@ export async function loginAdmin(email: string, password: string): Promise<Admin
     return validationError;
   }
 
-  const apiBaseUrl =
-    process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, "") || defaultApiBaseUrl;
-
   try {
-    const response = await fetch(`${apiBaseUrl}/auth/admin/login`, {
+    const response = await fetch(`${getCmsApiBaseUrl()}/auth/admin/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

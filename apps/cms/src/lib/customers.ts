@@ -1,3 +1,5 @@
+import { getCmsApiBaseUrl } from "@/lib/api";
+
 export type CmsCustomer = {
   id: number;
   email: string;
@@ -9,18 +11,12 @@ export type CmsCustomer = {
   wishlist_count: number;
 };
 
-const defaultApiBaseUrl = "http://localhost:3001";
-
-function getApiBaseUrl() {
-  return process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, "") || defaultApiBaseUrl;
-}
-
 export async function getCmsCustomers(adminToken?: string): Promise<CmsCustomer[]> {
   if (!adminToken) {
     throw new Error("Missing CMS admin token");
   }
 
-  const response = await fetch(`${getApiBaseUrl()}/auth/admin/customers`, {
+  const response = await fetch(`${getCmsApiBaseUrl()}/auth/admin/customers`, {
     cache: "no-store",
     headers: {
       Authorization: `Bearer ${adminToken}`,

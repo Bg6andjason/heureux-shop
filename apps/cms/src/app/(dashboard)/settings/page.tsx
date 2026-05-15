@@ -1,14 +1,10 @@
+import { getCmsApiBaseUrl } from "@/lib/api";
+
 type HealthStatus = "online" | "offline";
-
-const defaultApiBaseUrl = "http://localhost:3001";
-
-function getApiBaseUrl() {
-  return process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, "") || defaultApiBaseUrl;
-}
 
 async function getBackendHealth(): Promise<HealthStatus> {
   try {
-    const response = await fetch(`${getApiBaseUrl()}/health`, {
+    const response = await fetch(`${getCmsApiBaseUrl()}/health`, {
       cache: "no-store",
     });
     return response.ok ? "online" : "offline";
@@ -25,7 +21,7 @@ const modules = [
 ];
 
 export default async function SettingsPage() {
-  const apiBaseUrl = getApiBaseUrl();
+  const apiBaseUrl = getCmsApiBaseUrl();
   const healthStatus = await getBackendHealth();
 
   return (

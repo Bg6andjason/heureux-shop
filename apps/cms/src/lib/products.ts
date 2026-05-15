@@ -1,3 +1,5 @@
+import { getCmsApiBaseUrl } from "@/lib/api";
+
 export type CmsProduct = {
   id: number;
   name: string;
@@ -30,14 +32,8 @@ export type ProductMutationResult =
 
 export type DeleteProductResult = { ok: true } | { ok: false; message: string };
 
-const defaultApiBaseUrl = "http://localhost:3001";
-
-function getApiBaseUrl() {
-  return process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, "") || defaultApiBaseUrl;
-}
-
 export async function getCmsProducts(): Promise<CmsProduct[]> {
-  const response = await fetch(`${getApiBaseUrl()}/api/products?page=1&sort=newest`, {
+  const response = await fetch(`${getCmsApiBaseUrl()}/api/products?page=1&sort=newest`, {
     cache: "no-store",
   });
 
@@ -57,7 +53,7 @@ export async function createCmsProduct(
   input: CreateProductInput,
   adminToken: string,
 ): Promise<ProductMutationResult> {
-  const response = await fetch(`${getApiBaseUrl()}/api/products`, {
+  const response = await fetch(`${getCmsApiBaseUrl()}/api/products`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${adminToken}`,
@@ -82,7 +78,7 @@ export async function updateCmsProduct(
   input: CreateProductInput,
   adminToken: string,
 ): Promise<ProductMutationResult> {
-  const response = await fetch(`${getApiBaseUrl()}/api/products/${id}`, {
+  const response = await fetch(`${getCmsApiBaseUrl()}/api/products/${id}`, {
     method: "PATCH",
     headers: {
       Authorization: `Bearer ${adminToken}`,
@@ -106,7 +102,7 @@ export async function deleteCmsProduct(
   id: number,
   adminToken: string,
 ): Promise<DeleteProductResult> {
-  const response = await fetch(`${getApiBaseUrl()}/api/products/${id}`, {
+  const response = await fetch(`${getCmsApiBaseUrl()}/api/products/${id}`, {
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${adminToken}`,

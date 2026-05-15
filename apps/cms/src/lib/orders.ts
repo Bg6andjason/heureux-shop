@@ -1,3 +1,5 @@
+import { getCmsApiBaseUrl } from "@/lib/api";
+
 export type OrderStatus = "created" | "paid" | "completed" | "cancelled";
 
 export type CmsOrder = {
@@ -14,14 +16,8 @@ export type UpdateOrderStatusResult =
   | { ok: true; item: CmsOrder }
   | { ok: false; message: string };
 
-const defaultApiBaseUrl = "http://localhost:3001";
-
-function getApiBaseUrl() {
-  return process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, "") || defaultApiBaseUrl;
-}
-
 export async function getCmsOrders(): Promise<CmsOrder[]> {
-  const response = await fetch(`${getApiBaseUrl()}/orders?page=1`, {
+  const response = await fetch(`${getCmsApiBaseUrl()}/orders?page=1`, {
     cache: "no-store",
   });
 
@@ -42,7 +38,7 @@ export async function updateCmsOrderStatus(
   status: OrderStatus,
   adminToken: string,
 ): Promise<UpdateOrderStatusResult> {
-  const response = await fetch(`${getApiBaseUrl()}/orders/${id}/status`, {
+  const response = await fetch(`${getCmsApiBaseUrl()}/orders/${id}/status`, {
     method: "PATCH",
     headers: {
       Authorization: `Bearer ${adminToken}`,
