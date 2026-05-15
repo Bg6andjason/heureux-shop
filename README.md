@@ -4,13 +4,14 @@ HEUREUX Shop 是一個以選物品牌為主題的 full-stack 電商作品集專�
 專案涵蓋完整的購物流程：會員註冊與登入、商品瀏覽、搜尋、分類篩選、
 排序、收藏清單、購物車管理、結帳，以及訂單紀錄查詢。
 
-這不只是單純的切版作品。專案包含 Next.js 前端、Express API server、
-MySQL 資料庫設計、依使用者區分的購物資料，以及完整串接主要購物流程的
-API 整合。
+這不只是單純的切版作品。專案包含 Next.js 前台商店、Next.js CMS 管理後台、
+Express API server、MySQL 資料庫設計、依使用者區分的購物資料，以及完整串接
+主要購物流程與後台管理流程的 API 整合。
 
 ## 專案重點
 
 - 採用 monorepo 架構，前端與後端分離管理。
+- 建立 CMS 管理後台，可管理商品、訂單、會員、媒體素材與系統狀態。
 - 商品列表與商品詳情頁皆串接 MySQL 資料。
 - 實作搜尋、分類篩選、排序，以及 pagination/load-more 行為。
 - 會員註冊與登入流程，後端使用 bcrypt 處理密碼雜湊並簽發 JWT。
@@ -49,6 +50,7 @@ API 整合。
 heureux-shop/
 +-- apps/
 |   +-- frontend/        # Next.js 前端商店
+|   +-- cms/             # Next.js CMS 管理後台
 |   +-- backend/         # Express API server
 +-- docs/                # UI 參考、流程筆記、截圖與規劃文件
 +-- package.json         # workspace scripts
@@ -92,6 +94,16 @@ heureux-shop/
 - 訂單狀態篩選。
 - 訂單詳情頁，顯示購買商品與總金額。
 
+### CMS 管理後台
+
+- 管理員登入，使用後端 Admin JWT 驗證。
+- 營運總覽頁，顯示商品、訂單、會員與庫存摘要。
+- 商品管理支援列表、新增、編輯、刪除與圖片網址設定。
+- 訂單管理支援訂單列表、金額摘要與狀態更新。
+- 會員管理支援會員列表、訂單數、消費金額、購物車與收藏摘要。
+- 媒體管理支援商品圖片素材檢視與更新。
+- 系統設定頁顯示 API base URL、後端 health check 與模組狀態。
+
 ## 資料庫
 
 SQL 檔案位置：
@@ -104,6 +116,7 @@ apps/backend/src/db/seed.sql
 主要資料表：
 
 - `users`
+- `admin_users`
 - `products`
 - `cart_items`
 - `customer_favorites`
@@ -117,6 +130,13 @@ Email: demo@example.com
 Password: demo123
 ```
 
+CMS demo 管理員帳號：
+
+```text
+Email: admin@heureux.local
+Password: heureux-admin
+```
+
 ## 環境變數
 
 在 backend app 建立 `.env`：
@@ -128,11 +148,17 @@ DB_PORT=3306
 DB_USER=root
 DB_PASS=your_password
 DB_NAME=heureux_shop
-CORS_ORIGIN=http://localhost:3000
+CORS_ORIGIN=http://localhost:3000,http://localhost:3002
 JWT_SECRET=replace_with_your_secret
 ```
 
 在 frontend app 建立 `.env.local`：
+
+```env
+NEXT_PUBLIC_API_BASE_URL=http://localhost:3001
+```
+
+在 cms app 建立 `.env.local`：
 
 ```env
 NEXT_PUBLIC_API_BASE_URL=http://localhost:3001
@@ -165,10 +191,22 @@ npm run dev:backend
 npm run dev:frontend
 ```
 
+如需檢視 CMS 管理後台，另開一個 terminal 啟動 CMS：
+
+```bash
+npm run dev:cms
+```
+
 開啟網站：
 
 ```text
 http://localhost:3000
+```
+
+開啟 CMS：
+
+```text
+http://localhost:3002
 ```
 
 ## 可用指令
@@ -177,16 +215,19 @@ http://localhost:3000
 
 ```bash
 npm run dev:frontend   # 啟動 Next.js 前端
+npm run dev:cms        # 啟動 Next.js CMS 管理後台
 npm run dev:backend    # 啟動 Express 後端
 npm run build          # 建置前端
+npm run build:cms      # 建置 CMS
 npm run lint           # 執行前端 lint
+npm run lint:cms       # 執行 CMS lint
 ```
 
 ## 這個專案展示的能力
 
 這個專案展示我能從規劃到實作完成一個 full-stack web application。
-我設計資料模型、建立 REST APIs、將前端串接真實後端資料、處理登入狀態，
-並實作接近真實電商產品的購物流程。
+我設計資料模型、建立 REST APIs、將前台商店與 CMS 後台串接真實後端資料、
+處理會員與管理員登入狀態，並實作接近真實電商產品的購物與營運管理流程。
 
 此專案也展示我不只完成程式碼，還會整理開發過程中的視覺參考、流程筆記與
 實作規劃。相關文件保留在 `docs/` 目錄中，方便理解專案的設計與開發脈絡。
