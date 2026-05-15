@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { getCmsAdminToken } from "@/lib/cms-session";
 import {
   formatCurrency,
   getCmsCustomers,
@@ -21,7 +22,7 @@ export default function CustomerList() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const token = window.sessionStorage.getItem("heureux-cms-admin-token");
+    const token = getCmsAdminToken();
 
     getCmsCustomers(token || undefined)
       .then((items) => {

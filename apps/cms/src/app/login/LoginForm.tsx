@@ -6,6 +6,7 @@ import {
   ADMIN_DEMO_EMAIL,
   loginAdmin,
 } from "@/lib/admin-auth";
+import { setCmsAdminSession } from "@/lib/cms-session";
 
 type FieldErrors = {
   email?: string;
@@ -38,8 +39,7 @@ export default function LoginForm() {
       return;
     }
 
-    window.sessionStorage.setItem("heureux-cms-admin-token", result.token);
-    window.sessionStorage.setItem("heureux-cms-admin", JSON.stringify(result.admin));
+    setCmsAdminSession(result.token, result.admin);
     router.replace("/");
     router.refresh();
   }

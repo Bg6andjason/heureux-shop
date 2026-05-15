@@ -2,39 +2,24 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-
-type AdminSession = {
-  email?: string;
-  name?: string | null;
-};
+import {
+  clearCmsAdminSession,
+  getCmsAdminSession,
+  type CmsAdminSession,
+} from "@/lib/cms-session";
 
 type Props = {
   children: React.ReactNode;
 };
 
-function readAdminSession(): AdminSession | null {
-  const token = window.sessionStorage.getItem("heureux-cms-admin-token");
-  const rawAdmin = window.sessionStorage.getItem("heureux-cms-admin");
-
-  if (!token || !rawAdmin) {
-    return null;
-  }
-
-  try {
-    return JSON.parse(rawAdmin) as AdminSession;
-  } catch {
-    return null;
-  }
-}
-
 export default function DashboardAuthGuard({ children }: Props) {
   const router = useRouter();
-  const [admin, setAdmin] = useState<AdminSession | null>(null);
+  const [admin, setAdmin] = useState<CmsAdminSession | null>(null);
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
-      const session = readAdminSession();
+      const session = getCmsAdminSession();
 
       if (!session) {
         router.replace("/login");
@@ -49,8 +34,7 @@ export default function DashboardAuthGuard({ children }: Props) {
   }, [router]);
 
   function handleLogout() {
-    window.sessionStorage.removeItem("heureux-cms-admin-token");
-    window.sessionStorage.removeItem("heureux-cms-admin");
+    clearCmsAdminSession();
     router.replace("/login");
   }
 

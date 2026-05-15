@@ -2,6 +2,10 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import {
+  getCmsAdminToken,
+  missingAdminSessionMessage,
+} from "@/lib/cms-session";
 import { updateCmsProduct, type CmsProduct } from "@/lib/products";
 
 type Props = {
@@ -17,10 +21,10 @@ export default function ProductImageForm({ product }: Props) {
     setMessage(null);
     setIsSubmitting(true);
 
-    const token = window.sessionStorage.getItem("heureux-cms-admin-token");
+    const token = getCmsAdminToken();
     if (!token) {
       setIsSubmitting(false);
-      setMessage("請先登入 CMS 管理員帳號。");
+      setMessage(missingAdminSessionMessage);
       return;
     }
 

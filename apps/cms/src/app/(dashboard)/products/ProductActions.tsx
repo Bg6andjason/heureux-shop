@@ -3,6 +3,10 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import {
+  getCmsAdminToken,
+  missingAdminSessionMessage,
+} from "@/lib/cms-session";
+import {
   deleteCmsProduct,
   updateCmsProduct,
   type CmsProduct,
@@ -11,10 +15,6 @@ import {
 type Props = {
   product: CmsProduct;
 };
-
-function getAdminToken() {
-  return window.sessionStorage.getItem("heureux-cms-admin-token");
-}
 
 export default function ProductActions({ product }: Props) {
   const router = useRouter();
@@ -26,10 +26,10 @@ export default function ProductActions({ product }: Props) {
     setMessage(null);
     setIsSubmitting(true);
 
-    const token = getAdminToken();
+    const token = getCmsAdminToken();
     if (!token) {
       setIsSubmitting(false);
-      setMessage("請先登入 CMS 管理員帳號。");
+      setMessage(missingAdminSessionMessage);
       return;
     }
 
@@ -68,10 +68,10 @@ export default function ProductActions({ product }: Props) {
 
     setIsSubmitting(true);
 
-    const token = getAdminToken();
+    const token = getCmsAdminToken();
     if (!token) {
       setIsSubmitting(false);
-      setMessage("請先登入 CMS 管理員帳號。");
+      setMessage(missingAdminSessionMessage);
       return;
     }
 
