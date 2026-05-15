@@ -1,32 +1,11 @@
 import express from "express";
-import jwt from "jsonwebtoken";
-import { env } from "../config/env.js";
+import { requireAdmin } from "../middleware/require-admin.js";
 import pool from "../utils/connect-mysql.js";
 
 const PER_PAGE = 20;
 const router = express.Router();
 
 const allowedStatuses = new Set(["created", "paid", "completed", "cancelled"]);
-
-function requireAdmin(req, res, next) {
-  const authHeader = req.get("authorization") || "";
-  const token = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : "";
-
-  if (!token) {
-    return res.status(401).json({ ok: false, message: "Missing admin token" });
-  }
-
-  try {
-    const payload = jwt.verify(token, env.jwtSecret);
-    if (!payload?.adminId || payload?.role !== "admin") {
-      return res.status(403).json({ ok: false, message: "Invalid admin token" });
-    }
-    req.admin = payload;
-    next();
-  } catch {
-    return res.status(401).json({ ok: false, message: "Invalid admin token" });
-  }
-}
 
 function parseOrderId(req, res) {
   const id = parseInt(req.params.id, 10);
