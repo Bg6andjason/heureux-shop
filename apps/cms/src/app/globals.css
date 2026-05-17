@@ -431,6 +431,27 @@ button.header-action {
   font-size: 24px;
 }
 
+.table-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.pagination-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.secondary-button.is-disabled {
+  display: inline-flex;
+  align-items: center;
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+
 .product-create-panel {
   display: grid;
   gap: 16px;
@@ -840,6 +861,7 @@ button.header-action {
   .section-heading-row,
   .activity-item,
   .form-actions,
+  .table-toolbar,
   .settings-definition div,
   .settings-item {
     align-items: flex-start;

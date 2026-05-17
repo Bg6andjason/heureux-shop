@@ -123,6 +123,16 @@ router.get("/", async (req, res) => {
   const favoriteJoin = hasUserId
     ? "LEFT JOIN customer_favorites f ON f.product_id = p.id AND f.user_id = ?"
     : "";
+  const [[countRow]] = await pool.query(
+    `SELECT COUNT(*) AS total
+      FROM products p
+      ${whereClause}`,
+    bindings,
+  );
+
+  const total = Number(countRow?.total || 0);
+  const totalPages = Math.max(1, Math.ceil(total / PER_PAGE));
+
   const [rows] = await pool.query(
     `SELECT p.*${favoriteSelect}
       FROM products p
@@ -132,7 +142,7 @@ router.get("/", async (req, res) => {
       LIMIT ? OFFSET ?`,
     [...(hasUserId ? [userId] : []), ...bindings, PER_PAGE, offset],
   );
-  res.json({ ok: true, items: rows });
+  res.json({ ok: true, items: rows, page, perPage: PER_PAGE, total, totalPages });
 });
 
 router.post("/", requireAdmin, async (req, res) => {

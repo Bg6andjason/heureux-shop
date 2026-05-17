@@ -17,6 +17,14 @@ export type CmsCategorySummary = {
   stock: number;
 };
 
+export type CmsProductPage = {
+  items: CmsProduct[];
+  page: number;
+  perPage: number;
+  total: number;
+  totalPages: number;
+};
+
 export type CreateProductInput = {
   name: string;
   price: number;
@@ -32,8 +40,12 @@ export type ProductMutationResult =
 
 export type DeleteProductResult = { ok: true } | { ok: false; message: string };
 
-export async function getCmsProducts(): Promise<CmsProduct[]> {
-  const response = await fetch(`${getCmsApiBaseUrl()}/api/products?page=1&sort=newest`, {
+export async function getCmsProductPage(page = 1): Promise<CmsProductPage> {
+  const params = new URLSearchParams({
+    page: String(Math.max(1, page)),
+    sort: "newest",
+  });
+  const response = await fetch(`${getCmsApiBaseUrl()}/api/products?${params.toString()}`, {
     cache: "no-store",
   });
 
@@ -41,12 +53,34 @@ export async function getCmsProducts(): Promise<CmsProduct[]> {
     throw new Error("Failed to fetch CMS products");
   }
 
-  const data = (await response.json()) as { ok?: boolean; items?: CmsProduct[] };
+  const data = (await response.json()) as {
+    ok?: boolean;
+    items?: CmsProduct[];
+    page?: number;
+    perPage?: number;
+    total?: number;
+    totalPages?: number;
+  };
   if (!data.ok || !Array.isArray(data.items)) {
     throw new Error("Invalid CMS products response");
   }
 
-  return data.items;
+  const perPage = Number(data.perPage || data.items.length || 20);
+  const total = Number(data.total ?? data.items.length);
+  const totalPages = Math.max(1, Number(data.totalPages || Math.ceil(total / perPage) || 1));
+
+  return {
+    items: data.items,
+    page: Math.max(1, Number(data.page || page)),
+    perPage,
+    total,
+    totalPages,
+  };
+}
+
+export async function getCmsProducts(): Promise<CmsProduct[]> {
+  const productPage = await getCmsProductPage(1);
+  return productPage.items;
 }
 
 export async function createCmsProduct(
