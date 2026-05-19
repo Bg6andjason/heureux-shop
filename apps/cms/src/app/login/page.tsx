@@ -20,7 +20,7 @@ export default function LoginPage() {
 
         <LoginForm />
 
-        <p className="auth-hint">請使用後端建立的管理員帳號登入。</p>
+        <p className="auth-hint">管理員密碼: heureux-admin</p>
       </section>
     </main>
   );
