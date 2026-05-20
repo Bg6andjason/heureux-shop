@@ -2,10 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import {
-  ADMIN_DEMO_EMAIL,
-  loginAdmin,
-} from "@/lib/admin-auth";
+import { ADMIN_DEMO_EMAIL, loginAdmin } from "@/lib/admin-auth";
 import { setCmsAdminSession } from "@/lib/cms-session";
 
 type FieldErrors = {
