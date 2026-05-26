@@ -1,5 +1,5 @@
 import express from "express";
-import pool from "../utils/connect-mysql.js";
+import pool from "../utils/connect-postgres.js";
 
 const router = express.Router();
 
@@ -83,7 +83,7 @@ router.post("/toggle", async (req, res) => {
   await pool.query(
     `INSERT INTO customer_favorites (user_id, product_id)
       VALUES (?, ?)
-      ON DUPLICATE KEY UPDATE created_at = created_at`,
+      ON CONFLICT (user_id, product_id) DO NOTHING`,
     [user_id, product_id],
   );
   res.status(201).json({ ok: true, is_favorite: true });

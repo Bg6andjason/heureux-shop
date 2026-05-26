@@ -1,6 +1,6 @@
 import express from "express";
 import { requireAdmin } from "../middleware/require-admin.js";
-import pool from "../utils/connect-mysql.js";
+import pool from "../utils/connect-postgres.js";
 
 const PER_PAGE = 20;
 
@@ -53,7 +53,7 @@ function validateProductPayload(payload, res) {
 
 router.get("/categories", async (req, res) => {
   const [rows] = await pool.query(
-    "SELECT DISTINCT category FROM products WHERE category IS NOT NULL ORDER BY category",
+    "SELECT DISTINCT category FROM products WHERE category IS NOT NULL AND category <> '' ORDER BY category",
   );
   const items = rows.map((r) => r.category);
   res.json({ ok: true, items });
@@ -97,7 +97,7 @@ router.get("/", async (req, res) => {
 
   if (q !== "") {
     const pattern = `%${escapeLike(q)}%`;
-    conditions.push("(p.name LIKE ? OR p.description LIKE ?)");
+    conditions.push("(p.name ILIKE ? OR p.description ILIKE ?)");
     bindings.push(pattern, pattern);
   }
   if (category !== "") {
@@ -152,9 +152,10 @@ router.post("/", requireAdmin, async (req, res) => {
   }
 
   try {
-    const [insert] = await pool.query(
+    const [[product]] = await pool.query(
       `INSERT INTO products (name, price, description, category, stock, image_url)
-       VALUES (?, ?, ?, ?, ?, ?)`,
+       VALUES (?, ?, ?, ?, ?, ?)
+       RETURNING *`,
       [
         payload.name,
         payload.price,
@@ -164,10 +165,6 @@ router.post("/", requireAdmin, async (req, res) => {
         payload.imageUrl || null,
       ],
     );
-
-    const [[product]] = await pool.query("SELECT * FROM products WHERE id = ?", [
-      insert.insertId,
-    ]);
 
     res.status(201).json({ ok: true, item: product });
   } catch (error) {

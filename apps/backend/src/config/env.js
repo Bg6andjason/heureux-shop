@@ -5,11 +5,13 @@ dotenv.config();
 const {
   NODE_ENV,
   PORT,
+  DATABASE_URL,
   DB_HOST,
   DB_PORT,
   DB_USER,
   DB_PASS,
   DB_NAME,
+  DB_SSL,
   CORS_ORIGIN,
   JWT_SECRET,
 } = process.env;
@@ -23,11 +25,13 @@ export const env = {
   port: Number(PORT) || 3001,
 
   db: {
+    url: DATABASE_URL,
     host: DB_HOST,
-    port: Number(DB_PORT) || 3306,
+    port: Number(DB_PORT) || 5432,
     user: DB_USER,
     password: DB_PASS,
     database: DB_NAME,
+    ssl: DB_SSL !== "false",
   },
 
   corsOrigin,

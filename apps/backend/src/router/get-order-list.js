@@ -1,6 +1,6 @@
 import express from "express";
 import { requireAdmin } from "../middleware/require-admin.js";
-import pool from "../utils/connect-mysql.js";
+import pool from "../utils/connect-postgres.js";
 
 const PER_PAGE = 20;
 const router = express.Router();

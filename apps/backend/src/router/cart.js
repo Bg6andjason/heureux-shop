@@ -1,5 +1,5 @@
 import express from "express";
-import pool from "../utils/connect-mysql.js";
+import pool from "../utils/connect-postgres.js";
 
 const router = express.Router();
 // const DEFAULT_USER_ID = 1;
@@ -89,13 +89,11 @@ router.post("/add", async (req, res) => {
   }
 
   const qty = Math.min(quantity, product.stock ?? 999);
-  const [insert] = await pool.query(
-    "INSERT INTO cart_items (user_id, product_id, quantity) VALUES (?, ?, ?)",
-    [user_id, product_id, qty],
-  );
   const [[created]] = await pool.query(
-    "SELECT id, product_id, quantity FROM cart_items WHERE id = ?",
-    [insert.insertId],
+    `INSERT INTO cart_items (user_id, product_id, quantity)
+     VALUES (?, ?, ?)
+     RETURNING id, product_id, quantity`,
+    [user_id, product_id, qty],
   );
   res.status(201).json({ ok: true, item: created });
 });
@@ -160,17 +158,21 @@ router.post("/checkout", async (req, res) => {
   const connection = await pool.getConnection();
   try {
     await connection.beginTransaction();
-    const [orderInsert] = await connection.query(
-      "INSERT INTO orders (user_id, total_amount, status) VALUES (?, 0, 'pending')",
-      [user_id],
+    const total = cartRows.reduce(
+      (sum, row) => sum + Number(row.price) * Number(row.quantity),
+      0,
     );
-    const order_id = Number(orderInsert.insertId);
+    const [[order]] = await connection.query(
+      "INSERT INTO orders (user_id, total, status) VALUES (?, ?, 'created') RETURNING id",
+      [user_id, total],
+    );
+    const order_id = Number(order.id);
 
     for (const row of cartRows) {
       await connection.query(
-        `INSERT INTO order_items (order_id, product_id, price, quantity)
-        VALUES (?, ?, ?, ?)`,
-        [order_id, row.product_id, row.price, row.quantity],
+        `INSERT INTO order_items (order_id, product_id, name, price, quantity)
+        VALUES (?, ?, ?, ?, ?)`,
+        [order_id, row.product_id, row.name, row.price, row.quantity],
       );
     }
 

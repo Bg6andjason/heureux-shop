@@ -1,84 +1,100 @@
-INSERT INTO
-    products (
-        name,
-        price,
-        description,
-        category,
-        stock,
-        image_url
-    )
-VALUES (
-        '經典拿鐵',
-        140,
-        '順口滑順的經典拿鐵',
-        'coffee',
-        50,
-        NULL
-    ),
-    (
-        '海鹽焦糖拿鐵',
-        160,
-        '帶有微鹹風味的焦糖拿鐵',
-        'coffee',
-        40,
-        NULL
-    ),
-    (
-        '抹茶拿鐵',
-        150,
-        '濃郁抹茶搭配鮮奶',
-        'tea',
-        30,
-        NULL
-    ),
-    (
-        '香草冷萃咖啡',
-        170,
-        '香草風味冷萃咖啡',
-        'coffee',
-        20,
-        NULL
-    );
+INSERT INTO products (name, price, description, category, stock, image_url)
+SELECT v.name, v.price, v.description, v.category, v.stock, v.image_url
+FROM (
+    VALUES
+        ('Signature Blend Coffee', 140, 'Balanced house blend with caramel and cacao notes.', 'coffee', 50, NULL),
+        ('Classic Latte Blend', 160, 'Smooth espresso blend made for milk drinks.', 'coffee', 40, NULL),
+        ('Jasmine Green Tea', 150, 'Light floral tea with a clean finish.', 'tea', 30, NULL),
+        ('Dark Roast Coffee', 170, 'Bold roast with a deep bittersweet profile.', 'coffee', 20, NULL)
+) AS v(name, price, description, category, stock, image_url)
+WHERE NOT EXISTS (
+    SELECT 1 FROM products p WHERE p.name = v.name
+);
 
 -- Demo user (password: demo123)
-INSERT INTO
-    users (email, password_hash, name)
+INSERT INTO users (email, password_hash, name)
 VALUES (
-        'demo@example.com',
-        '$2b$10$JxS406dtDOdK/jp5nlRb7OpTMf3jozTkdP/IUX1tv1lhyKtOHb67a',
-        'Demo User'
-    );
+    'demo@example.com',
+    '$2b$10$JxS406dtDOdK/jp5nlRb7OpTMf3jozTkdP/IUX1tv1lhyKtOHb67a',
+    'Demo User'
+)
+ON CONFLICT (email) DO NOTHING;
 
 -- Demo admin (password: heureux-admin)
-INSERT INTO
-    admin_users (email, password_hash, name)
+INSERT INTO admin_users (email, password_hash, name)
 VALUES (
-        'admin@heureux.local',
-        '$2b$10$1l0ho4zMUxd581Y8o457e.UmFAlIMQUeTARfG1k6JaTxnmEW.ADOi',
-        'CMS Admin'
-    );
+    'admin@heureux.local',
+    '$2b$10$1l0ho4zMUxd581Y8o457e.UmFAlIMQUeTARfG1k6JaTxnmEW.ADOi',
+    'CMS Admin'
+)
+ON CONFLICT (email) DO NOTHING;
 
--- Demo orders (user_id = 1)
-INSERT INTO
-    orders (user_id, total, status)
-VALUES (1, 450, 'completed'),
-    (1, 320, 'paid');
+INSERT INTO orders (user_id, total, status)
+SELECT u.id, 450, 'completed'
+FROM users u
+WHERE u.email = 'demo@example.com'
+  AND NOT EXISTS (
+      SELECT 1 FROM orders o WHERE o.user_id = u.id AND o.total = 450 AND o.status = 'completed'
+  );
 
-INSERT INTO
-    order_items (
-        order_id,
-        product_id,
-        name,
-        price,
-        quantity
-    )
-VALUES (1, 1, '經典拿鐵', 140, 2),
-    (1, 2, '海鹽焦糖拿鐵', 160, 1),
-    (2, 3, '抹茶拿鐵', 150, 1),
-    (2, 4, '香草冷萃咖啡', 170, 1);
+INSERT INTO orders (user_id, total, status)
+SELECT u.id, 320, 'paid'
+FROM users u
+WHERE u.email = 'demo@example.com'
+  AND NOT EXISTS (
+      SELECT 1 FROM orders o WHERE o.user_id = u.id AND o.total = 320 AND o.status = 'paid'
+  );
 
--- Demo cart (user_id = 1)
-INSERT INTO
-    cart_items (user_id, product_id, quantity)
-VALUES (1, 1, 2),
-    (1, 2, 1);
+INSERT INTO order_items (order_id, product_id, name, price, quantity)
+SELECT o.id, p.id, p.name, 140, 2
+FROM orders o
+JOIN users u ON u.id = o.user_id
+JOIN products p ON p.name = 'Signature Blend Coffee'
+WHERE u.email = 'demo@example.com' AND o.total = 450
+  AND NOT EXISTS (
+      SELECT 1 FROM order_items oi WHERE oi.order_id = o.id AND oi.product_id = p.id
+  );
+
+INSERT INTO order_items (order_id, product_id, name, price, quantity)
+SELECT o.id, p.id, p.name, 160, 1
+FROM orders o
+JOIN users u ON u.id = o.user_id
+JOIN products p ON p.name = 'Classic Latte Blend'
+WHERE u.email = 'demo@example.com' AND o.total = 450
+  AND NOT EXISTS (
+      SELECT 1 FROM order_items oi WHERE oi.order_id = o.id AND oi.product_id = p.id
+  );
+
+INSERT INTO order_items (order_id, product_id, name, price, quantity)
+SELECT o.id, p.id, p.name, 150, 1
+FROM orders o
+JOIN users u ON u.id = o.user_id
+JOIN products p ON p.name = 'Jasmine Green Tea'
+WHERE u.email = 'demo@example.com' AND o.total = 320
+  AND NOT EXISTS (
+      SELECT 1 FROM order_items oi WHERE oi.order_id = o.id AND oi.product_id = p.id
+  );
+
+INSERT INTO order_items (order_id, product_id, name, price, quantity)
+SELECT o.id, p.id, p.name, 170, 1
+FROM orders o
+JOIN users u ON u.id = o.user_id
+JOIN products p ON p.name = 'Dark Roast Coffee'
+WHERE u.email = 'demo@example.com' AND o.total = 320
+  AND NOT EXISTS (
+      SELECT 1 FROM order_items oi WHERE oi.order_id = o.id AND oi.product_id = p.id
+  );
+
+INSERT INTO cart_items (user_id, product_id, quantity)
+SELECT u.id, p.id, 2
+FROM users u
+JOIN products p ON p.name = 'Signature Blend Coffee'
+WHERE u.email = 'demo@example.com'
+ON CONFLICT (user_id, product_id) DO NOTHING;
+
+INSERT INTO cart_items (user_id, product_id, quantity)
+SELECT u.id, p.id, 1
+FROM users u
+JOIN products p ON p.name = 'Classic Latte Blend'
+WHERE u.email = 'demo@example.com'
+ON CONFLICT (user_id, product_id) DO NOTHING;

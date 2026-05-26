@@ -1,7 +1,7 @@
 import express from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import pool from "../utils/connect-mysql.js";
+import pool from "../utils/connect-postgres.js";
 import { env } from "../config/env.js";
 import { requireAdmin } from "../middleware/require-admin.js";
 
@@ -37,11 +37,11 @@ router.post("/register", async (req, res) => {
   }
 
   const password_hash = await bcrypt.hash(password, 10);
-  const [insert] = await pool.query(
-    "INSERT INTO users (email, password_hash, name) VALUES (?, ?, ?)",
+  const [[created]] = await pool.query(
+    "INSERT INTO users (email, password_hash, name) VALUES (?, ?, ?) RETURNING id",
     [email, password_hash, name || null],
   );
-  const userId = Number(insert.insertId);
+  const userId = Number(created.id);
   const token = jwt.sign({ userId, email }, env.jwtSecret, { expiresIn: "7d" });
 
   res.status(201).json({

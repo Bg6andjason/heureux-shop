@@ -37,8 +37,8 @@ Express API server、MySQL 資料庫設計、依使用者區分的購物資料�
 
 - Node.js
 - Express
-- MySQL
-- mysql2
+- PostgreSQL / Supabase
+- pg
 - bcrypt
 - jsonwebtoken
 - cors
@@ -143,13 +143,20 @@ Password: heureux-admin
 
 ```env
 PORT=3001
-DB_HOST=localhost
-DB_PORT=3306
-DB_USER=root
-DB_PASS=your_password
-DB_NAME=heureux_shop
+DATABASE_URL=postgresql://postgres:[YOUR-PASSWORD]@db.[PROJECT-REF].supabase.co:5432/postgres
+DB_SSL=true
 CORS_ORIGIN=http://localhost:3000,http://localhost:3002
 JWT_SECRET=replace_with_your_secret
+```
+
+Local PostgreSQL can also use separate variables instead of `DATABASE_URL`:
+```env
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=postgres
+DB_PASS=your_password
+DB_NAME=heureux_shop
+DB_SSL=false
 ```
 
 在 frontend app 建立 `.env.local`：
@@ -175,9 +182,11 @@ npm install
 建立並匯入資料庫：
 
 ```bash
-mysql -u root -p heureux_shop < apps/backend/src/db/schema.sql
-mysql -u root -p heureux_shop < apps/backend/src/db/seed.sql
+psql "$DATABASE_URL" -f apps/backend/src/db/schema.sql
+psql "$DATABASE_URL" -f apps/backend/src/db/seed.sql
 ```
+
+For Supabase, paste and run `apps/backend/src/db/schema.sql` first in the SQL editor, then run `apps/backend/src/db/seed.sql`.
 
 啟動後端：
 
