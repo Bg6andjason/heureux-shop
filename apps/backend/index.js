@@ -13,6 +13,11 @@ console.log("CORS_ORIGIN raw:", process.env.CORS_ORIGIN);
 console.log("env.corsOrigin:", env.corsOrigin);
 console.log("isArray:", Array.isArray(env.corsOrigin));
 
+app.use((req, res, next) => {
+  console.log("REQ:", req.method, req.path, "origin:", req.headers.origin);
+  next();
+});
+
 app.use(
   cors({
     origin: env.corsOrigin,
