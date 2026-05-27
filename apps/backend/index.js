@@ -20,9 +20,20 @@ app.use((req, res, next) => {
 
 app.use(
   cors({
-    origin: env.corsOrigin,
+    origin(origin, callback) {
+      console.log("CORS request origin:", origin);
+      console.log("CORS allowed origins:", env.corsOrigin);
+      console.log("CORS matched:", env.corsOrigin.includes(origin));
+
+      if (!origin || env.corsOrigin.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error(`Not allowed by CORS: ${origin}`));
+      }
+    },
   }),
 );
+
 app.use(express.json());
 
 app.use("/api/products", getProductList);
