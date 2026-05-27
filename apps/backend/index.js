@@ -9,6 +9,10 @@ import favoritesRouter from "./src/router/favorites.js";
 
 const app = express();
 
+console.log("CORS_ORIGIN raw:", process.env.CORS_ORIGIN);
+console.log("env.corsOrigin:", env.corsOrigin);
+console.log("isArray:", Array.isArray(env.corsOrigin));
+
 app.use(
   cors({
     origin: env.corsOrigin,
