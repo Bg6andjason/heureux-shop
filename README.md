@@ -15,7 +15,7 @@ Express API server、MySQL 資料庫設計、依使用者區分的購物資料�
 - 商品列表與商品詳情頁皆串接 MySQL 資料。
 - 實作搜尋、分類篩選、排序，以及 pagination/load-more 行為。
 - 會員註冊與登入流程，後端使用 bcrypt 處理密碼雜湊並簽發 JWT。
-- Next.js 端使用 HTTP-only cookies 保存登入相關狀態。
+- 前台 Next.js 使用 HTTP-only cookies 保存會員登入狀態；CMS 管理後台使用 browser sessionStorage 保存 Admin JWT。
 - 支援依使用者區分的購物車、收藏清單、會員資訊摘要與訂單紀錄。
 - 購物車支援數量調整、庫存上限限制、商品移除，以及 Navbar 數量即時更新。
 - 結帳流程會將目前購物車內容建立為訂單紀錄。
@@ -71,7 +71,8 @@ heureux-shop/
 - 註冊與登入 API。
 - 使用 bcrypt 儲存密碼雜湊。
 - 後端簽發 JWT。
-- Next.js 使用 HTTP-only cookies 保存登入相關資料。
+- 前台 Next.js 將會員 JWT 保存於 HTTP-only cookies，降低 token 被前端 JavaScript 讀取的風險。
+- CMS 管理後台將 Admin JWT 保存於 browser sessionStorage，並在管理 API 請求中以 `Authorization: Bearer <token>` 帶出。
 - 會員頁顯示個人資料與購物摘要。
 
 ### 收藏清單
